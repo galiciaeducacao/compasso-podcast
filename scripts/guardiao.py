@@ -35,6 +35,13 @@ ESCALA = {"mil":1000,"milhao":10**6,"milhoes":10**6,"bilhao":10**9,"bilhoes":10*
           "trilhao":10**12,"trilhoes":10**12}
 
 
+def norm_frase(s):
+    """minusculas sem acento, PRESERVANDO os espacos (norm() cola tudo)"""
+    s = unicodedata.normalize("NFKD", s.lower())
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return re.sub(r"[^a-z0-9]+", " ", s).strip()
+
+
 def norm(s):
     s = unicodedata.normalize("NFD", s.lower())
     return "".join(c for c in s if unicodedata.category(c) != "Mn")
@@ -200,10 +207,34 @@ def main():
         elif termo not in norm(" ".join(t for _, t in bloco["falas"])):
             problemas.append(f"[ANUNCIO {n}] nao cita a marca esperada")
 
-    # ---------- 6. LASTRO FACTUAL: nada que nao esteja nas analises do dia ----------
-    corpo = analises_do_dia(data)
+
+    # ---------- 7. PERSPECTIVA TEMPORAL ----------
+    # A fonte e sempre a analise da vespera, entao o texto nasce dizendo "hoje" sobre
+    # fato de ontem. Um matinal que erra isso perde credibilidade depressa, e o erro e
+    # invisivel para quem escreveu, porque na hora de escrever era mesmo hoje.
+    #   fato ocorrido na vespera -> "ontem"
+    #   agenda do proprio dia    -> "hoje"
+    #   o proprio programa       -> "hoje" ("a escalacao de hoje")
+    PRETERITO = (r"divulgou|anunciou|publicou|fechou|subiu|caiu|disse|afirmou|pediu|"
+                 r"aprovou|registrou|bateu|recuou|avancou|decidiu|votou|assinou|cortou|"
+                 r"elevou|derrubou|reagiu|abriu|encerrou|soltou|marcou|dobrou")
+    for i, t_ in enumerate(todas, 1):
+        limpo = norm_frase(re.sub(r"\[[^\]]+\]", "", t_))
+        # "hoje" antes do verbo: "hoje o IBGE divulgou"
+        if re.search(r"\bhoje\b(?:\s+\S+){0,5}\s+(?:" + PRETERITO + r")\b", limpo):
+            problemas.append(f"fala {i}: diz 'hoje' sobre fato ja ocorrido, deveria ser 'ontem'")
+        # "hoje" depois do verbo: "o IBGE divulgou hoje"
+        elif re.search(r"\b(?:" + PRETERITO + r")\b(?:\s+\S+){0,3}\s+hoje\b", limpo):
+            problemas.append(f"fala {i}: diz 'hoje' sobre fato ja ocorrido, deveria ser 'ontem'")
+
+    # ---------- 6. LASTRO FACTUAL: nada que nao esteja nas analises da VESPERA ----------
+    # O episodio de D comenta as analises publicadas em D-1, porque elas saem as 14h e
+    # o programa vai ao ar as 7h da manha seguinte. Buscar a pasta de D acha pasta vazia
+    # todo dia, e a regua reprovaria sempre.
+    vespera = (dt.date.fromisoformat(data) - dt.timedelta(days=1)).isoformat()
+    corpo = analises_do_dia(vespera)
     if corpo is None:
-        problemas.append(f"nao consegui ler as analises de {data} para conferir os numeros")
+        problemas.append(f"nao consegui ler as analises de {vespera} para conferir os numeros")
     else:
         do_site = set(digitos_do_texto(corpo)) | set(digitos_por_extenso(corpo))
         # A conferencia vale para NOTICIA. O texto dos anuncios e institucional e fixo,

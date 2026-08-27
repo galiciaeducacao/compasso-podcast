@@ -101,26 +101,41 @@ def palavras_com_tempo(arq):
         return []
 
 
-def fim_do_priming(arq, texto_contexto):
-    """Onde termina, em segundos, a fala de contexto colada no inicio.
+def inicio_do_bloco(arq, texto_contexto, texto_primeira):
+    """Segundo em que COMECA a primeira fala do bloco, que e onde o priming acaba.
 
-    Ancora no INICIO da primeira fala do bloco, nao no fim do contexto: o contexto
-    costuma terminar em endereco de site, que a transcricao devolve como uma palavra
-    so e nunca casa.
+    Ancora no inicio da fala nova, nunca no fim do contexto: o contexto costuma
+    terminar em endereco de site, e a transcricao devolve isso como uma palavra so,
+    que nunca casa. Quando a ancora completa falha, cai para a primeira palavra
+    distintiva, isto e, uma palavra da fala nova que nao aparece no contexto.
     """
     palavras = palavras_com_tempo(arq)
-    alvo = [norm(x) for x in texto_contexto.split() if norm(x)]
-    if not alvo or not palavras:
+    if not palavras:
         return None
     lidas = [norm(w["text"]) for w in palavras]
-    for ini in range(min(6, len(lidas))):
-        casou, j = 0, ini
-        for a in alvo:
-            if j < len(lidas) and lidas[j] == a:
-                casou += 1
-                j += 1
-        if casou >= max(3, int(len(alvo) * 0.6)):
-            return float(palavras[min(j, len(palavras) - 1)]["end"])
+    ctx = [norm(x) for x in texto_contexto.split() if norm(x)]
+    nova = [norm(x) for x in re.sub(r"\[[^\]]*\]\s*", "", texto_primeira).split() if norm(x)]
+    if not nova:
+        return None
+
+    # a fala nova nao comeca antes de metade do contexto ter sido dita
+    piso = max(0, int(len(ctx) * 0.5))
+
+    # 1) ancora completa: as primeiras palavras da fala nova, em sequencia
+    n = min(4, len(nova))
+    for k in range(piso, len(lidas) - n + 1):
+        if lidas[k:k + n] == nova[:n]:
+            return float(palavras[k]["start"])
+
+    # 2) queda: primeira palavra da fala nova que nao existe no contexto
+    no_contexto = set(ctx)
+    for idx, palavra in enumerate(nova):
+        if palavra in no_contexto or len(palavra) < 4:
+            continue
+        for k in range(piso, len(lidas)):
+            if lidas[k] == palavra:
+                # recua o tanto da fala nova que ja foi dito antes dessa palavra
+                return float(palavras[max(0, k - idx)]["start"])
     return None
 
 
@@ -197,6 +212,7 @@ def main():
     # cerca de 900 creditos por dia a toa. Se audio/anuncio_<marca>.mp3 existir, ele
     # e usado como esta.
     total = 0
+    sem_corte = []
     for i, s in enumerate(segs):
         marca_i = MARCAS.get(s["n"], (None, None))[0] if s["tipo"] == "ANUNCIO" else None
         if marca_i and (AUDIO / f"anuncio_{marca_i}.mp3").exists():
@@ -235,16 +251,24 @@ def main():
 
         destino = TMP / f"voz{i}.wav"
         if contexto:
-            corte = fim_do_priming(bruto, contexto)
+            corte = inicio_do_bloco(bruto, contexto, s["turnos"][0]["texto"])
             if corte:
                 ff(["-ss", f"{corte:.3f}", "-i", str(bruto), "-ar", "44100", "-ac", "1", str(destino)])
                 print(f"  bloco {i}: priming cortado em {corte:.2f}s")
             else:
                 bruto.replace(destino)
-                print(f"  bloco {i}: ATENCAO, nao achei o corte do priming (ficou a repeticao)")
+                sem_corte.append(i)
+                print(f"  bloco {i}: NAO achei o corte do priming")
         else:
             bruto.replace(destino)
         ff(["-i", str(destino), "-af", f"atempo={TEMPO}", "-ar", "44100", "-ac", "1", str(TMP / f"v{i}.wav")])
+
+    # Fala repetida no ar e pior que episodio nao publicado: quem ouve percebe na
+    # hora e ninguem revisa 365 episodios por ano. Entao para aqui, com a lista.
+    if sem_corte:
+        print(f"::error::Nao localizei o corte do priming nos blocos {sem_corte}. "
+              f"Cada um deles ficaria com a fala anterior repetida no ar. Nada foi montado.")
+        sys.exit(1)
 
     # ---------- envelope: cada trecho com sua trilha ----------
     db_voz = media_db(TMP / "v0.wav")

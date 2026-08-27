@@ -78,8 +78,8 @@ jobs:
 
               gh workflow run guardiao.yml -f data=${{ steps.alvo.outputs.data }}
 
-          Se o motivo for numero sem lastro, confira contra as cinco analises daquele dia
-          em \`galicia/compasso/ops/diarias/${{ steps.alvo.outputs.data }}/\`. **Numero que
+          Se o motivo for numero sem lastro, confira contra as cinco analises da VESPERA
+          (o episodio de um dia comenta as analises publicadas no dia anterior). **Numero que
           nao esta na apuracao nao pode ir ao ar**, mesmo que pareca certo.
           FIM
           )"

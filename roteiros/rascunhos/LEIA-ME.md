@@ -22,3 +22,22 @@ tudo certo.
 
 Com duas pastas, escrever e aprovar são atos separados, e o segundo continua sendo humano
 mesmo quando o primeiro deixar de ser.
+
+## A regra temporal: quem fala é a manhã seguinte
+
+A fonte de um episódio é **sempre a análise da véspera**, porque as análises saem às
+14h e o programa vai ao ar às 7h do dia seguinte. Então o texto nasce naturalmente
+dizendo "hoje" sobre um fato de ontem, e isso precisa ser convertido antes de subir:
+
+| o que é | como se fala |
+|---|---|
+| fato ocorrido na véspera | **ontem** ("o IBGE divulgou ontem") |
+| agenda do próprio dia do ar | **hoje** ("e hoje, daqui a pouco, o discurso em Jackson Hole") |
+| referência ao programa | **hoje** ("me dá a escalação de hoje") |
+
+Um matinal que chama de "hoje" o que aconteceu ontem perde credibilidade rápido, e o
+erro é invisível para quem escreveu, porque na hora de escrever era mesmo hoje. Por
+isso a régua confere sozinha (regra 7 do `guardiao.py`) e barra o rascunho.
+
+O ganho não é só de correção: separar o que passou do que está por vir transforma um
+retrospecto em programa com **agenda do dia**, que é o que se espera de um matinal.
