@@ -108,6 +108,10 @@ def inicio_do_bloco(arq, texto_contexto, texto_primeira):
     terminar em endereco de site, e a transcricao devolve isso como uma palavra so,
     que nunca casa. Quando a ancora completa falha, cai para a primeira palavra
     distintiva, isto e, uma palavra da fala nova que nao aparece no contexto.
+
+    Devolve None quando nao tem certeza. Quem chama aborta, porque um corte errado
+    vai ao ar comendo o comeco da frase ou repetindo a anterior, e ninguem escuta
+    365 episodios por ano para pegar isso.
     """
     palavras = palavras_com_tempo(arq)
     if not palavras:
@@ -118,6 +122,14 @@ def inicio_do_bloco(arq, texto_contexto, texto_primeira):
     if not nova:
         return None
 
+    # O tempo de inicio da palavra cai no ataque da consoante, um pouco depois do
+    # comeco real do som. Cortar exatamente ali come o primeiro fonema, entao recua
+    # um respiro. O que entra nesse respiro e silencio entre falas.
+    MARGEM = 0.12
+
+    def em(k):
+        return max(0.0, float(palavras[k]["start"]) - MARGEM)
+
     # a fala nova nao comeca antes de metade do contexto ter sido dita
     piso = max(0, int(len(ctx) * 0.5))
 
@@ -125,17 +137,29 @@ def inicio_do_bloco(arq, texto_contexto, texto_primeira):
     n = min(4, len(nova))
     for k in range(piso, len(lidas) - n + 1):
         if lidas[k:k + n] == nova[:n]:
-            return float(palavras[k]["start"])
+            return em(k)
 
-    # 2) queda: primeira palavra da fala nova que nao existe no contexto
+    # 2) queda: primeira palavra distintiva, isto e, da fala nova e ausente do contexto.
+    # Exige 4 letras ou mais: "que", "nao", "com" casam em qualquer ponto da transcricao
+    # e levariam o corte para o meio do contexto.
     no_contexto = set(ctx)
     for idx, palavra in enumerate(nova):
         if palavra in no_contexto or len(palavra) < 4:
             continue
-        for k in range(piso, len(lidas)):
+        # comeca a busca em idx: achar a palavra antes disso tornaria o recuo impossivel,
+        # e k - idx negativo daria a volta na lista sem erro nenhum, cortando em ponto
+        # aleatorio do audio
+        for k in range(max(piso, idx), len(lidas)):
             if lidas[k] == palavra:
                 # recua o tanto da fala nova que ja foi dito antes dessa palavra
-                return float(palavras[max(0, k - idx)]["start"])
+                return em(k - idx)
+
+    # 3) ultima queda: a primeira palavra da fala nova, e SO se ela aparecer uma unica
+    # vez na regiao. Sem essa exigencia, uma abertura comum ("mas", "entao") casaria em
+    # varios pontos e o corte viraria sorteio, que e pior que abortar.
+    ocorrencias = [k for k in range(piso, len(lidas)) if lidas[k] == nova[0]]
+    if len(ocorrencias) == 1:
+        return em(ocorrencias[0])
     return None
 
 
