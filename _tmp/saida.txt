@@ -1,4 +1,0 @@
-arquivo=compasso-capital-0001.mp3
-gerou=sim
-duracao=00:12:25
-tamanho=17889114

@@ -1,2 +1,0 @@
-file 'C:\Users\adm_legale\Downloads\compasso-podcast\_tmp\r9_0.wav'
-file 'C:\Users\adm_legale\Downloads\compasso-podcast\_tmp\r9_1.wav'
