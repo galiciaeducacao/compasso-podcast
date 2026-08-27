@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COMPASSO CAPITAL — o podcast</title>
+<meta name="description" content="O podcast que traduz os interesses nas entrelinhas das notícias. Todos os dias, às 7 da manhã. Porque no jogo do excedente, ninguém assiste de fora.">
+<meta property="og:title" content="COMPASSO CAPITAL — o podcast">
+<meta property="og:description" content="Todos os dias, às 7 da manhã. Porque no jogo do excedente, ninguém assiste de fora.">
+<meta property="og:image" content="https://galiciaeducacao.github.io/compasso-podcast/capa.png">
+<meta property="og:type" content="website">
+<link rel="alternate" type="application/rss+xml" title="COMPASSO CAPITAL" href="feed.xml">
+<link rel="icon" href="capa.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Archivo:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carvao:#0F1416; --painel:#14191b; --linha:#22292c;
+    --tijolo:#BA3520; --claro:#F2EFE9; --cinza:#9aa4a8;
+    --serif:'Newsreader',Georgia,serif; --sans:'Archivo',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--carvao);color:var(--claro);font-family:var(--sans);
+       -webkit-font-smoothing:antialiased;line-height:1.6}
+  .faixa{height:6px;background:var(--tijolo)}
+  .envelope{max-width:920px;margin:0 auto;padding:0 24px}
+
+  header{padding:64px 0 40px}
+  .chapeu{font:600 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--tijolo)}
+  h1{font:600 clamp(44px,9vw,86px)/1 var(--serif);margin:14px 0 0;letter-spacing:-.02em}
+  h1 span{color:var(--tijolo)}
+  .tagline{font:400 clamp(17px,2.4vw,21px)/1.5 var(--serif);color:var(--claro);margin:22px 0 0;max-width:34ch}
+  .abaixo{font:400 15px/1.6 var(--sans);color:var(--cinza);margin:16px 0 0;max-width:56ch}
+
+  .topo{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:start}
+  .capa{width:100%;border:1px solid var(--linha);display:block}
+  @media(max-width:720px){.topo{grid-template-columns:1fr}.capa{max-width:260px}}
+
+  .botoes{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+  .botao{display:inline-block;padding:13px 22px;border:1px solid var(--linha);
+         color:var(--claro);text-decoration:none;font:600 14px/1 var(--sans);
+         background:var(--painel);transition:.15s}
+  .botao:hover{border-color:var(--tijolo);color:var(--tijolo)}
+  .botao.forte{background:var(--tijolo);border-color:var(--tijolo);color:#fff}
+  .botao.forte:hover{background:#a12d1a;color:#fff}
+
+  section{padding:44px 0;border-top:1px solid var(--linha)}
+  h2{font:600 13px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+     color:var(--tijolo);margin:0 0 22px}
+
+  .ep{background:var(--painel);border:1px solid var(--linha);padding:26px}
+  .ep .num{font:600 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--cinza)}
+  .ep h3{font:600 clamp(20px,3vw,26px)/1.3 var(--serif);margin:10px 0 12px}
+  .ep p{font:400 15px/1.65 var(--sans);color:#d6d2cb;margin:0 0 20px}
+  audio{width:100%;height:42px}
+
+  .metodo{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linha);
+          border:1px solid var(--linha)}
+  .metodo div{background:var(--carvao);padding:20px}
+  .metodo b{display:block;font:600 12px/1.4 var(--sans);letter-spacing:.12em;
+            text-transform:uppercase;color:var(--tijolo);margin-bottom:8px}
+  .metodo span{font:400 14px/1.55 var(--sans);color:#d6d2cb}
+  @media(max-width:720px){.metodo{grid-template-columns:1fr 1fr}}
+
+  footer{padding:34px 0 60px;border-top:1px solid var(--linha);
+         font:400 14px/1.7 var(--sans);color:var(--cinza)}
+  footer a{color:var(--claro);text-decoration:none;border-bottom:1px solid var(--linha)}
+  footer a:hover{color:var(--tijolo);border-color:var(--tijolo)}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;
+       background:var(--painel);border:1px solid var(--linha);padding:3px 7px;word-break:break-all}
+</style>
+</head>
+<body>
+<div class="faixa"></div>
+<div class="envelope">
+
+  <header>
+    <div class="topo">
+      <img class="capa" src="capa.png" alt="COMPASSO CAPITAL">
+      <div>
+        <div class="chapeu">O podcast diário</div>
+        <h1>COMPASSO<br><span>CAPITAL</span></h1>
+        <p class="tagline">O podcast que traduz os interesses nas entrelinhas das notícias.</p>
+        <p class="abaixo">Todos os dias, às 7 da manhã, de segunda a domingo. Cinco notícias que a
+          imprensa brasileira não conta direito, abertas em quatro tempos.
+          <strong style="color:var(--claro)">Porque no jogo do excedente, ninguém assiste de fora.</strong></p>
+        <div class="botoes">
+          <a class="botao forte" href="feed.xml">Assinar o feed RSS</a>
+          <a class="botao" href="https://compasso.capital">Ler as análises</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2>O método</h2>
+    <div class="metodo">
+      <div><b>1. O fato</b><span>O que aconteceu, com número e fonte.</span></div>
+      <div><b>2. O contexto</b><span>Em que jogo maior aquilo se encaixa.</span></div>
+      <div><b>3. O impacto</b><span>Quem ganha e quem perde com isso.</span></div>
+      <div><b>4. O que vem</b><span>Os desdobramentos prováveis, e onde você está.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Último episódio</h2>
+    <div class="ep">
+      <div class="num">Episódio 1 · 27 de agosto de 2026</div>
+      <h3>A China pede o estreito, a Nvidia zera a China e o Brasil bate recorde de emprego</h3>
+      <p>Na estreia: Pequim pede a reabertura de Ormuz enquanto o Tesouro americano avisa os bancos;
+         Irã e Omã desenham o corredor por fora de Washington; a Nvidia dobra a receita e escreve zero
+         na linha da China; o Brasil registra o menor desemprego da série e o dado dura uma manhã; e a
+         mesa do tarifaço de segunda ganha uma pauta que inclui o Pix.</p>
+      <audio controls preload="none"
+             src="https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0001/compasso-capital-0001.mp3"></audio>
+    </div>
+  </section>
+
+  <footer>
+    <p>Ouça também nos tocadores. Se o seu aceita endereço de feed, use:<br>
+       <code>https://galiciaeducacao.github.io/compasso-podcast/feed.xml</code></p>
+    <p>As vozes do programa são sintéticas. A apuração e a análise são feitas por gente.<br>
+       Contato: <a href="mailto:contato@compasso.capital">contato@compasso.capital</a> ·
+       Análises completas em <a href="https://compasso.capital">compasso.capital</a></p>
+  </footer>
+
+</div>
+<div class="faixa"></div>
+</body>
+</html>
