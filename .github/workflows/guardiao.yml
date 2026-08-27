@@ -1,0 +1,85 @@
+# COMPASSO CAPITAL — o guardiao decide se o rascunho de amanha pode ir ao ar.
+#
+# O Paulo dispensou a aprovacao manual. Isso significa que este workflow e a UNICA
+# coisa entre o modelo e o ar, num programa diario que fala em nome de tres marcas
+# pagantes. A regua e dura de proposito: na duvida, barra.
+#
+# Roda as 17h, uma hora antes da gravacao, para dar tempo de alguem olhar se barrar.
+# Se reprovar, ABRE UMA ISSUE explicando o motivo. O GitHub notifica por e-mail, e
+# assim um dia sem episodio nunca acontece em silencio: silencio e pior que erro
+# conhecido, porque ninguem investiga o que nao viu.
+
+name: guardiao (17h)
+
+on:
+  schedule:
+    - cron: '0 20 * * *'      # 20h UTC = 17h de Brasilia
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'Data do rascunho a avaliar (AAAA-MM-DD). Vazio = amanha'
+        required: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  avaliar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Definir a data
+        id: alvo
+        run: |
+          DATA="${{ inputs.data }}"
+          [ -z "$DATA" ] && DATA=$(TZ=America/Sao_Paulo date -d "+1 day" +%F)
+          echo "data=$DATA" >> $GITHUB_OUTPUT
+
+      - name: Passar a regua
+        id: reguar
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        continue-on-error: true
+        run: python scripts/guardiao.py "${{ steps.alvo.outputs.data }}"
+
+      - name: Promover o rascunho aprovado
+        if: steps.reguar.outputs.aprovado == 'sim'
+        run: |
+          git config user.name "COMPASSO"
+          git config user.email "contato@compasso.capital"
+          git commit -qm "aprovado pelo guardiao: ${{ steps.alvo.outputs.data }}"
+          git push
+          echo "::notice::Roteiro de ${{ steps.alvo.outputs.data }} aprovado e promovido."
+
+      - name: Avisar que hoje nao tem episodio, e por que
+        if: steps.reguar.outputs.aprovado == 'nao'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Sem episodio em ${{ steps.alvo.outputs.data }}: o guardiao barrou" \
+            --body "$(cat <<FIM
+          O rascunho de **${{ steps.alvo.outputs.data }}** nao passou na regua e **nao vai ao ar**.
+
+          ### O que barrou
+
+          ${{ steps.reguar.outputs.motivos }}
+
+          ### O que fazer
+
+          Corrigir \`roteiros/rascunhos/${{ steps.alvo.outputs.data }}.md\` e rodar de novo:
+
+              gh workflow run guardiao.yml -f data=${{ steps.alvo.outputs.data }}
+
+          Se o motivo for numero sem lastro, confira contra as cinco analises daquele dia
+          em \`galicia/compasso/ops/diarias/${{ steps.alvo.outputs.data }}/\`. **Numero que
+          nao esta na apuracao nao pode ir ao ar**, mesmo que pareca certo.
+          FIM
+          )"
