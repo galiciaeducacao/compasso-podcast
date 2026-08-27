@@ -99,3 +99,78 @@ jobs:
             sleep 30
           done
           echo "::warning::O feed ainda nao propagou. Costuma resolver sozinho em minutos."
+
+      # Enquanto o Spotify nao aprovar o cadastro, o episodio existe no feed e nao chega
+      # a ninguem. Este aviso entrega o link direto do arquivo, que toca em qualquer lugar
+      # e pode ser repassado a mao. Depois que a distribuicao estiver de pe, ele continua
+      # util como confirmacao diaria de que a esteira rodou.
+      #
+      # Sem SMTP_USER/SMTP_PASS no repositorio, o passo avisa e sai: falta de aviso nao
+      # pode derrubar uma publicacao que ja deu certo.
+      - name: Avisar o Paulo que o episodio entrou no ar
+        if: steps.check.outputs.tem == 'sim'
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          if [ -z "$SMTP_USER" ] || [ -z "$SMTP_PASS" ]; then
+            echo "::warning::Sem SMTP_USER/SMTP_PASS neste repositorio: nao enviei o aviso."
+            exit 0
+          fi
+          python3 - <<'EOF'
+          import json, os, pathlib, smtplib
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          from email.mime.multipart import MIMEMultipart
+          from email.mime.text import MIMEText
+
+          ep = json.loads(pathlib.Path("scripts/episodios.json").read_text(encoding="utf-8"))["episodios"][0]
+          DESTINO = "paulo@galiciaeducacao.edu.br"
+          PAGINA = "https://galiciaeducacao.github.io/compasso-podcast/"
+          FEED = PAGINA + "feed.xml"
+
+          DIAS = ["segunda-feira", "terca-feira", "quarta-feira", "quinta-feira",
+                  "sexta-feira", "sabado", "domingo"]
+          MESES = ["janeiro", "fevereiro", "marco", "abril", "maio", "junho", "julho",
+                   "agosto", "setembro", "outubro", "novembro", "dezembro"]
+          agora = datetime.now(ZoneInfo("America/Sao_Paulo"))
+          data_pt = "%s, %d de %s" % (DIAS[agora.weekday()], agora.day, MESES[agora.month - 1])
+
+          def botao(url, solido, rotulo):
+              estilo = ("background:#BA3520;color:#ffffff;" if solido
+                        else "background:transparent;color:#D4573F;border:1px solid #BA3520;")
+              return ('<a href="%s" style="display:inline-block;%s'
+                      'text-decoration:none;font-family:Arial,Helvetica,sans-serif;'
+                      'font-size:14px;font-weight:bold;letter-spacing:1px;'
+                      'text-transform:uppercase;padding:14px 28px;border-radius:4px;'
+                      'margin-right:8px;">%s</a>' % (url, estilo, rotulo))
+
+          html = """
+          <div style="background:#0F1416;padding:40px 24px;font-family:Georgia,'Times New Roman',serif;">
+            <div style="max-width:560px;margin:0 auto;">
+              <p style="color:#D4573F;font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:bold;margin:0 0 14px;">Epis&oacute;dio %d &middot; no ar desde as 7h</p>
+              <h1 style="color:#E9E5DC;font-weight:normal;font-size:34px;margin:0 0 18px;">COMPASSO <em style="color:#D4573F;">Capital</em></h1>
+              <p style="color:#E9E5DC;font-size:16px;line-height:1.6;margin:0 0 12px;">paulo,</p>
+              <p style="color:#E9E5DC;font-size:16px;line-height:1.6;margin:0 0 12px;">o epis&oacute;dio de %s entrou no feed, com %s de dura&ccedil;&atilde;o.</p>
+              <p style="color:#E9E5DC;font-size:17px;line-height:1.5;margin:0 0 22px;font-style:italic;">%s</p>
+              <p style="margin:0 0 32px;">%s%s</p>
+              <p style="color:#9AA3A6;font-size:12px;line-height:1.6;border-top:1px solid #2a3237;padding-top:16px;margin:0;">O bot&atilde;o Ouvir agora abre o arquivo direto, que toca em qualquer lugar e pode ser repassado sem depender de plataforma. Endere&ccedil;o do feed para cadastro: %s</p>
+            </div>
+          </div>
+          """ % (ep["numero"], data_pt, ep["duracao"][3:], ep["titulo"].split(". ", 1)[-1],
+                 botao(ep["url"], True, "Ouvir agora"),
+                 botao(PAGINA, False, "P&aacute;gina do programa"), FEED)
+
+          msg = MIMEMultipart("alternative")
+          msg["Subject"] = "COMPASSO CAPITAL %d no ar (%s)" % (ep["numero"], data_pt)
+          msg["From"] = "COMPASSO CAPITAL <%s>" % os.environ["SMTP_USER"]
+          msg["To"] = DESTINO
+          msg.attach(MIMEText("Episodio %d no ar: %s" % (ep["numero"], ep["url"]), "plain", "utf-8"))
+          msg.attach(MIMEText(html, "html", "utf-8"))
+
+          s = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30)
+          s.login(os.environ["SMTP_USER"], os.environ["SMTP_PASS"])
+          s.sendmail(os.environ["SMTP_USER"], [DESTINO], msg.as_string())
+          s.quit()
+          print("aviso enviado a " + DESTINO)
+          EOF
