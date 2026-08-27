@@ -17,7 +17,7 @@ import json, os, pathlib, re, subprocess, sys, unicodedata
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 LEXICO = {k: v for k, v in json.loads((RAIZ / "scripts" / "lexico_pronuncia.json")
           .read_text(encoding="utf-8")).items() if not k.startswith("_")}
-TETO_BLOCO = 2000
+TETO_BLOCO = 1900   # margem de lote do gerador; o priming conta junto, ver regra 1
 TETO_RISO = 0.15
 QUARENTENA = 30          # episodios em que uma reacao nao pode se repetir
 CUSTO_ESTIMADO = 15000
@@ -164,11 +164,31 @@ def main():
 
     todas = [t for b in blocos for _, t in b["falas"]]
 
-    # ---------- 1. teto de caracteres por bloco ----------
-    for b in blocos:
-        tam = sum(len(t) for _, t in b["falas"])
-        if tam > TETO_BLOCO:
-            problemas.append(f"{b['tipo']} {b['n']} tem {tam} caracteres (teto {TETO_BLOCO})")
+    # ---------- 1. o bloco cabe numa chamada so? ----------
+    # Nao e um teto fixo. 2000 e o limite duro da API por chamada e 1900 e a margem
+    # que o gerador usa para lotear, mas o numero que decide e outro: o gerador PREPENDE
+    # a ultima fala do bloco anterior (o priming) antes de lotear, e o priming conta.
+    # Bloco que estoura e partido em duas chamadas, e a emenda INTERNA nasce sem priming,
+    # que e exatamente o defeito que o priming existe para evitar.
+    #
+    # Isso morde mais depois dos anuncios: o texto do oferecimento e uma fala unica e
+    # longa, entao vira um priming caro para o bloco seguinte.
+    # medido no texto JA TRADUZIDO pelo lexico, que e o que de fato vai para a API:
+    # "IBGE" vira "Ibege e" e cresce, entao medir o texto cru subestima o bloco
+    def lex(t):
+        for k in sorted(LEXICO, key=len, reverse=True):
+            t = t.replace(k, LEXICO[k])
+        return t
+
+    for i, b in enumerate(blocos):
+        corpo = sum(len(lex(t)) for _, t in b["falas"])
+        priming = len(lex(blocos[i - 1]["falas"][-1][1])) if i > 0 and blocos[i - 1]["falas"] else 0
+        if corpo + priming > TETO_BLOCO:
+            sobra = corpo + priming - TETO_BLOCO
+            problemas.append(
+                f"{b['tipo']} {b['n']} nao cabe numa chamada: {corpo} de fala mais "
+                f"{priming} de priming = {corpo + priming} (teto {TETO_BLOCO}). "
+                f"Cortar {sobra} caracteres, senao a emenda interna sai sem priming")
 
     # ---------- 2. maiuscula curta e numero em algarismo ----------
     for i, t in enumerate(todas, 1):
