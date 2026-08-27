@@ -7,8 +7,22 @@ Roda no GitHub Actions, sem depender de nenhuma maquina ligada.
 
 Procura roteiros/<AAAA-MM-DD>.md. Se nao existir, sai com codigo 0 e nao faz nada:
 dia sem roteiro aprovado e dia sem episodio, e isso NAO e erro.
+
+CONTINUIDADE ENTRE BLOCOS (a armadilha mais cara do projeto)
+Cada bloco e uma chamada separada e o modelo nao tem memoria entre chamadas: dentro
+de uma chamada ele sabe como a fala anterior terminou, na seguinte comeca do zero, e
+a voz muda de humor na emenda. Tres camadas resolvem:
+  1. PRIMING: o bloco recebe colada no inicio a ultima fala do bloco anterior, e depois
+     esse trecho e CORTADO do audio pela marcacao de tempo por palavra do Speech to Text.
+  2. CONTINUIDADE EMOCIONAL: a primeira fala herda tag compativel com a ultima anterior.
+  3. TAG EM TODA FALA: fala sem direcao e onde o modelo mais varia sozinho.
+
+MIXAGEM DO OFERECIMENTO
+No anuncio quem toca por baixo e a MUSICA DA PROPRIA MARCA, nao a cama do programa:
+o sonic logo entra alto marcando a virada, e a mesma musica segue baixinho sob a
+locucao, para nao ficar sem nada.
 """
-import json, os, pathlib, re, subprocess, sys, urllib.request, urllib.error
+import json, os, pathlib, re, subprocess, sys, unicodedata, uuid, urllib.request, urllib.error
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 AUDIO = RAIZ / "audio"
@@ -18,15 +32,25 @@ LEXICO = {k: v for k, v in json.loads((RAIZ / "scripts" / "lexico_pronuncia.json
           .read_text(encoding="utf-8")).items() if not k.startswith("_")}
 
 VOZ = {"DAVI": "2CECaLAGTS5NRGxgbcxr", "HELENA": "tZ2oxQJXfOrGrN7iKnta"}
-TEMPO, ALVO_NOTICIA, ALVO_ANUNCIO = 1.02, 10.5, 22.0
+TEMPO, ALVO_NOTICIA, ALVO_ANUNCIO = 1.02, 10.5, 20.0
 ENTRADA_VOZ, LIMITE_API = 6.5, 1900
-STINGS = {1: AUDIO / "sting_legale.wav", 2: AUDIO / "sting_iure.wav", 3: AUDIO / "sting_galicia.wav"}
+MARCAS = {1: ("legale", "Legale"), 2: ("iure", "Iure Digital"), 3: ("galicia", "Galícia")}
+COMPATIVEL = {"very excited": "excited", "very very excited": "excited",
+              "very very very excited": "excited", "excited": "excited",
+              "very serious": "serious", "serious": "serious",
+              "thoughtful": "thoughtful", "amused": "amused", "warmly": "warmly"}
 
 
 def lex(t):
     for k in sorted(LEXICO, key=len, reverse=True):
         t = t.replace(k, LEXICO[k])
     return t
+
+
+def norm(s):
+    s = unicodedata.normalize("NFD", s.lower())
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    return re.sub(r"[^a-z0-9]", "", s)
 
 
 def ff(args):
@@ -44,7 +68,7 @@ def media_db(a):
     return float(re.search(r"mean_volume: (-?[\d.]+) dB", s).group(1))
 
 
-def tts(turnos):
+def tts(turnos, destino):
     r = urllib.request.Request("https://api.elevenlabs.io/v1/text-to-dialogue",
         data=json.dumps({"inputs": turnos, "model_id": "eleven_v3",
                          "settings": {"stability": 0.0, "use_speaker_boost": True}}).encode(),
@@ -52,95 +76,188 @@ def tts(turnos):
     for tentativa in range(3):
         try:
             with urllib.request.urlopen(r, timeout=600) as resp:
-                return resp.read()
+                destino.write_bytes(resp.read())
+                return
         except urllib.error.HTTPError as e:
-            corpo = e.read().decode("utf-8", "ignore")[:300]
             if tentativa == 2:
-                sys.exit(f"ERRO na ElevenLabs (HTTP {e.code}): {corpo}")
-            print(f"  tentativa {tentativa+1} falhou ({e.code}), repetindo...")
+                sys.exit(f"ERRO na ElevenLabs (HTTP {e.code}): {e.read().decode('utf-8','ignore')[:300]}")
+
+
+def palavras_com_tempo(arq):
+    lim = "----" + uuid.uuid4().hex
+    corpo = b""
+    for c, v in (("model_id", "scribe_v1"), ("language_code", "por"),
+                 ("timestamps_granularity", "word")):
+        corpo += f"--{lim}\r\nContent-Disposition: form-data; name=\"{c}\"\r\n\r\n{v}\r\n".encode()
+    corpo += (f"--{lim}\r\nContent-Disposition: form-data; name=\"file\"; filename=\"a.wav\"\r\n"
+              f"Content-Type: audio/wav\r\n\r\n").encode() + arq.read_bytes() + f"\r\n--{lim}--\r\n".encode()
+    r = urllib.request.Request("https://api.elevenlabs.io/v1/speech-to-text", data=corpo,
+        headers={"xi-api-key": KEY, "Content-Type": f"multipart/form-data; boundary={lim}"}, method="POST")
+    try:
+        with urllib.request.urlopen(r, timeout=900) as resp:
+            return [w for w in json.loads(resp.read()).get("words", []) if norm(w.get("text", ""))]
+    except Exception:
+        return []
+
+
+def fim_do_priming(arq, texto_contexto):
+    """Onde termina, em segundos, a fala de contexto colada no inicio.
+
+    Ancora no INICIO da primeira fala do bloco, nao no fim do contexto: o contexto
+    costuma terminar em endereco de site, que a transcricao devolve como uma palavra
+    so e nunca casa.
+    """
+    palavras = palavras_com_tempo(arq)
+    alvo = [norm(x) for x in texto_contexto.split() if norm(x)]
+    if not alvo or not palavras:
+        return None
+    lidas = [norm(w["text"]) for w in palavras]
+    for ini in range(min(6, len(lidas))):
+        casou, j = 0, ini
+        for a in alvo:
+            if j < len(lidas) and lidas[j] == a:
+                casou += 1
+                j += 1
+        if casou >= max(3, int(len(alvo) * 0.6)):
+            return float(palavras[min(j, len(palavras) - 1)]["end"])
+    return None
 
 
 def main():
     data, numero = sys.argv[1], int(sys.argv[2])
     roteiro = RAIZ / "roteiros" / f"{data}.md"
-
     if not roteiro.exists():
         print(f"sem roteiro para {data}: nada a fazer (isto nao e erro)")
         return 0
     if not KEY:
         sys.exit("ERRO: ELEVENLABS_API_KEY ausente no ambiente")
 
+    # ---------- parse ----------
     texto = roteiro.read_text(encoding="utf-8").split("## FONTES")[0].replace(chr(92), "")
-    segmentos, atual = [], None
-    for linha in texto.splitlines():
-        m = re.match(r"^## \[(BLOCO|ANUNCIO) (\d+)\]", linha.strip())
+    segs, atual = [], None
+    for l in texto.splitlines():
+        m = re.match(r"^## \[(BLOCO|ANUNCIO) (\d+)\]", l.strip())
         if m:
-            if atual: segmentos.append(atual)
+            if atual: segs.append(atual)
             atual = {"tipo": m.group(1), "n": int(m.group(2)), "turnos": []}
             continue
         if atual is None: continue
-        f = re.match(r"^\*\*(DAVI|HELENA):\*\*\s*(.+)$", linha.strip())
+        f = re.match(r"^\*\*(DAVI|HELENA):\*\*\s*(.+)$", l.strip())
         if f:
-            atual["turnos"].append({"text": lex(f.group(2).strip()), "voice_id": VOZ[f.group(1)]})
-    if atual: segmentos.append(atual)
+            bruto = f.group(2).strip()
+            tag = re.match(r"^\[([^\]]+)\]", bruto)
+            atual["turnos"].append({"quem": f.group(1),
+                                    "tag": tag.group(1) if tag else None,
+                                    "texto": lex(bruto)})
+    if atual: segs.append(atual)
+    if not segs:
+        sys.exit("ERRO: roteiro sem bloco reconhecido")
 
-    if not segmentos:
-        sys.exit("ERRO: roteiro existe mas nao tem bloco nenhum reconhecido")
-
-    total = sum(len(t["text"]) for s in segmentos for t in s["turnos"])
-    print(f"{len(segmentos)} segmentos, {total} caracteres")
-
-    # ---------- gerar a voz ----------
-    for i, s in enumerate(segmentos):
-        lotes, lote, tam = [], [], 0
+    # ---------- camada 3: nenhuma fala sem direcao ----------
+    sem_tag = 0
+    for s in segs:
         for t in s["turnos"]:
-            if tam + len(t["text"]) > LIMITE_API and lote:
+            if t["tag"] is None:
+                t["tag"] = "warmly"
+                t["texto"] = "[warmly] " + t["texto"]
+                sem_tag += 1
+
+    # ---------- camada 2: humor alinhado nas emendas ----------
+    ajustes = 0
+    for i in range(1, len(segs)):
+        ultima = segs[i-1]["turnos"][-1]["tag"]
+        primeira = segs[i]["turnos"][0]
+        clima = COMPATIVEL.get(ultima, ultima)
+        if COMPATIVEL.get(primeira["tag"], primeira["tag"]) != clima:
+            primeira["texto"] = re.sub(r"^\[[^\]]+\]", f"[{clima}]", primeira["texto"])
+            primeira["tag"] = clima
+            ajustes += 1
+
+    print(f"{len(segs)} segmentos | {sem_tag} falas ganharam direcao | {ajustes} emendas alinhadas")
+
+    # ---------- camada 1: priming + corte ----------
+    total = 0
+    for i, s in enumerate(segs):
+        entradas = [{"text": t["texto"], "voice_id": VOZ[t["quem"]]} for t in s["turnos"]]
+        contexto = None
+        if i > 0:
+            ant = segs[i-1]["turnos"][-1]
+            contexto = re.sub(r"\[[^\]]*\]\s*", "", ant["texto"]).strip()
+            entradas.insert(0, {"text": ant["texto"], "voice_id": VOZ[ant["quem"]]})
+
+        # respeita o teto da API quebrando em lotes
+        lotes, lote, tam = [], [], 0
+        for e in entradas:
+            if tam + len(e["text"]) > LIMITE_API and lote:
                 lotes.append(lote); lote, tam = [], 0
-            lote.append(t); tam += len(t["text"])
+            lote.append(e); tam += len(e["text"])
         if lote: lotes.append(lote)
-        print(f"  {s['tipo']} {s['n']}: {len(lotes)} chamada(s)")
+        total += sum(len(e["text"]) for e in entradas)
+
         pedacos = []
         for j, l in enumerate(lotes):
-            (TMP / f"s{i}_{j}.mp3").write_bytes(tts(l))
-            ff(["-i", str(TMP / f"s{i}_{j}.mp3"), "-af", f"atempo={TEMPO}",
-                "-ar", "44100", "-ac", "1", str(TMP / f"s{i}_{j}.wav")])
-            pedacos.append(TMP / f"s{i}_{j}.wav")
+            tts(l, TMP / f"b{i}_{j}.mp3")
+            ff(["-i", str(TMP / f"b{i}_{j}.mp3"), "-ar", "44100", "-ac", "1", str(TMP / f"r{i}_{j}.wav")])
+            pedacos.append(TMP / f"r{i}_{j}.wav")
         if len(pedacos) == 1:
-            pedacos[0].replace(TMP / f"voz{i}.wav")
+            bruto = pedacos[0]
         else:
             lista = TMP / f"cat{i}.txt"
             lista.write_text("".join(f"file '{p}'\n" for p in pedacos), encoding="utf-8")
-            ff(["-f", "concat", "-safe", "0", "-i", str(lista), "-c", "copy", str(TMP / f"voz{i}.wav")])
+            bruto = TMP / f"raw{i}.wav"
+            ff(["-f", "concat", "-safe", "0", "-i", str(lista), "-c", "copy", str(bruto)])
 
-    # ---------- envelope de trilha ----------
-    db_voz = media_db(TMP / "voz0.wav")
+        destino = TMP / f"voz{i}.wav"
+        if contexto:
+            corte = fim_do_priming(bruto, contexto)
+            if corte:
+                ff(["-ss", f"{corte:.3f}", "-i", str(bruto), "-ar", "44100", "-ac", "1", str(destino)])
+                print(f"  bloco {i}: priming cortado em {corte:.2f}s")
+            else:
+                bruto.replace(destino)
+                print(f"  bloco {i}: ATENCAO, nao achei o corte do priming (ficou a repeticao)")
+        else:
+            bruto.replace(destino)
+        ff(["-i", str(destino), "-af", f"atempo={TEMPO}", "-ar", "44100", "-ac", "1", str(TMP / f"v{i}.wav")])
+
+    # ---------- envelope: cada trecho com sua trilha ----------
+    db_voz = media_db(TMP / "v0.wav")
     ref = TMP / "_ref.wav"
     ff(["-stream_loop", "-1", "-i", str(AUDIO / "cama.mp3"), "-t", "8", "-ar", "44100", "-ac", "1", str(ref)])
-    db_cama = media_db(ref)
-    g_not = (db_voz - ALVO_NOTICIA) - db_cama
-    g_anu = (db_voz - ALVO_ANUNCIO) - db_cama
+    g_not = (db_voz - ALVO_NOTICIA) - media_db(ref)
 
-    def cama(dest, seg, ganho):
-        if ganho is None:
+    def trilha(dest, seg, fonte, ganho):
+        if fonte is None:
             ff(["-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono", "-t", str(seg), str(dest)])
         else:
-            ff(["-stream_loop", "-1", "-i", str(AUDIO / "cama.mp3"), "-t", str(seg),
+            ff(["-stream_loop", "-1", "-i", str(fonte), "-t", str(seg),
                 "-af", f"volume={ganho}dB", "-ar", "44100", "-ac", "1", str(dest)])
 
     vozes, camas, ordem = [], [], 0
-    for i, s in enumerate(segmentos):
-        if s["tipo"] == "ANUNCIO" and s["n"] in STINGS and STINGS[s["n"]].exists():
+    for i, s in enumerate(segs):
+        v = TMP / f"v{i}.wav"
+        marca = MARCAS.get(s["n"], (None, None))[0] if s["tipo"] == "ANUNCIO" else None
+
+        if marca and (AUDIO / f"sting_{marca}.wav").exists():
             st = TMP / f"st{ordem}.wav"
-            ff(["-i", str(STINGS[s["n"]]), "-ar", "44100", "-ac", "1", str(st)])
-            sil = TMP / f"stsil{ordem}.wav"; cama(sil, dur(st), None)
+            ff(["-i", str(AUDIO / f"sting_{marca}.wav"), "-ar", "44100", "-ac", "1", str(st)])
+            sil = TMP / f"sts{ordem}.wav"; trilha(sil, dur(st), None, 0)
             vozes.append(st); camas.append(sil); ordem += 1
-        v = TMP / f"voz{i}.wav"
-        c = TMP / f"cama{i}.wav"
-        cama(c, dur(v), g_anu if s["tipo"] == "ANUNCIO" else g_not)
+
+        c = TMP / f"c{i}.wav"
+        if marca and (AUDIO / f"musica_{marca}.mp3").exists():
+            # sob o oferecimento toca a musica DA MARCA, nao a cama do programa
+            m = AUDIO / f"musica_{marca}.mp3"
+            ref_m = TMP / f"refm{i}.wav"
+            ff(["-stream_loop", "-1", "-i", str(m), "-t", "6", "-ar", "44100", "-ac", "1", str(ref_m)])
+            trilha(c, dur(v), m, (db_voz - ALVO_ANUNCIO) - media_db(ref_m))
+        else:
+            trilha(c, dur(v), AUDIO / "cama.mp3", g_not)
         vozes.append(v); camas.append(c)
-        if i < len(segmentos) - 1:
+
+        if i < len(segs) - 1:
             p = TMP / f"p{i}.wav"; ff(["-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono", "-t", "0.5", str(p)])
-            pc = TMP / f"pc{i}.wav"; cama(pc, 0.5, g_anu if s["tipo"] == "ANUNCIO" else g_not)
+            pc = TMP / f"pc{i}.wav"; trilha(pc, 0.5, AUDIO / "cama.mp3", g_not)
             vozes.append(p); camas.append(pc)
 
     def juntar(lista, dest):
@@ -166,12 +283,9 @@ def main():
         "-map", "[out]", "-ar", "44100", "-b:a", "192k", str(saida)])
 
     d = dur(saida)
-    print(f"\nPRONTO: {saida.name} | {int(d//60)}min {int(d%60)}s | {saida.stat().st_size//1024//1024} MB")
-
-    # deixa o resumo para os passos seguintes do workflow
+    print(f"\nPRONTO: {saida.name} | {int(d//60)}min {int(d%60)}s | ~{total} creditos")
     with open(os.environ.get("GITHUB_OUTPUT", TMP / "saida.txt"), "a", encoding="utf-8") as fh:
-        fh.write(f"arquivo={saida.name}\n")
-        fh.write(f"gerou=sim\n")
+        fh.write(f"arquivo={saida.name}\ngerou=sim\n")
         fh.write(f"duracao={int(d//3600):02d}:{int(d%3600//60):02d}:{int(d%60):02d}\n")
         fh.write(f"tamanho={saida.stat().st_size}\n")
     return 0
