@@ -192,8 +192,18 @@ def main():
     print(f"{len(segs)} segmentos | {sem_tag} falas ganharam direcao | {ajustes} emendas alinhadas")
 
     # ---------- camada 1: priming + corte ----------
+    # Anuncio com audio pre-gravado nao passa pela API: o texto e fixo, entao gerar
+    # todo dia so cria tres chances diarias de a pronuncia sair diferente, e queima
+    # cerca de 900 creditos por dia a toa. Se audio/anuncio_<marca>.mp3 existir, ele
+    # e usado como esta.
     total = 0
     for i, s in enumerate(segs):
+        marca_i = MARCAS.get(s["n"], (None, None))[0] if s["tipo"] == "ANUNCIO" else None
+        if marca_i and (AUDIO / f"anuncio_{marca_i}.mp3").exists():
+            ff(["-i", str(AUDIO / f"anuncio_{marca_i}.mp3"), "-ar", "44100", "-ac", "1",
+                str(TMP / f"v{i}.wav")])
+            print(f"  {s['tipo']} {s['n']}: audio fixo da marca (0 creditos)")
+            continue
         entradas = [{"text": t["texto"], "voice_id": VOZ[t["quem"]]} for t in s["turnos"]]
         contexto = None
         if i > 0:
