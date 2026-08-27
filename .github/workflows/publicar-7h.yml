@@ -1,0 +1,101 @@
+# COMPASSO CAPITAL — publica o episodio no feed as 7h da manha.
+#
+# O audio ja esta no ar desde as 18h da vespera, como release. O que este workflow faz
+# e acrescenta-lo ao FEED, e e isso que faz o episodio existir para o mundo: o Spotify,
+# a Apple e os demais so enxergam o que esta no feed.
+#
+# Agendado para 6h45 de proposito: o agendador do GitHub costuma atrasar alguns minutos
+# em horario cheio, e o compromisso com o ouvinte e 7h.
+#
+# Se nao houver episodio pendente, sai sem fazer nada.
+
+name: publicar no feed (7h)
+
+on:
+  schedule:
+    - cron: '45 9 * * *'      # 9h45 UTC = 6h45 de Brasilia
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'Data do episodio a publicar (AAAA-MM-DD). Vazio = hoje'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Ha episodio pendente para hoje?
+        id: check
+        run: |
+          DATA="${{ inputs.data }}"
+          [ -z "$DATA" ] && DATA=$(TZ=America/Sao_Paulo date +%F)
+          echo "data=$DATA" >> $GITHUB_OUTPUT
+          if [ -f "pendentes/$DATA.json" ]; then
+            echo "tem=sim" >> $GITHUB_OUTPUT
+          else
+            echo "tem=nao" >> $GITHUB_OUTPUT
+            echo "::notice::Nenhum episodio pendente para $DATA."
+          fi
+
+      - name: Conferir que o audio esta mesmo no ar
+        if: steps.check.outputs.tem == 'sim'
+        run: |
+          NUM=$(python -c "import json;print(json.load(open('pendentes/${{ steps.check.outputs.data }}.json'))['numero'])")
+          TAG=$(printf "ep%04d" $NUM)
+          URL="https://github.com/${{ github.repository }}/releases/download/$TAG/$(printf 'compasso-capital-%04d.mp3' $NUM)"
+          CODE=$(curl -sIL -o /dev/null -w "%{http_code}" "$URL")
+          echo "audio em $URL responde $CODE"
+          # publicar no feed um audio que nao baixa quebraria o episodio em todos os tocadores
+          [ "$CODE" = "200" ] || { echo "::error::Audio inacessivel. Publicacao abortada."; exit 1; }
+
+      - name: Acrescentar ao feed e publicar
+        if: steps.check.outputs.tem == 'sim'
+        run: |
+          python - <<'FIM'
+          import json, pathlib, subprocess, sys
+          data = "${{ steps.check.outputs.data }}"
+          p = json.loads(pathlib.Path(f"pendentes/{data}.json").read_text(encoding="utf-8"))
+          roteiro = pathlib.Path(f"roteiros/{data}.md").read_text(encoding="utf-8")
+
+          # titulo e resumo saem do proprio roteiro: primeira linha de titulo e a chamada
+          titulo = f"{p['numero']}. " + next(
+              (l.lstrip('# ').strip() for l in roteiro.splitlines()
+               if l.startswith('# ') and 'COMPASSO' not in l.upper()),
+              f"Episodio {p['numero']}")
+          resumo = next((l.strip() for l in roteiro.splitlines()
+                         if l.strip().startswith('> RESUMO:')), "")
+          resumo = resumo.replace("> RESUMO:", "").strip() or \
+                   "Cinco noticias que a imprensa brasileira nao conta direito. compasso.capital"
+
+          subprocess.run([sys.executable, "scripts/publicar_feed.py", "--acrescentar",
+                          str(p["numero"]), titulo, resumo, p["duracao"],
+                          str(p["tamanho"]), f"{data}T07:00:00"], check=True)
+          FIM
+          git config user.name "COMPASSO"
+          git config user.email "contato@compasso.capital"
+          git rm -q "pendentes/${{ steps.check.outputs.data }}.json"
+          git add feed.xml scripts/episodios.json
+          git commit -m "no ar: episodio de ${{ steps.check.outputs.data }}"
+          git push
+
+      - name: Confirmar que o feed publicado ja tem o episodio
+        if: steps.check.outputs.tem == 'sim'
+        run: |
+          sleep 60
+          for i in 1 2 3 4 5 6; do
+            if curl -s "https://galiciaeducacao.github.io/compasso-podcast/feed.xml" | grep -q "$(python -c "import json;print(json.load(open('scripts/episodios.json'))['episodios'][0]['guid'])")"; then
+              echo "::notice::Episodio no ar no feed publico."
+              exit 0
+            fi
+            sleep 30
+          done
+          echo "::warning::O feed ainda nao propagou. Costuma resolver sozinho em minutos."

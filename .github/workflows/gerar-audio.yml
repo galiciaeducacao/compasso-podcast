@@ -1,0 +1,104 @@
+# COMPASSO CAPITAL — gera o audio do episodio do dia seguinte, as 18h.
+#
+# Roda nos servidores do GitHub: nao depende de nenhuma maquina ligada.
+#
+# TRAVA DE SEGURANCA: so age se existir roteiros/<data>.md. Dia sem roteiro aprovado
+# e dia sem episodio, e isso NAO e falha. Foi assim que o dia da estreia ficou de fora
+# sem precisar de gambiarra.
+#
+# O audio e publicado como release, mas NAO entra no feed aqui. Quem publica de fato
+# e o workflow das 6h45, para o episodio aparecer as 7h.
+
+name: gerar audio (18h)
+
+on:
+  schedule:
+    - cron: '0 21 * * *'      # 21h UTC = 18h de Brasilia
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'Data do episodio (AAAA-MM-DD). Vazio = amanha'
+        required: false
+      numero:
+        description: 'Numero do episodio. Vazio = proximo da sequencia'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Definir data e numero
+        id: alvo
+        run: |
+          if [ -n "${{ inputs.data }}" ]; then
+            DATA="${{ inputs.data }}"
+          else
+            DATA=$(TZ=America/Sao_Paulo date -d "+1 day" +%F)   # o de 18h grava o de amanha
+          fi
+          if [ -n "${{ inputs.numero }}" ]; then
+            NUM="${{ inputs.numero }}"
+          else
+            NUM=$(python -c "import json;d=json.load(open('scripts/episodios.json'));print(max([e['numero'] for e in d['episodios']]+[0])+1)")
+          fi
+          echo "data=$DATA" >> $GITHUB_OUTPUT
+          echo "numero=$NUM" >> $GITHUB_OUTPUT
+          echo "Alvo: episodio $NUM para $DATA"
+
+      - name: Existe roteiro aprovado?
+        id: check
+        run: |
+          if [ -f "roteiros/${{ steps.alvo.outputs.data }}.md" ]; then
+            echo "tem=sim" >> $GITHUB_OUTPUT
+          else
+            echo "tem=nao" >> $GITHUB_OUTPUT
+            echo "::notice::Sem roteiro para ${{ steps.alvo.outputs.data }}. Nada a fazer."
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.check.outputs.tem == 'sim'
+        with:
+          python-version: '3.12'
+
+      - name: Conferir o ffmpeg
+        if: steps.check.outputs.tem == 'sim'
+        run: ffmpeg -version | head -1
+
+      - name: Gerar o audio
+        id: audio
+        if: steps.check.outputs.tem == 'sim'
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: python scripts/gerar_episodio.py "${{ steps.alvo.outputs.data }}" "${{ steps.alvo.outputs.numero }}"
+
+      - name: Publicar o audio como release
+        if: steps.audio.outputs.gerou == 'sim'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG=$(printf "ep%04d" ${{ steps.alvo.outputs.numero }})
+          gh release create "$TAG" "${{ steps.audio.outputs.arquivo }}" \
+            --title "Episodio ${{ steps.alvo.outputs.numero }}" \
+            --notes "COMPASSO CAPITAL, ${{ steps.alvo.outputs.data }}. compasso.capital"
+
+      - name: Guardar os dados para a publicacao das 7h
+        if: steps.audio.outputs.gerou == 'sim'
+        run: |
+          mkdir -p pendentes
+          cat > "pendentes/${{ steps.alvo.outputs.data }}.json" <<FIM
+          {
+            "numero": ${{ steps.alvo.outputs.numero }},
+            "data": "${{ steps.alvo.outputs.data }}",
+            "duracao": "${{ steps.audio.outputs.duracao }}",
+            "tamanho": ${{ steps.audio.outputs.tamanho }}
+          }
+          FIM
+          git config user.name "COMPASSO"
+          git config user.email "contato@compasso.capital"
+          git add pendentes
+          git commit -m "audio do episodio ${{ steps.alvo.outputs.numero }} pronto, aguardando as 7h"
+          git push
