@@ -34,6 +34,7 @@ LEXICO = {k: v for k, v in json.loads((RAIZ / "scripts" / "lexico_pronuncia.json
 VOZ = {"DAVI": "2CECaLAGTS5NRGxgbcxr", "HELENA": "tZ2oxQJXfOrGrN7iKnta"}
 TEMPO, ALVO_NOTICIA, ALVO_ANUNCIO = 1.02, 10.5, 20.0
 ENTRADA_VOZ, LIMITE_API = 6.5, 1900
+CUSTO_ESTIMADO = 15000   # um episodio completo, ja com o priming
 MARCAS = {1: ("legale", "Legale"), 2: ("iure", "Iure Digital"), 3: ("galicia", "Galícia")}
 COMPATIVEL = {"very excited": "excited", "very very excited": "excited",
               "very very very excited": "excited", "excited": "excited",
@@ -131,6 +132,21 @@ def main():
         return 0
     if not KEY:
         sys.exit("ERRO: ELEVENLABS_API_KEY ausente no ambiente")
+
+    # saldo: melhor falhar avisando do que na metade do episodio
+    try:
+        r = urllib.request.Request("https://api.elevenlabs.io/v1/user/subscription",
+                                   headers={"xi-api-key": KEY})
+        with urllib.request.urlopen(r, timeout=60) as resp:
+            s = json.loads(resp.read())
+        resta = s["character_limit"] - s["character_count"]
+        print(f"creditos restantes: {resta:,}")
+        if resta < CUSTO_ESTIMADO:
+            print(f"::error::Saldo insuficiente: restam {resta:,} e um episodio custa cerca "
+                  f"de {CUSTO_ESTIMADO:,}. Nada foi gerado.")
+            sys.exit(1)
+    except urllib.error.HTTPError as e:
+        print(f"::warning::Nao consegui checar o saldo (HTTP {e.code}). Seguindo mesmo assim.")
 
     # ---------- parse ----------
     texto = roteiro.read_text(encoding="utf-8").split("## FONTES")[0].replace(chr(92), "")
@@ -254,6 +270,13 @@ def main():
         else:
             trilha(c, dur(v), AUDIO / "cama.mp3", g_not)
         vozes.append(v); camas.append(c)
+
+        # assinatura de SAIDA: fecha o oferecimento e devolve a noticia sem secura
+        if marca and (AUDIO / f"saida_{marca}.wav").exists():
+            sa = TMP / f"sa{ordem}.wav"
+            ff(["-i", str(AUDIO / f"saida_{marca}.wav"), "-ar", "44100", "-ac", "1", str(sa)])
+            sil = TMP / f"sas{ordem}.wav"; trilha(sil, dur(sa), None, 0)
+            vozes.append(sa); camas.append(sil); ordem += 1
 
         if i < len(segs) - 1:
             p = TMP / f"p{i}.wav"; ff(["-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono", "-t", "0.5", str(p)])
