@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>COMPASSO CAPITAL</title>
+    <link>https://compasso.capital</link>
+    <language>pt-BR</language>
+    <copyright>© COMPASSO CAPITAL</copyright>
+    <description>O podcast que traduz os interesses nas entrelinhas das notícias. Todos os dias, às 7 da manhã, Davi e Helena abrem cinco notícias que a imprensa brasileira não conta direito, em quatro tempos: o que aconteceu, em que jogo isso se encaixa, quem ganha e quem perde, e o que pode vir depois. Porque no jogo do excedente, ninguém assiste de fora. Análises completas em compasso.capital.</description>
+    <itunes:summary>O podcast que traduz os interesses nas entrelinhas das notícias. Todos os dias, às 7 da manhã, Davi e Helena abrem cinco notícias que a imprensa brasileira não conta direito, em quatro tempos: o que aconteceu, em que jogo isso se encaixa, quem ganha e quem perde, e o que pode vir depois. Porque no jogo do excedente, ninguém assiste de fora. Análises completas em compasso.capital.</itunes:summary>
+    <itunes:author>COMPASSO</itunes:author>
+    <itunes:type>episodic</itunes:type>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://galiciaeducacao.github.io/compasso-podcast/capa.png"/>
+    <image>
+      <url>https://galiciaeducacao.github.io/compasso-podcast/capa.png</url>
+      <title>COMPASSO CAPITAL</title>
+      <link>https://compasso.capital</link>
+    </image>
+    <itunes:owner>
+      <itunes:name>COMPASSO</itunes:name>
+      <itunes:email>contato@compasso.capital</itunes:email>
+    </itunes:owner>
+    <itunes:category text="News">
+      <itunes:category text="Business News"/>
+    </itunes:category>
+    <itunes:category text="Business">
+      <itunes:category text="Investing"/>
+    </itunes:category>
+    <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Thu, 27 Aug 2026 15:38:23 -0300</lastBuildDate>
+    <item>
+      <title>1. A China pede o estreito, a Nvidia zera a China e o Brasil bate recorde de emprego</title>
+      <description>Na estreia: Pequim pede a reabertura de Ormuz enquanto o Tesouro americano avisa os bancos; Irã e Omã desenham o corredor por fora de Washington; a Nvidia dobra a receita e escreve zero na linha da China; o Brasil registra o menor desemprego da série e o dado dura uma manhã; e a mesa do tarifaço de segunda ganha uma pauta que inclui o Pix.</description>
+      <itunes:summary>Na estreia: Pequim pede a reabertura de Ormuz enquanto o Tesouro americano avisa os bancos; Irã e Omã desenham o corredor por fora de Washington; a Nvidia dobra a receita e escreve zero na linha da China; o Brasil registra o menor desemprego da série e o dado dura uma manhã; e a mesa do tarifaço de segunda ganha uma pauta que inclui o Pix.</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0001/compasso-capital-0001.mp3" length="19894691" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0001</guid>
+      <pubDate>Thu, 27 Aug 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:13:48</itunes:duration>
+      <itunes:episode>1</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://galiciaeducacao.github.io/compasso-podcast/</link>
+    </item>
+  </channel>
+</rss>
