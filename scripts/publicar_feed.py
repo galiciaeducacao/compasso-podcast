@@ -89,8 +89,6 @@ def gerar():
     <image><url>{CAPA}</url><title>{TITULO}</title><link>{SITE}</link></image>
     <itunes:owner><itunes:name>{AUTOR}</itunes:name><itunes:email>{EMAIL}</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
-    <itunes:category text="News"><itunes:category text="Business News"/></itunes:category>
-    <itunes:category text="News"><itunes:category text="Politics"/></itunes:category>
     <atom:link href="{PAGES}/feed.xml" rel="self" type="application/rss+xml"/>
     <lastBuildDate>{format_datetime(datetime.now(FUSO))}</lastBuildDate>
 {chr(10).join(itens)}
