@@ -104,6 +104,20 @@ precisa de cinco linhas, quebre em três falas com o outro reagindo no meio.
 Isso não tem a ver com o tamanho do episódio. Um episódio de dezessete minutos pode ser
 vivo, e um de dez pode ser monótono.
 
+### A duração e o tom
+
+**O alvo é quinze minutos.** A conversão é medida, não estimada: **15,2 caracteres de
+fala por segundo**, sem contar as tags de direção, que ninguém fala. Então quinze minutos
+são cerca de **13.700 caracteres**. A régua aceita de doze a dezoito minutos, faixa larga
+de propósito, porque dia de notícia densa pode esticar e barrar por um minuto seria trocar
+um problema editorial por um dia sem episódio.
+
+E o tom: **leve, algo gostoso de ouvir pela manhã.** Isso não é o mesmo que raso. O
+assunto continua sendo disputa por excedente, embargo e juro. Leve é o jeito: frase curta,
+gente conversando de verdade, um respiro de humor onde couber, nenhuma frase que precise
+ser relida. Se um trecho soa como alguém lendo relatório em voz alta, ele está errado,
+mesmo que cada palavra esteja certa.
+
 ## O que a régua barra (`scripts/guardiao.py`)
 
 Vale ler os motivos, não só a lista: cada um veio de um defeito que foi ao ar.

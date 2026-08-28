@@ -304,6 +304,21 @@ def main():
                 f"fala com {media:.0f} caracteres em media (teto 74, o aprovado tem 68): "
                 f"fala longa demais vira leitura, nao conversa")
 
+
+    # ---------- 9. DURACAO ALVO ----------
+    # O Paulo fixou 15 minutos. A conversao vem da medicao, nao de chute: o episodio 1
+    # tem 11.595 caracteres de fala e dura 753s, ou seja 15,4 caracteres por segundo.
+    # Faixa larga de proposito: dia de noticia densa pode esticar, e barrar por um minuto
+    # seria trocar um problema editorial por um dia sem episodio.
+    CHARS_POR_SEG = 15.2
+    if todas:
+        escrito = sum(len(re.sub(r"\[[^\]]+\]", "", x).strip()) for x in todas)
+        seg = escrito / CHARS_POR_SEG
+        if not 12 * 60 <= seg <= 18 * 60:
+            problemas.append(
+                f"episodio de ~{seg/60:.0f} min ({escrito} caracteres de fala). "
+                f"O alvo e 15 min, e a faixa aceita vai de 12 a 18")
+
     # ---------- 6. LASTRO FACTUAL: nada que nao esteja nas analises da VESPERA ----------
     # O episodio de D comenta as analises publicadas em D-1, porque elas saem as 14h e
     # o programa vai ao ar as 7h da manha seguinte. Buscar a pasta de D acha pasta vazia

@@ -72,9 +72,11 @@ def main():
         problemas.append(f"audio com {dur:.0f}s: curto demais para um episodio")
 
     falas = falas_do_roteiro(data)
-    escrito = sum(len(re.sub(r"\[[^\]]+\]", "", f)) for f in falas)
-    # ~14 caracteres por segundo de fala e a taxa observada do programa
-    esperado = escrito / 14.0
+    escrito = sum(len(re.sub(r"\[[^\]]+\]", "", f).strip()) for f in falas)
+    # 15,2 caracteres por segundo, SEM as tags de direcao, que ninguem fala: medido
+    # no episodio 1, 11.434 caracteres em 753s, com erro de 1,5%. O chute inicial era
+    # 14 com as tags dentro, e por causa dele eu li um roteiro de 13 minutos como 17.
+    esperado = escrito / 15.2
     if not 0.6 * esperado < dur < 1.6 * esperado:
         problemas.append(f"duracao {dur:.0f}s fora do esperado (~{esperado:.0f}s "
                          f"para {escrito} caracteres de fala)")
