@@ -38,17 +38,32 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Ha episodio pendente para hoje?
+      # O alvo NAO e "a data de hoje". Se o disparo atrasar e atravessar a meia-noite,
+      # procurar por hoje erra o arquivo, o pendente fica encalhado e o episodio nunca
+      # vai ao ar: falha silenciosa no elo que decide se o programa existe.
+      # Entao: o pendente mais ANTIGO cuja data ja chegou. Disparo atrasado ainda acerta.
+      - name: Ha episodio esperando para entrar no feed?
         id: check
         run: |
-          DATA="${{ inputs.data }}"
-          [ -z "$DATA" ] && DATA=$(TZ=America/Sao_Paulo date +%F)
+          if [ -n "${{ inputs.data }}" ]; then
+            DATA="${{ inputs.data }}"
+          else
+            DATA=$(python -c "
+          import datetime as dt, pathlib, re
+          hoje = dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))).date()
+          p = pathlib.Path('pendentes')
+          datas = sorted(x.stem for x in p.glob('*.json')
+                         if re.fullmatch(r'\d{4}-\d{2}-\d{2}', x.stem)
+                         and dt.date.fromisoformat(x.stem) <= hoje) if p.exists() else []
+          print(datas[0] if datas else '')")
+          fi
           echo "data=$DATA" >> $GITHUB_OUTPUT
-          if [ -f "pendentes/$DATA.json" ]; then
+          if [ -n "$DATA" ] && [ -f "pendentes/$DATA.json" ]; then
             echo "tem=sim" >> $GITHUB_OUTPUT
+            echo "Publicando o episodio de $DATA"
           else
             echo "tem=nao" >> $GITHUB_OUTPUT
-            echo "::notice::Nenhum episodio pendente para $DATA."
+            echo "::notice::Nenhum episodio esperando publicacao."
           fi
 
       - name: Conferir que o audio esta mesmo no ar
