@@ -25,6 +25,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   gerar:
@@ -75,6 +76,18 @@ jobs:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         run: python scripts/gerar_episodio.py "${{ steps.alvo.outputs.data }}" "${{ steps.alvo.outputs.numero }}"
 
+      # O gerador pode terminar com exito e ainda assim entregar episodio quebrado:
+      # bloco truncado pela API, corte de priming no lugar errado deixando fala
+      # repetida, mixagem muda. Nada disso levanta excecao. Este passo transcreve o
+      # audio e compara com o roteiro, que e o unico jeito de saber que o que foi
+      # escrito foi dito. Se reprovar, o job para AQUI e nao existe release: melhor
+      # dia sem episodio do que episodio quebrado no ar.
+      - name: QA do audio antes de publicar
+        if: steps.audio.outputs.gerou == 'sim'
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: python scripts/qa_audio.py "${{ steps.audio.outputs.arquivo }}" "${{ steps.alvo.outputs.data }}"
+
       - name: Publicar o audio como release
         if: steps.audio.outputs.gerou == 'sim'
         env:
@@ -102,3 +115,23 @@ jobs:
           git add pendentes
           git commit -m "audio do episodio ${{ steps.alvo.outputs.numero }} pronto, aguardando as 7h"
           git push
+
+      # Dia sem episodio nunca pode acontecer em silencio: ninguem investiga o que nao
+      # viu. Se o QA barrou ou a geracao falhou, abre issue, e o GitHub avisa por e-mail.
+      - name: Avisar que hoje nao tem episodio, e por que
+        if: failure() && steps.check.outputs.tem == 'sim'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create             --title "Sem episodio em ${{ steps.alvo.outputs.data }}: a geracao ou o QA falhou"             --body "O episodio ${{ steps.alvo.outputs.numero }} de **${{ steps.alvo.outputs.data }}** **nao foi publicado**.
+
+          O roteiro existia e foi aprovado pelo guardiao, entao a falha esta na geracao
+          do audio ou no QA que roda logo depois dela.
+
+          **O motivo exato esta no log da execucao**, nas linhas marcadas como error:
+          ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          Nenhum release foi criado e nada entrou no feed, entao nao ha nada quebrado no
+          ar: o episodio simplesmente nao existe. Para tentar de novo depois de corrigir:
+
+              gh workflow run gerar-audio.yml -f data=${{ steps.alvo.outputs.data }}"
