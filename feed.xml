@@ -20,16 +20,16 @@
     <itunes:category text="News"><itunes:category text="Business News"/></itunes:category>
     <itunes:category text="News"><itunes:category text="Politics"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 27 Aug 2026 18:54:11 -0300</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2026 11:13:20 -0300</lastBuildDate>
     <item>
       <title>1. A China pede o estreito, a Nvidia zera a China e o Brasil bate recorde de emprego</title>
       <description>Na estreia: Pequim pediu ontem a reabertura de Ormuz enquanto o Tesouro americano avisava os bancos; Irã e Omã desenham o corredor por fora de Washington; a Nvidia dobrou a receita e escreveu zero na linha da China; o Brasil registrou o menor desemprego da série e o dado durou uma manhã; e hoje, em Jackson Hole, o novo presidente do banco central americano faz o primeiro grande discurso do cargo.</description>
       <itunes:summary>Na estreia: Pequim pediu ontem a reabertura de Ormuz enquanto o Tesouro americano avisava os bancos; Irã e Omã desenham o corredor por fora de Washington; a Nvidia dobrou a receita e escreveu zero na linha da China; o Brasil registrou o menor desemprego da série e o dado durou uma manhã; e hoje, em Jackson Hole, o novo presidente do banco central americano faz o primeiro grande discurso do cargo.</itunes:summary>
       <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
-      <enclosure url="https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0001/compasso-capital-0001r2.mp3" length="17889114" type="audio/mpeg"/>
+      <enclosure url="https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0001/compasso-capital-0001r3.mp3" length="18074688" type="audio/mpeg"/>
       <guid isPermaLink="false">compasso-capital-ep0001</guid>
       <pubDate>Fri, 28 Aug 2026 07:00:00 -0300</pubDate>
-      <itunes:duration>00:12:25</itunes:duration>
+      <itunes:duration>00:12:33</itunes:duration>
       <itunes:episode>1</itunes:episode>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>false</itunes:explicit>

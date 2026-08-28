@@ -209,14 +209,39 @@ def main():
         if b - a == 1:
             problemas.append(f"riso em turnos seguidos ({a+1} e {b+1})")
 
-    # ---------- 4. eco: fala que so devolve o que a outra disse ----------
+    # ---------- 4. eco: fala que devolve o que a outra acabou de dizer ----------
     def palavras(x):
         return set(re.findall(r"[a-zà-ú]{4,}", norm(re.sub(r"\[[^\]]+\]", "", x))))
+
+    def sequencia(x):
+        return re.findall(r"[a-zà-ú]+", norm(re.sub(r"\[[^\]]+\]", "", x)))
+
+    def maior_trecho_repetido(a, b):
+        """maior sequencia CONTIGUA de palavras que b repete de a, palavra por palavra"""
+        melhor, linha = 0, [0] * (len(b) + 1)
+        for pa in a:
+            nova = [0] * (len(b) + 1)
+            for j, pb in enumerate(b):
+                if pa == pb:
+                    nova[j + 1] = linha[j] + 1
+                    melhor = max(melhor, nova[j + 1])
+            linha = nova
+        return melhor
+
     for i in range(1, len(todas)):
         a, b = palavras(todas[i-1]), palavras(todas[i])
         # confirmacao enfatica curta ('Nenhum.', 'O nosso Pix.') e recurso, nao eco
         if len(b) >= 5 and b and b <= a:
             problemas.append(f"fala {i+1} e eco da anterior: '{todas[i][:52]}'")
+            continue
+        # Eco PARCIAL, que o teste de subconjunto acima nao pega: a fala repete um
+        # trecho inteiro da anterior e emenda algo novo no fim. Foi assim que passou
+        # um "Parte da pressao nem e dirigida a gente" dito pelos dois seguidos.
+        # So entre falas VIZINHAS: bordao repetido de longe e recurso da casa.
+        n = maior_trecho_repetido(sequencia(todas[i-1]), sequencia(todas[i]))
+        if n >= 5:
+            problemas.append(
+                f"fala {i+1} repete {n} palavras seguidas da anterior: '{todas[i][:60]}'")
 
     # ---------- 5. as tres marcas, uma por anuncio ----------
     anuncios = [b for b in blocos if b["tipo"] == "ANUNCIO"]
