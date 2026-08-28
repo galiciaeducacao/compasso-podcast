@@ -45,13 +45,17 @@ DAVI (âncora) · HELENA (analista)
 
 **DAVI:** \[excited] Então me dá a escalação de hoje.
 
-**HELENA:** \[excited] Cinco lances, Davi. O primeiro é o presidente americano declarando aberto um estreito que a própria Marinha dele libera de navio em navio.
+**HELENA:** \[excited] Cinco lances, Davi.
+
+**DAVI:** \[very excited] Manda o primeiro.
+
+**HELENA:** \[energetic] O primeiro é o presidente americano declarando aberto um estreito que a própria Marinha dele libera de navio em navio.
 
 **DAVI:** \[surprised] Ele declarou aberto o que está racionado?
 
 **HELENA:** \[amused] Declarou. O segundo é esse discurso que encareceu o dinheiro do mundo, e uma refinaria russa em chamas pela oitava vez no ano.
 
-**DAVI:** \[surprised] Oitava vez?
+**DAVI:** \[surprised] Oitava vez? No mesmo ano?
 
 **HELENA:** \[excited] O terceiro é a nuvem chinesa desembarcando em São Paulo, um dia depois de a Nvidia escrever zero na linha da China.
 
@@ -71,17 +75,25 @@ DAVI (âncora) · HELENA (analista)
 
 **DAVI:** \[curious] Primeiro lance. O que o presidente americano falou ontem?
 
-**HELENA:** \[serious] Duas frases, numa conversa com jornalistas. A primeira: o estreito de Ormuz está aberto. E citou vinte e quatro embarcações que teriam passado na véspera.
+**HELENA:** \[serious] Duas frases, numa conversa com jornalistas.
+
+**DAVI:** \[curious] Começa pela primeira.
+
+**HELENA:** \[energetic] A primeira: o estreito de Ormuz está aberto. E citou vinte e quatro embarcações que teriam passado na véspera.
 
 **DAVI:** \[curious] E a segunda?
 
-**HELENA:** \[intrigued] A segunda foi uma pergunta devolvida. Quiseram saber por que os bancos chineses que pagam o petróleo iraniano continuam fora da lista de sanções.
+**HELENA:** \[intrigued] A segunda foi uma pergunta devolvida.
 
-**DAVI:** \[curious] E ele respondeu o quê?
+**DAVI:** \[surprised] Devolveram pra ele?
+
+**HELENA:** \[serious] Quiseram saber por que os bancos chineses que pagam o petróleo iraniano continuam fora da lista de sanções.
+
+**DAVI:** \[curious] E ele respondeu o quê? Deve ter sido bom.
 
 **HELENA:** \[amused] Que não precisava anunciar tudo.
 
-**DAVI:** \[surprised] Só isso?
+**DAVI:** \[surprised] Só isso? Sem mais nada?
 
 **HELENA:** \[amused] Só isso.
 
@@ -89,7 +101,11 @@ DAVI (âncora) · HELENA (analista)
 
 **DAVI:** \[very excited] Roda a fita!
 
-**HELENA:** \[excited] Aberto, o estreito não está. O que existe ali é uma escolta militar americana que leva de quinze a vinte navios por noite, por um canal ao sul, junto à costa de Omã.
+**HELENA:** \[excited] Aberto, o estreito não está.
+
+**DAVI:** \[surprised] Não está?
+
+**HELENA:** \[energetic] O que existe ali é uma escolta militar americana que leva de quinze a vinte navios por noite, por um canal ao sul, junto à costa de Omã.
 
 **DAVI:** \[surprised] Então é escolta, não é passagem livre.
 
@@ -101,11 +117,11 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[energetic] E cobrado no frete: um superpetroleiro na rota entre a Arábia Saudita e a China chegou a seiscentos e quarenta e sete mil dólares por dia.
 
-**DAVI:** \[surprised] Por dia?
+**DAVI:** \[surprised] Por dia? Não é no mês?
 
 **HELENA:** \[amused] Por dia. Mais de dez vezes o valor de um ano atrás.
 
-**DAVI:** \[surprised] Nossa.
+**DAVI:** \[surprised] Nossa. Esse frete ficou salgado.
 
 \---
 
@@ -129,15 +145,15 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[excited] Sozinho.
 
-**DAVI:** \[surprised] Como assim, sozinho?
+**DAVI:** \[surprised] Como assim, sozinho? Sem ninguém puxar o gatilho?
 
 **HELENA:** \[excited] A importação chinesa de petróleo iraniano caiu para cerca de quinhentos e trinta e quatro mil barris por dia em agosto.
 
-**DAVI:** \[curious] E antes era quanto?
+**DAVI:** \[curious] E antes era quanto? Bem mais, né?
 
 **HELENA:** \[energetic] A média do ano passado era de um vírgula quatro milhão.
 
-**DAVI:** \[surprised] Caiu pra um terço.
+**DAVI:** \[surprised] Caiu pra um terço. Isso não é ajuste, é freada.
 
 **HELENA:** \[amused] Caiu. E o estoque flutuante fora da zona de bloqueio encolheu de cento e cinco milhões para cerca de oitenta milhões de barris.
 
@@ -159,15 +175,19 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[excited] Onze da manhã de Brasília, ontem. O novo presidente do banco central americano subiu ao púlpito em Jackson Hole, no estado de Wyoming.
 
-**DAVI:** \[curious] E o que ele trouxe?
+**DAVI:** \[curious] E o que ele trouxe? Susto ou alívio?
 
-**HELENA:** \[serious] Disse estar impressionado com a força da economia de lá. Mas avisou que a inflação segue alta demais, e que pode ser preciso subir os juros nos próximos meses.
+**HELENA:** \[serious] Disse estar impressionado com a força da economia de lá.
+
+**DAVI:** \[amused] Começou pelo elogio.
+
+**HELENA:** \[energetic] Mas avisou que a inflação segue alta demais, e que pode ser preciso subir os juros nos próximos meses.
 
 **DAVI:** \[surprised] Subir? Todo mundo esperava corte.
 
 **HELENA:** \[amused] Esperava. E os números que ele levou explicam o aviso.
 
-**DAVI:** \[curious] Manda.
+**DAVI:** \[curious] Manda. Quero ver o tamanho disso.
 
 **HELENA:** \[energetic] O índice de gastos de consumo roda a três vírgula sete por cento em doze meses, e a quatro vírgula um por cento na janela de seis meses.
 
@@ -181,7 +201,7 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[energetic] São sessenta e cinco meses seguidos acima dela.
 
-**DAVI:** \[surprised] Sessenta e cinco meses?
+**DAVI:** \[surprised] Sessenta e cinco meses? E a conta segue correndo.
 
 **HELENA:** \[very serious] E ele assumiu que a responsabilidade é inteira do banco.
 
@@ -193,7 +213,7 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[intrigued] O aviso, sim. O que pegou o mercado foi o método, e é aqui que o lance vira.
 
-**DAVI:** \[very excited] Chama o VAR!
+**DAVI:** \[very excited] Chama o VAR! Quero ver de novo.
 
 **HELENA:** \[excited] Ele se recusou a dar a chamada orientação futura.
 
@@ -213,7 +233,7 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[very serious] Paga. A taxa básica de lá está parada na faixa de três vírgula cinquenta por cento a três vírgula setenta e cinco por cento desde maio.
 
-**DAVI:** \[curious] E agora?
+**DAVI:** \[curious] E agora? Fica todo mundo no escuro?
 
 **HELENA:** \[amused] E agora ninguém sabe pra que lado ela anda.
 
@@ -225,7 +245,7 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[serious] Na madrugada de ontem, drones atingiram a refinaria de Yaroslavl, a uns duzentos e cinquenta quilômetros de Moscou.
 
-**DAVI:** \[surprised] Perto de Moscou, então.
+**DAVI:** \[surprised] Perto de Moscou, então. Isso não é alvo qualquer.
 
 **HELENA:** \[serious] Perto. E é uma das maiores da Rússia.
 
@@ -273,23 +293,27 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[excited] Aqui mesmo.
 
-**DAVI:** \[curious] Quem chegou?
+**DAVI:** \[curious] Quem chegou? Fala o nome.
 
 **HELENA:** \[energetic] A Alibaba ligou os dois primeiros data centers dela no Brasil e abriu a primeira região de nuvem da empresa na América do Sul.
 
 **DAVI:** \[curious] E por que isso é notícia grande?
 
-**HELENA:** \[intrigued] Pela data. Na quarta-feira, a Nvidia avisou que não havia um dólar de computação chinesa na projeção dela. Um dia depois, a nuvem de Pequim aterrissa em São Paulo.
+**HELENA:** \[intrigued] Pela data.
+
+**DAVI:** \[curious] Pela data?
+
+**HELENA:** \[serious] Na quarta-feira, a Nvidia avisou que não havia um dólar de computação chinesa na projeção dela. Um dia depois, a nuvem de Pequim aterrissa em São Paulo.
 
 **DAVI:** \[surprised] Um dia depois?
 
 **HELENA:** \[amused] Um dia. E aqui vale o VAR, porque é o mesmo evento visto pela outra margem.
 
-**DAVI:** \[very excited] Manda!
+**DAVI:** \[very excited] Manda! Essa eu quero ouvir.
 
 **HELENA:** \[excited] A computação chinesa que perdeu o mercado americano não some do mapa. Ela precisa de território novo para crescer.
 
-**DAVI:** \[curious] E procura onde?
+**DAVI:** \[curious] E procura onde? Onde ainda tem espaço?
 
 **HELENA:** \[energetic] Onde a disputa ainda está aberta: o Sudeste Asiático, o Golfo e a América Latina.
 
@@ -305,11 +329,11 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[energetic] Aí está a jogada. O produto não é servidor. É jurisdição.
 
-**DAVI:** \[surprised] Como assim, jurisdição?
+**DAVI:** \[surprised] Como assim, jurisdição? Isso se vende?
 
 **HELENA:** \[excited] A promessa é guardar o dado brasileiro em solo brasileiro, sob a lei brasileira.
 
-**DAVI:** \[thoughtful] O dado fica aqui.
+**DAVI:** \[thoughtful] O dado fica aqui. E isso sozinho já vende?
 
 **HELENA:** \[energetic] Fica. E a rede global deles soma cento e seis zonas de disponibilidade em trinta e uma regiões.
 
@@ -345,11 +369,11 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[serious] Antes de o homem terminar de falar.
 
-**DAVI:** \[surprised] Antes de terminar?
+**DAVI:** \[surprised] Antes de terminar? O mercado leu antes do fim.
 
 **HELENA:** \[energetic] O dólar acelerou e passou de cinco reais e vinte centavos ainda antes do almoço.
 
-**DAVI:** \[curious] E a bolsa?
+**DAVI:** \[curious] E a bolsa? Fez o quê?
 
 **HELENA:** \[amused] Fez o caminho inverso. Tinha subido bem na máxima da manhã, e virou queda de zero vírgula quarenta e um por cento.
 
@@ -369,7 +393,7 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[warmly] O cadastro que mede emprego com carteira.
 
-**DAVI:** \[excited] Certo.
+**DAVI:** \[excited] Certo. E o mercado esperava quanto?
 
 **HELENA:** \[energetic] O mercado esperava cerca de cento e quinze mil vagas, depois das cento e quarenta e cinco mil de junho.
 
@@ -385,11 +409,11 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[amused] E aí vem o detalhe mais brasileiro do ano.
 
-**DAVI:** \[curious] Qual?
+**DAVI:** \[curious] Qual? Solta.
 
 **HELENA:** \[amused] A vitrine oficial ficou apagada.
 
-**DAVI:** \[surprised] Apagada como?
+**DAVI:** \[surprised] Apagada como? Ninguém comemorou?
 
 **HELENA:** \[serious] A nota do governo sobre o número saiu do ar, em respeito à legislação eleitoral.
 
@@ -409,7 +433,7 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[serious] Se você deve, olhe setembro: o Copom decide nos dias quinze e dezesseis, e os americanos decidem no dia dezesseis.
 
-**DAVI:** \[thoughtful] Quase junto.
+**DAVI:** \[thoughtful] Quase junto. Uma decisão puxando a outra.
 
 **HELENA:** \[very serious] Baixar juro com câmbio pressionado é luxo que a gente historicamente não se permite.
 
@@ -433,15 +457,15 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[very serious] Sem intenção e sem custo político nenhum para Washington.
 
-**DAVI:** \[thoughtful] E a gente sente igual.
+**DAVI:** \[thoughtful] E a gente sente igual. Aperta e não custa nada a eles.
 
 **HELENA:** \[serious] Sente. Confundir isso com ataque dirigido é o erro mais comum dessa série.
 
-**DAVI:** \[curious] E a mesa de segunda?
+**DAVI:** \[curious] E a mesa de segunda? Segue de pé?
 
 **HELENA:** \[excited] De pé. Duas e meia da tarde, o ministro do Desenvolvimento de um lado, o representante comercial americano do outro.
 
-**DAVI:** \[curious] E a pauta?
+**DAVI:** \[curious] E a pauta? O que entrou nela?
 
 **HELENA:** \[serious] Larga: desmatamento, etanol, propriedade intelectual e o Pix.
 
@@ -453,7 +477,7 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[very excited] Hoje estreiam os presidenciáveis no horário eleitoral. E os tempos já estão na mesa.
 
-**DAVI:** \[curious] Como é a divisão?
+**DAVI:** \[curious] Como é a divisão? Quem leva mais?
 
 **HELENA:** \[serious] A campanha de Lula tem cinco minutos e trinta e um segundos por bloco.
 
@@ -467,11 +491,11 @@ DAVI (âncora) · HELENA (analista)
 
 **HELENA:** \[thoughtful] Decide o palco, não o placar.
 
-**DAVI:** \[intrigued] Explica.
+**DAVI:** \[intrigued] Explica. Palco e placar são coisas diferentes?
 
 **HELENA:** \[excited] O governo estreia com pleno emprego e preço cedendo. A oposição estreia com o dólar subindo.
 
-**DAVI:** \[thoughtful] E os dois estão certos.
+**DAVI:** \[thoughtful] E os dois estão certos. Isso é que é esquisito.
 
 **HELENA:** \[serious] Os dois retratos são verdadeiros.
 
@@ -491,13 +515,17 @@ DAVI (âncora) · HELENA (analista)
 
 **DAVI:** \[thoughtful] E a arma contra os bancos continua engatilhada.
 
-**HELENA:** \[serious] A segunda: a decisão que mais mexeu no seu bolso ontem não passou por Brasília. Veio de um púlpito em Wyoming, e não tinha o nosso nome no assunto.
+**HELENA:** \[serious] A segunda: a decisão que mais mexeu no seu bolso ontem não passou por Brasília.
 
-**DAVI:** \[curious] E a terceira?
+**DAVI:** \[surprised] Nem passou perto.
+
+**HELENA:** \[energetic] Veio de um púlpito em Wyoming, e não tinha o nosso nome no assunto.
+
+**DAVI:** \[curious] E a terceira? Fecha com ela.
 
 **HELENA:** \[excited] Quando uma potência sai de um mercado, a outra desembarca. A nuvem de Pequim chegou a São Paulo um dia depois da conta fechada em Santa Clara.
 
-**DAVI:** \[amused] Saiu um, entrou outro.
+**DAVI:** \[amused] Saiu um, entrou outro. Não deu nem tempo de esfriar.
 
 **DAVI:** \[excited] E é isso, viventes!
 
