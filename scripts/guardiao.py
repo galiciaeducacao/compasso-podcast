@@ -273,6 +273,37 @@ def main():
         elif re.search(r"\b(?:" + PRETERITO + r")\b(?:\s+\S+){0,3}\s+hoje\b", limpo):
             problemas.append(f"fala {i}: diz 'hoje' sobre fato ja ocorrido, deveria ser 'ontem'")
 
+
+    # ---------- 8. PISO DE ENERGIA ----------
+    # A regra 3 poe TETO no riso porque o exagero incomodou. Faltava o outro lado: o
+    # Paulo tambem rejeitou "morno" e "monotono", e um roteiro correto pode ser chato.
+    #
+    # Calibrado no episodio 1, que ele aprovou: 44% de direcoes energeticas, 57% de
+    # falas curtas, 68 caracteres de media. O primeiro roteiro automatico veio com 33%,
+    # 49% e 80, e soou monotono. Os pisos ficam entre os dois, mais perto do aprovado.
+    #
+    # Riso NAO entra aqui: medido, o episodio aprovado tem 1 riso em 168 turnos, igual
+    # ao monotono. A energia vem da direcao e do ritmo, nao da risada.
+    ENERGICAS = r"excited|amused|energetic|humorous|laugh|surprised"
+    if todas:
+        tags = [re.match(r"\[([^\]]+)\]", x) for x in todas]
+        vivas = sum(1 for m in tags if m and re.search(ENERGICAS, m.group(1), re.I))
+        corpos = [len(re.sub(r"\[[^\]]+\]", "", x).strip()) for x in todas]
+        curtas = sum(1 for c in corpos if c <= 60)
+        media = sum(corpos) / len(corpos)
+        if vivas / len(todas) < 0.38:
+            problemas.append(
+                f"so {vivas/len(todas):.0%} das falas tem direcao energetica "
+                f"(piso 38%, o episodio aprovado tem 44%): vai soar monotono")
+        if curtas / len(todas) < 0.52:
+            problemas.append(
+                f"so {curtas/len(todas):.0%} das falas sao curtas o bastante para reagir "
+                f"(piso 52%, o aprovado tem 57%): falta bate-bola")
+        if media > 74:
+            problemas.append(
+                f"fala com {media:.0f} caracteres em media (teto 74, o aprovado tem 68): "
+                f"fala longa demais vira leitura, nao conversa")
+
     # ---------- 6. LASTRO FACTUAL: nada que nao esteja nas analises da VESPERA ----------
     # O episodio de D comenta as analises publicadas em D-1, porque elas saem as 14h e
     # o programa vai ao ar as 7h da manha seguinte. Buscar a pasta de D acha pasta vazia

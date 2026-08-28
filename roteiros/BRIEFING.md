@@ -74,6 +74,36 @@ Legale Educacional, Iure Digital, Galícia Educação. Cada uma assina uma notí
 Toda fala começa com uma tag de direção entre colchetes. Fala sem direção é onde o modelo
 mais varia sozinho.
 
+## O ritmo, que é onde o primeiro roteiro automático escorregou
+
+Um roteiro pode estar todo certo e ainda assim ser chato. O paulo rejeitou os dois
+extremos: o riso exagerado, e o programa "morno" e "monótono". A régua tem teto de riso
+desde o começo; o piso de energia entrou depois, quando o primeiro roteiro automático
+saiu correto e sem vida.
+
+Os números vêm do episódio 1, que ele aprovou, comparado com o que soou monótono:
+
+| | aprovado | monótono | piso da régua |
+|---|---|---|---|
+| falas com direção energética | 44% | 33% | **38%** |
+| falas curtas, até 60 caracteres | 57% | 49% | **52%** |
+| tamanho médio da fala | 68 | 80 | **teto 74** |
+
+Direção energética é `[excited]`, `[very excited]`, `[amused]`, `[energetic]`,
+`[surprised]`, e as de riso. As calmas, `[warmly]`, `[thoughtful]`, `[serious]`,
+`[curious]`, existem para contraste, não para preencher.
+
+**Riso não é o que dá vida.** Medido: o episódio aprovado tem uma risada em 168 turnos,
+exatamente a mesma proporção do que soou monótono. A energia vem da **direção** e do
+**bate-bola**, não da risada.
+
+O que torna um trecho vivo é a fala curta: reação, interrupção, complemento em três
+palavras. Fala longa vira leitura em voz alta, e duas seguidas viram aula. Se um raciocínio
+precisa de cinco linhas, quebre em três falas com o outro reagindo no meio.
+
+Isso não tem a ver com o tamanho do episódio. Um episódio de dezessete minutos pode ser
+vivo, e um de dez pode ser monótono.
+
 ## O que a régua barra (`scripts/guardiao.py`)
 
 Vale ler os motivos, não só a lista: cada um veio de um defeito que foi ao ar.
@@ -97,6 +127,9 @@ da própria piada.
 da fala anterior já barram. Reagir é acrescentar, não repetir.
 
 **Número sem lastro.** Ver acima.
+
+**Falta de energia.** Ver a seção do ritmo: pisos de 38% de direções energéticas e 52%
+de falas curtas, e teto de 74 caracteres de média por fala.
 
 ## Pronúncia
 
