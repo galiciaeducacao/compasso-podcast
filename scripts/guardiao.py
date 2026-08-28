@@ -12,6 +12,7 @@ ate ser tarde.
 Sai 0 e promove rascunhos/<data>.md para roteiros/<data>.md se TUDO passar.
 Sai 1 sem promover, e explica cada reprovacao, se qualquer trava pegar.
 """
+import datetime as dt
 import json, os, pathlib, re, subprocess, sys, unicodedata
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
