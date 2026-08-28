@@ -294,8 +294,15 @@ def main():
             for n in digitos_por_extenso(re.sub(r"\[[^\]]+\]", "", t)):
                 if len(n) < 2 or n in do_site:
                     continue
-                # o site pode trazer o mesmo numero com mais casas: "11" casa com "112"
-                if any(v.startswith(n) or n.startswith(v) for v in do_site if len(v) >= 2):
+                # O site pode trazer o mesmo numero com mais casas decimais: o roteiro
+                # fala "onze" e o site escreve "11,2". Mas prefixo SOLTO e frouxo demais
+                # para a unica regra que separa numero inventado do ar: com 92 numeros na
+                # apuracao, quase todo par de digitos e prefixo de alguma coisa. Entao o
+                # prefixo so vale com diferenca de ate 2 digitos, que cobre decimal sem
+                # deixar "12" casar com "1234567".
+                if any((v.startswith(n) and len(v) - len(n) <= 2)
+                       or (n.startswith(v) and len(n) - len(v) <= 2)
+                       for v in do_site if len(v) >= 2):
                     continue
                 problemas.append(f"fala {i}: numero '{n}' NAO aparece nas analises do dia")
 
