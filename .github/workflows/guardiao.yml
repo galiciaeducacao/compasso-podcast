@@ -13,7 +13,9 @@ name: guardiao (17h)
 
 on:
   schedule:
-    - cron: '0 20 * * *'      # 20h UTC = 17h de Brasilia
+    - cron: '0 20 * * *'      # 17h00 de Brasilia
+    - cron: '30 20 * * *'     # 17h30, se o primeiro nao rodar
+    - cron: '30 21 * * *'     # 18h30, ultima tentativa antes da gravacao
   workflow_dispatch:
     inputs:
       data:

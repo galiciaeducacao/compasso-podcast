@@ -1,26 +1,34 @@
-# COMPASSO CAPITAL — gera o audio do episodio do dia seguinte, as 18h.
+# COMPASSO CAPITAL — grava o episodio do dia seguinte, no fim da tarde.
 #
 # Roda nos servidores do GitHub: nao depende de nenhuma maquina ligada.
 #
-# TRAVA DE SEGURANCA: so age se existir roteiros/<data>.md. Dia sem roteiro aprovado
-# e dia sem episodio, e isso NAO e falha. Foi assim que o dia da estreia ficou de fora
-# sem precisar de gambiarra.
+# TRES HORARIOS, NAO UM. O agendador do GitHub e best effort: em 27/08 o disparo das
+# 18h saiu as 2h da manha, oito horas atrasado, e nos mesmos dois dias o guardiao e a
+# publicacao das 7h simplesmente nao rodaram. Para um programa que promete estar no ar
+# todo dia as 7h, um unico disparo por dia nao serve. As repeticoes so existem porque o
+# alvo e deduzido do estado, entao disparo repetido nao gera episodio repetido.
 #
-# O audio e publicado como release, mas NAO entra no feed aqui. Quem publica de fato
-# e o workflow das 6h45, para o episodio aparecer as 7h.
+# O QUE ELE GRAVA NAO SE CALCULA PELO RELOGIO. Ver scripts/proximo_episodio.py: o alvo
+# e o primeiro dia, de hoje em diante, com roteiro aprovado e sem episodio gravado ou
+# publicado. Assim disparo atrasado, repetido ou fora de hora acerta o mesmo alvo.
+#
+# O audio vira release, mas NAO entra no feed aqui. Quem publica e o workflow das 6h45,
+# para o episodio so existir para o mundo na hora combinada.
 
 name: gerar audio (18h)
 
 on:
   schedule:
-    - cron: '0 21 * * *'      # 21h UTC = 18h de Brasilia
+    - cron: '0 21 * * *'      # 18h00 de Brasilia
+    - cron: '30 21 * * *'     # 18h30, se o primeiro nao rodar
+    - cron: '30 22 * * *'     # 19h30, ultima tentativa
   workflow_dispatch:
     inputs:
       data:
-        description: 'Data do episodio (AAAA-MM-DD). Vazio = amanha'
+        description: 'Forcar a data do episodio (AAAA-MM-DD). Vazio = deduzir do estado'
         required: false
       numero:
-        description: 'Numero do episodio. Vazio = proximo da sequencia'
+        description: 'Forcar o numero do episodio. Vazio = proximo da sequencia'
         required: false
 
 permissions:
@@ -33,55 +41,43 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Definir data e numero
-        id: alvo
-        run: |
-          if [ -n "${{ inputs.data }}" ]; then
-            DATA="${{ inputs.data }}"
-          else
-            DATA=$(TZ=America/Sao_Paulo date -d "+1 day" +%F)   # o de 18h grava o de amanha
-          fi
-          if [ -n "${{ inputs.numero }}" ]; then
-            NUM="${{ inputs.numero }}"
-          else
-            NUM=$(python -c "import json;d=json.load(open('scripts/episodios.json'));print(max([e['numero'] for e in d['episodios']]+[0])+1)")
-          fi
-          echo "data=$DATA" >> $GITHUB_OUTPUT
-          echo "numero=$NUM" >> $GITHUB_OUTPUT
-          echo "Alvo: episodio $NUM para $DATA"
-
-      - name: Existe roteiro aprovado?
-        id: check
-        run: |
-          if [ -f "roteiros/${{ steps.alvo.outputs.data }}.md" ]; then
-            echo "tem=sim" >> $GITHUB_OUTPUT
-          else
-            echo "tem=nao" >> $GITHUB_OUTPUT
-            echo "::notice::Sem roteiro para ${{ steps.alvo.outputs.data }}. Nada a fazer."
-          fi
-
       - uses: actions/setup-python@v5
-        if: steps.check.outputs.tem == 'sim'
         with:
           python-version: '3.12'
 
+      - name: Qual episodio gravar
+        id: alvo
+        run: |
+          if [ -n "${{ inputs.data }}" ]; then
+            NUM="${{ inputs.numero }}"
+            if [ -z "$NUM" ]; then
+              NUM=$(python -c "import json;d=json.load(open('scripts/episodios.json'));print(max([e['numero'] for e in d['episodios']]+[0])+1)")
+            fi
+            echo "tem=sim" >> $GITHUB_OUTPUT
+            echo "data=${{ inputs.data }}" >> $GITHUB_OUTPUT
+            echo "numero=$NUM" >> $GITHUB_OUTPUT
+            echo "Alvo forcado a mao: episodio $NUM para ${{ inputs.data }}"
+          else
+            python scripts/proximo_episodio.py
+          fi
+
       - name: Conferir o ffmpeg
-        if: steps.check.outputs.tem == 'sim'
+        if: steps.alvo.outputs.tem == 'sim'
         run: ffmpeg -version | head -1
 
-      - name: Gerar o audio
+      - name: Gravar o audio
         id: audio
-        if: steps.check.outputs.tem == 'sim'
+        if: steps.alvo.outputs.tem == 'sim'
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         run: python scripts/gerar_episodio.py "${{ steps.alvo.outputs.data }}" "${{ steps.alvo.outputs.numero }}"
 
-      # O gerador pode terminar com exito e ainda assim entregar episodio quebrado:
-      # bloco truncado pela API, corte de priming no lugar errado deixando fala
-      # repetida, mixagem muda. Nada disso levanta excecao. Este passo transcreve o
-      # audio e compara com o roteiro, que e o unico jeito de saber que o que foi
-      # escrito foi dito. Se reprovar, o job para AQUI e nao existe release: melhor
-      # dia sem episodio do que episodio quebrado no ar.
+      # O gerador pode terminar com EXITO e ainda entregar episodio quebrado: bloco
+      # truncado pela API, corte de priming no lugar errado deixando fala repetida,
+      # mixagem muda. Nada disso levanta excecao. Este passo transcreve o audio e
+      # compara com o roteiro, unico jeito de saber que o que foi escrito foi dito.
+      # Se reprovar, o job para AQUI e nao existe release: melhor dia sem episodio do
+      # que episodio quebrado no ar.
       - name: QA do audio antes de publicar
         if: steps.audio.outputs.gerou == 'sim'
         env:
@@ -117,15 +113,15 @@ jobs:
           git push
 
       # Dia sem episodio nunca pode acontecer em silencio: ninguem investiga o que nao
-      # viu. Se o QA barrou ou a geracao falhou, abre issue, e o GitHub avisa por e-mail.
+      # viu. Se a gravacao ou o QA falhou, abre issue e o GitHub avisa por e-mail.
       - name: Avisar que hoje nao tem episodio, e por que
-        if: failure() && steps.check.outputs.tem == 'sim'
+        if: failure() && steps.alvo.outputs.tem == 'sim'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh issue create             --title "Sem episodio em ${{ steps.alvo.outputs.data }}: a geracao ou o QA falhou"             --body "O episodio ${{ steps.alvo.outputs.numero }} de **${{ steps.alvo.outputs.data }}** **nao foi publicado**.
+          gh issue create --title "Sem episodio em ${{ steps.alvo.outputs.data }}: a gravacao ou o QA falhou" --body "O episodio ${{ steps.alvo.outputs.numero }} de **${{ steps.alvo.outputs.data }}** **nao foi publicado**.
 
-          O roteiro existia e foi aprovado pelo guardiao, entao a falha esta na geracao
+          O roteiro existia e tinha passado pelo guardiao, entao a falha esta na gravacao
           do audio ou no QA que roda logo depois dela.
 
           **O motivo exato esta no log da execucao**, nas linhas marcadas como error:

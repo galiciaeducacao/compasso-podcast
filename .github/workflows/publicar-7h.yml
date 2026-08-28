@@ -4,8 +4,11 @@
 # e acrescenta-lo ao FEED, e e isso que faz o episodio existir para o mundo: o Spotify,
 # a Apple e os demais so enxergam o que esta no feed.
 #
-# Agendado para 6h45 de proposito: o agendador do GitHub costuma atrasar alguns minutos
-# em horario cheio, e o compromisso com o ouvinte e 7h.
+# Agendado para 6h45 de proposito: o compromisso com o ouvinte e 7h, e o agendador do
+# GitHub atrasa. TRES HORARIOS, nao um: em 28/08 este workflow simplesmente NAO RODOU
+# no horario agendado, e no mesmo dia a gravacao saiu oito horas atrasada. Para um
+# programa diario, um unico disparo nao serve. Como o passo so age havendo pendente,
+# disparo repetido nao publica duas vezes.
 #
 # Se nao houver episodio pendente, sai sem fazer nada.
 
@@ -13,7 +16,9 @@ name: publicar no feed (7h)
 
 on:
   schedule:
-    - cron: '45 9 * * *'      # 9h45 UTC = 6h45 de Brasilia
+    - cron: '45 9 * * *'      # 6h45 de Brasilia
+    - cron: '0 10 * * *'      # 7h00, se o primeiro nao rodar
+    - cron: '20 10 * * *'     # 7h20, ultima tentativa
   workflow_dispatch:
     inputs:
       data:
@@ -111,6 +116,14 @@ jobs:
       - name: Renovar o feed para provocar releitura
         if: steps.check.outputs.tem == 'nao'
         run: |
+          # com tres disparos por dia, renovar em todos encheria o historico de commits
+          # iguais. Uma vez por dia basta para mexer no ETag.
+          ULTIMA=$(grep -o '<lastBuildDate>[^<]*' feed.xml | sed 's/<lastBuildDate>//')
+          IDADE=$(( ($(date +%s) - $(date -d "$ULTIMA" +%s)) / 3600 ))
+          if [ "$IDADE" -lt 3 ]; then
+            echo "::notice::Feed renovado ha ${IDADE}h. Nao renovo de novo."
+            exit 0
+          fi
           python scripts/publicar_feed.py
           git config user.name "COMPASSO"
           git config user.email "contato@compasso.capital"
