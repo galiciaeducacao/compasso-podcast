@@ -394,14 +394,26 @@ def main():
                 f"episodio de ~{seg/60:.0f} min ({escrito} caracteres de fala). "
                 f"O alvo e 15 min, e a faixa aceita vai de 12 a 18")
 
-    # ---------- 6. LASTRO FACTUAL: nada que nao esteja nas analises da VESPERA ----------
+    # ---------- 6. LASTRO FACTUAL: nada que nao esteja na apuracao ----------
     # O episodio de D comenta as analises publicadas em D-1, porque elas saem as 14h e
     # o programa vai ao ar as 7h da manha seguinte. Buscar a pasta de D acha pasta vazia
     # todo dia, e a regua reprovaria sempre.
-    vespera = (dt.date.fromisoformat(data) - dt.timedelta(days=1)).isoformat()
-    corpo = analises_do_dia(vespera)
+    #
+    # DOMINGO E DIFERENTE: e apanhado da semana, entao os numeros vem de qualquer dia
+    # dos sete anteriores. Conferir so contra a vespera reprovaria tudo que veio de
+    # segunda a quinta, ou seja, barraria o formato inteiro.
+    alvo_dia = dt.date.fromisoformat(data)
+    domingo = alvo_dia.weekday() == 6
+    dias = [(alvo_dia - dt.timedelta(days=n)).isoformat()
+            for n in (range(1, 8) if domingo else range(1, 2))]
+    partes = [c for c in (analises_do_dia(d) for d in dias) if c]
+    corpo = "\n".join(partes) if partes else None
     if corpo is None:
-        problemas.append(f"nao consegui ler as analises de {vespera} para conferir os numeros")
+        janela = f"os sete dias ate {dias[0]}" if domingo else dias[0]
+        problemas.append(f"nao consegui ler as analises de {janela} para conferir os numeros")
+    elif domingo and len(partes) < 5:
+        # apanhado da semana com dois ou tres dias de apuracao nao e apanhado da semana
+        problemas.append(f"apanhado de domingo com apuracao de so {len(partes)} dos 7 dias")
     else:
         do_site = set(digitos_do_texto(corpo)) | set(digitos_por_extenso(corpo))
         # A conferencia vale para NOTICIA. O texto dos anuncios e institucional e fixo,

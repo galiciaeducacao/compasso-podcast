@@ -30,6 +30,28 @@ nasce dizendo "hoje" sobre um fato de ontem, e isso precisa ser convertido:
 O erro é invisível para quem escreve, porque na hora de escrever era mesmo hoje. A régua
 barra o rascunho se pegar "hoje" colado a verbo no passado.
 
+## O domingo é diferente: apanhado da semana
+
+De segunda a sábado o episódio comenta as cinco análises da véspera, uma notícia por
+pilar. **No domingo, não.** O domingo é a síntese do que o COMPASSO noticiou na semana
+inteira, de segunda a sábado.
+
+Os lances do domingo levam **o nome dos pilares**, não o da notícia. Em vez de "o estreito
+aberto por declaração", o lance é o pilar, e dentro dele se conta o que a semana mostrou:
+o que começou, o que virou, e o que ficou de pé para a semana seguinte.
+
+Isso muda o que a régua confere. Nos outros dias, todo número tem de existir na apuração
+da véspera; **no domingo, em qualquer dia dos sete anteriores**. Ela também exige apuração
+de pelo menos cinco dos sete dias, porque apanhado de semana feito com dois dias de
+material não é apanhado de semana.
+
+O tom não muda: continua leve, com os mesmos pisos de energia, a mesma duração alvo, os
+mesmos três oferecimentos e o mesmo vocabulário da casa. O que muda é o recorte, que
+passa de vinte e quatro horas para sete dias.
+
+E a regra temporal fica mais fácil, não mais difícil: no domingo se fala em dias da
+semana ("na quarta", "na sexta") em vez de "ontem", porque o material é de vários dias.
+
 ## A forma
 
 Dois apresentadores: **DAVI**, âncora que conduz por perguntas, e **HELENA**, analista.
