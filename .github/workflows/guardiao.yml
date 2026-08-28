@@ -85,3 +85,24 @@ jobs:
           nao esta na apuracao nao pode ir ao ar**, mesmo que pareca certo.
           FIM
           )"
+
+      # Dia sem roteiro nenhum e a falha mais provavel e a mais silenciosa da esteira:
+      # nada quebra, nada estoura, so nao sai episodio. Aviso obrigatorio.
+      - name: Avisar que nao existe roteiro para amanha
+        if: steps.reguar.outputs.faltando == 'sim'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "SEM ROTEIRO para ${{ steps.alvo.outputs.data }}: nao havera episodio" --body "Nao existe **nem roteiro aprovado nem rascunho** para ${{ steps.alvo.outputs.data }}. Se nada for feito ate as 18h, **nao havera episodio nesse dia**.
+
+          A causa mais provavel e a rotina das 15h30 nao ter rodado, ou nao ter achado a
+          apuracao do dia em \`galicia/compasso/ops/diarias/\`.
+
+          Para resolver, na ordem:
+
+          1. conferir a rotina em https://claude.ai/code/routines
+          2. se a apuracao do dia existir, rodar a rotina a mao por la
+          3. com o rascunho escrito: \`gh workflow run guardiao.yml -f data=${{ steps.alvo.outputs.data }}\`
+          4. e depois: \`gh workflow run gerar-audio.yml -f data=${{ steps.alvo.outputs.data }}\`
+
+          A gravacao ainda roda as 18h, 18h30 e 19h30, entao ha tempo."

@@ -172,7 +172,19 @@ def main():
     problemas = []
 
     if not rascunho.exists():
-        print(f"sem rascunho para {data}: nada a promover")
+        # Sem rascunho E sem roteiro aprovado, o dia simplesmente nao vai existir. Isso
+        # nao pode acontecer calado: e a falha mais provavel da esteira (a rotina que
+        # escreve nao rodou, ou nao achou a apuracao) e a mais dificil de perceber,
+        # porque nada quebra, nada estoura, so nao sai episodio.
+        if not aprovado.exists():
+            print(f"::error::Nao existe roteiro nem rascunho para {data}. "
+                  f"Se nada for feito, NAO HAVERA EPISODIO nesse dia.")
+            saida = os.environ.get("GITHUB_OUTPUT")
+            if saida:
+                with open(saida, "a", encoding="utf-8") as fh:
+                    fh.write("faltando=sim\n")
+            return 0
+        print(f"sem rascunho para {data}: o roteiro ja esta aprovado")
         return 0
     if aprovado.exists():
         print(f"{data} ja esta aprovado")
