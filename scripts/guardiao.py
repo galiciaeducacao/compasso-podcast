@@ -98,17 +98,21 @@ def digitos_do_texto(texto):
     """Cadeias de digitos que aparecem escritas no site, sem separador."""
     return [re.sub(r"[^0-9]", "", m) for m in re.findall(r"\d[\d.,]*", texto)]
 
-def analises_do_dia(data):
-    """corpo das cinco analises publicadas no site naquele dia"""
-    base = f"galicia/compasso/ops/diarias/{data}"
-    r = subprocess.run(["gh", "api", f"repos/galiciaeducacao/claude-galicia/contents/{base}",
-                        "--jq", '.[] | select(.name|endswith(".json")) | .name'],
-                       capture_output=True, text=True)
+def analises_por_gh(base):
+    """le as analises pela API do GitHub. None se o gh nao existe ou nao respondeu.
+
+    O gh AUSENTE tem de cair no mesmo None que o gh que falha: sem isso o
+    FileNotFoundError sobe e mata o guardiao ANTES do veredito, e a regua nao
+    reprova nem aprova, so estoura. Mesmo defeito do import que faltava.
+    """
+    try:
+        r = subprocess.run(["gh", "api", f"repos/galiciaeducacao/claude-galicia/contents/{base}",
+                            "--jq", '.[] | select(.name|endswith(".json")) | .name'],
+                           capture_output=True, text=True)
+    except (FileNotFoundError, OSError):
+        return None
     if r.returncode != 0:
         return None
-    # ordinais do site precisam virar cardinal: a analise escreve "sexagesimo quinto
-    # mes" e o roteiro fala "sessenta e cinco meses". Sem isso, acusa alucinacao no
-    # que e a mesma informacao dita de outro jeito.
     inteiro = []
     for nome in r.stdout.split():
         rr = subprocess.run(["gh", "api", f"repos/galiciaeducacao/claude-galicia/contents/{base}/{nome}",
@@ -116,8 +120,38 @@ def analises_do_dia(data):
         if rr.returncode == 0:
             import base64
             inteiro.append(base64.b64decode(rr.stdout.strip()).decode("utf-8", "ignore"))
+    return inteiro or None
+
+
+def analises_por_clone(base):
+    """le as mesmas analises de um checkout local do claude-galicia, quando existir.
+
+    Nao afrouxa nada: sao os mesmos arquivos, conferidos com o mesmo rigor. Existe
+    para o ambiente que roda o guardiao sem o gh instalado, onde a alternativa nao
+    e uma regua mais frouxa, e sim regua nenhuma.
+    """
+    for raiz in (os.environ.get("CLAUDE_GALICIA_DIR"), RAIZ.parent / "claude-galicia"):
+        if not raiz:
+            continue
+        pasta = pathlib.Path(raiz) / base
+        if not pasta.is_dir():
+            continue
+        inteiro = [p.read_text(encoding="utf-8", errors="ignore")
+                   for p in sorted(pasta.glob("*.json"))]
+        if inteiro:
+            return inteiro
+    return None
+
+
+def analises_do_dia(data):
+    """corpo das cinco analises publicadas no site naquele dia"""
+    base = f"galicia/compasso/ops/diarias/{data}"
+    inteiro = analises_por_gh(base) or analises_por_clone(base)
     if not inteiro:
         return None
+    # ordinais do site precisam virar cardinal: a analise escreve "sexagesimo quinto
+    # mes" e o roteiro fala "sessenta e cinco meses". Sem isso, acusa alucinacao no
+    # que e a mesma informacao dita de outro jeito.
     junto = norm("\n".join(inteiro))
     # "sexagesimo quinto mes" no site tem de casar com "sessenta e cinco meses" no
     # roteiro: sem converter, o guardiao acusa alucinacao no que e o mesmo fato
