@@ -278,6 +278,35 @@ def main():
             problemas.append(
                 f"fala {i+1} repete {n} palavras seguidas da anterior: '{todas[i][:60]}'")
 
+    # ---------- 4b. ECO CURTO: devolver a frase em vez de reagir ----------
+    # O limiar de 5 palavras acima nasceu de um eco longo e deixa passar o curto, que
+    # e o mais comum: "Antes do almoco?" / "Antes do almoco." Sao duas coisas distintas.
+    #
+    # REPETICAO IDENTICA nunca presta, de qualquer tamanho: devolver a mesma frase nao
+    # e reagir. O episodio aprovado nao tem nenhuma.
+    #
+    # ECO QUE CONDENSA e recurso legitimo: "Nenhum dolar? Da China inteira?" seguido de
+    # "Nenhum." O aprovado tem dois, em 168 falas. O problema e a DENSIDADE: o primeiro
+    # roteiro automatico veio com onze em 219, e onze viram cacoete mesmo quando cada um
+    # passaria sozinho. Por isso teto, nao proibicao.
+    ecos = []
+    for i in range(1, len(todas)):
+        a, b = palavras(todas[i-1]), palavras(todas[i])
+        if not b or not (b <= a):
+            continue
+        ecos.append(i + 1)
+        so_a = " ".join(sequencia(todas[i-1]))
+        so_b = " ".join(sequencia(todas[i]))
+        if so_a == so_b:
+            problemas.append(
+                f"fala {i+1} repete a anterior palavra por palavra: '{todas[i][:60]}'. "
+                f"Devolver a frase nao e reagir")
+    if todas and len(ecos) / len(todas) > 0.03:
+        problemas.append(
+            f"{len(ecos)} falas de {len(todas)} ({len(ecos)/len(todas):.0%}) so devolvem "
+            f"palavras da fala anterior, sem acrescentar (teto 3%, o episodio aprovado "
+            f"tem 1%). Vira cacoete. Falas: {ecos[:8]}")
+
     # ---------- 5. as tres marcas, uma por anuncio ----------
     anuncios = [b for b in blocos if b["tipo"] == "ANUNCIO"]
     for n, termo in ((1, "legale"), (2, "iure"), (3, "gal")):

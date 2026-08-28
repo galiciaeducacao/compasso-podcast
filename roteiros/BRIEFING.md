@@ -140,6 +140,19 @@ da própria piada.
 **Eco.** Fala que devolve o que a outra acabou de dizer. Cinco palavras seguidas repetidas
 da fala anterior já barram. Reagir é acrescentar, não repetir.
 
+**Eco curto**, que é o mais comum e o mais irritante. Duas coisas distintas:
+
+*Repetição idêntica nunca presta*, de qualquer tamanho. "Antes do almoço?" seguido de
+"Antes do almoço." não é reação, é devolver a frase. O episódio aprovado não tem nenhuma.
+
+*Eco que condensa é recurso legítimo*, e bom: "Nenhum dólar? Da China inteira?" seguido de
+"Nenhum." O problema é a dose. O aprovado tem dois em 168 falas, 1%. O primeiro roteiro
+automático veio com onze em 219, 5%, e vira cacoete mesmo quando cada um passaria sozinho.
+Teto de 3%.
+
+Quando a vontade for ecoar, acrescente em vez de devolver. No lugar de "Antes do almoço.",
+diga o que aquilo significa, ou faça a pergunta seguinte.
+
 **Número sem lastro.** Ver acima.
 
 **Falta de energia.** Ver a seção do ritmo: pisos de 38% de direções energéticas e 52%
