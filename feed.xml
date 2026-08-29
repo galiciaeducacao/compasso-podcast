@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 28 Aug 2026 17:58:53 -0300</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 09:06:55 -0300</lastBuildDate>
+    <item>
+      <title>2. O estreito aberto por declaração e o juro que veio de Wyoming</title>
+      <description>Trump declara aberto o estreito que a Marinha raciona navio a navio, o novo chefe do Fed admite subir juros e devolve o dólar aos cinco e vinte, a nuvem chinesa desembarca em São Paulo e a campanha eleitoral entra no ar. compasso.capital</description>
+      <itunes:summary>Trump declara aberto o estreito que a Marinha raciona navio a navio, o novo chefe do Fed admite subir juros e devolve o dólar aos cinco e vinte, a nuvem chinesa desembarca em São Paulo e a campanha eleitoral entra no ar. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0002/compasso-capital-0002.mp3" length="20302201" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0002</guid>
+      <pubDate>Sat, 29 Aug 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:14:05</itunes:duration>
+      <itunes:episode>2</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://galiciaeducacao.github.io/compasso-podcast/</link>
+    </item>
     <item>
       <title>1. A China pede o estreito, a Nvidia zera a China e o Brasil bate recorde de emprego</title>
       <description>Na estreia: Pequim pediu ontem a reabertura de Ormuz enquanto o Tesouro americano avisava os bancos; Irã e Omã desenham o corredor por fora de Washington; a Nvidia dobrou a receita e escreveu zero na linha da China; o Brasil registrou o menor desemprego da série e o dado durou uma manhã; e hoje, em Jackson Hole, o novo presidente do banco central americano faz o primeiro grande discurso do cargo.</description>

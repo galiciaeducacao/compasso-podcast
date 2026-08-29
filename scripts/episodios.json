@@ -1,6 +1,18 @@
 {
   "episodios": [
     {
+      "numero": 2,
+      "titulo": "2. O estreito aberto por declaração e o juro que veio de Wyoming",
+      "descricao": "Trump declara aberto o estreito que a Marinha raciona navio a navio, o novo chefe do Fed admite subir juros e devolve o dólar aos cinco e vinte, a nuvem chinesa desembarca em São Paulo e a campanha eleitoral entra no ar. compasso.capital",
+      "notas": "<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>",
+      "arquivo": "compasso-capital-0002.mp3",
+      "url": "https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0002/compasso-capital-0002.mp3",
+      "tamanho": 20302201,
+      "duracao": "00:14:05",
+      "data": "2026-08-29T07:00:00",
+      "guid": "compasso-capital-ep0002"
+    },
+    {
       "numero": 1,
       "titulo": "1. A China pede o estreito, a Nvidia zera a China e o Brasil bate recorde de emprego",
       "descricao": "Na estreia: Pequim pediu ontem a reabertura de Ormuz enquanto o Tesouro americano avisava os bancos; Irã e Omã desenham o corredor por fora de Washington; a Nvidia dobrou a receita e escreveu zero na linha da China; o Brasil registrou o menor desemprego da série e o dado durou uma manhã; e hoje, em Jackson Hole, o novo presidente do banco central americano faz o primeiro grande discurso do cargo.",
