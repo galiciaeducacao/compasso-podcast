@@ -19,6 +19,8 @@ on:
     - cron: '45 9 * * *'      # 6h45 de Brasilia
     - cron: '0 10 * * *'      # 7h00, se o primeiro nao rodar
     - cron: '20 10 * * *'     # 7h20, ultima tentativa
+  push:
+    paths: ['ops/publicar-agora.txt']   # gatilho pontual: o cron do GitHub atrasa horas
   workflow_dispatch:
     inputs:
       data:

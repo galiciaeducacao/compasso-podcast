@@ -22,6 +22,8 @@ on:
     - cron: '0 21 * * *'      # 18h00 de Brasilia
     - cron: '30 21 * * *'     # 18h30, se o primeiro nao rodar
     - cron: '30 22 * * *'     # 19h30, ultima tentativa
+  push:
+    paths: ['ops/gravar-agora.txt']   # gatilho pontual: o cron do GitHub atrasa horas
   workflow_dispatch:
     inputs:
       data:
