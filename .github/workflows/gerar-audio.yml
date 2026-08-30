@@ -63,9 +63,22 @@ jobs:
             python scripts/proximo_episodio.py
           fi
 
-      - name: Conferir o ffmpeg
+      # O ffmpeg NAO vem no runner do GitHub, e sem ele o gerador morre no primeiro
+      # corte. Isso so apareceu em 30/08, quando o servidor tentou gravar pela primeira
+      # vez de verdade: os episodios 1 e 2 foram gerados na maquina local, entao o passo
+      # central da esteira nunca tinha rodado no ambiente onde precisa rodar.
+      #
+      # O passo anterior era `ffmpeg -version | head -1`, e o pipe TROCA o codigo de
+      # saida pelo do head: a verificacao passava com o ffmpeg ausente. Verificacao que
+      # nao pode falhar nao verifica nada.
+      - name: Instalar o ffmpeg
         if: steps.alvo.outputs.tem == 'sim'
-        run: ffmpeg -version | head -1
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -version > /dev/null
+          ffprobe -version > /dev/null
+          echo "ffmpeg e ffprobe prontos: $(ffmpeg -version | head -1)"
 
       - name: Gravar o audio
         id: audio
