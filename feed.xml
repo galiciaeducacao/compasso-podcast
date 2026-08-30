@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 30 Aug 2026 06:46:36 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 09:22:15 -0300</lastBuildDate>
+    <item>
+      <title>3. A semana em que a força anunciada encolheu</title>
+      <description>O apanhado da semana: o embargo ao Irã que virou tiro de aviso, o Canadá que retaliou com data marcada, a Nvidia que dobrou a receita e apagou a China, o Brasil falando dois idiomas ao mesmo tempo e a pressão que chegou por Wyoming. compasso.capital</description>
+      <itunes:summary>O apanhado da semana: o embargo ao Irã que virou tiro de aviso, o Canadá que retaliou com data marcada, a Nvidia que dobrou a receita e apagou a China, o Brasil falando dois idiomas ao mesmo tempo e a pressão que chegou por Wyoming. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0003/compasso-capital-0003.mp3" length="22381758" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0003</guid>
+      <pubDate>Sun, 30 Aug 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:15:32</itunes:duration>
+      <itunes:episode>3</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://galiciaeducacao.github.io/compasso-podcast/</link>
+    </item>
     <item>
       <title>2. O estreito aberto por declaração e o juro que veio de Wyoming</title>
       <description>Trump declara aberto o estreito que a Marinha raciona navio a navio, o novo chefe do Fed admite subir juros e devolve o dólar aos cinco e vinte, a nuvem chinesa desembarca em São Paulo e a campanha eleitoral entra no ar. compasso.capital</description>

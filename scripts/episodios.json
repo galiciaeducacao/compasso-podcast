@@ -1,6 +1,18 @@
 {
   "episodios": [
     {
+      "numero": 3,
+      "titulo": "3. A semana em que a força anunciada encolheu",
+      "descricao": "O apanhado da semana: o embargo ao Irã que virou tiro de aviso, o Canadá que retaliou com data marcada, a Nvidia que dobrou a receita e apagou a China, o Brasil falando dois idiomas ao mesmo tempo e a pressão que chegou por Wyoming. compasso.capital",
+      "notas": "<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>",
+      "arquivo": "compasso-capital-0003.mp3",
+      "url": "https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0003/compasso-capital-0003.mp3",
+      "tamanho": 22381758,
+      "duracao": "00:15:32",
+      "data": "2026-08-30T07:00:00",
+      "guid": "compasso-capital-ep0003"
+    },
+    {
       "numero": 2,
       "titulo": "2. O estreito aberto por declaração e o juro que veio de Wyoming",
       "descricao": "Trump declara aberto o estreito que a Marinha raciona navio a navio, o novo chefe do Fed admite subir juros e devolve o dólar aos cinco e vinte, a nuvem chinesa desembarca em São Paulo e a campanha eleitoral entra no ar. compasso.capital",
