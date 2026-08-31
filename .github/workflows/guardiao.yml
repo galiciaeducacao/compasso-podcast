@@ -106,3 +106,27 @@ jobs:
           4. e depois: \`gh workflow run gerar-audio.yml -f data=${{ steps.alvo.outputs.data }}\`
 
           A gravacao ainda roda as 18h, 18h30 e 19h30, entao ha tempo."
+
+      - name: Avisar que a regua aprovou
+        if: steps.reguar.outputs.aprovado == 'sim'
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          python scripts/avisar.py regua ok "O roteiro de ${{ steps.alvo.outputs.data }} passou em todas as travas e seguiu para a gravacao das 18h."
+
+      - name: Avisar que a regua barrou
+        if: steps.reguar.outputs.aprovado == 'nao'
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          python scripts/avisar.py regua falhou "O roteiro de ${{ steps.alvo.outputs.data }} foi BARRADO e nao vai ao ar sem correcao. Motivos: ${{ steps.reguar.outputs.motivos }}"
+
+      - name: Avisar que nao ha roteiro nenhum
+        if: steps.reguar.outputs.faltando == 'sim'
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          python scripts/avisar.py roteiro falhou "Nao existe roteiro NEM rascunho para ${{ steps.alvo.outputs.data }}. A escrita das 15h30 nao entregou. Sem acao, amanha o programa nao sai."

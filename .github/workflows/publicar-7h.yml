@@ -152,3 +152,27 @@ jobs:
           git commit -qm "renova o feed (sem episodio novo)"
           git push -q
           echo "::notice::lastBuildDate renovado: $(grep -o '<lastBuildDate>[^<]*' feed.xml)"
+
+      - name: Avisar que o episodio entrou no ar
+        if: success() && steps.check.outputs.tem == 'sim'
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          python scripts/avisar.py feed ok "O episodio de ${{ steps.check.outputs.data }} entrou no feed e ja esta no Spotify. Ouca em https://galiciaeducacao.github.io/compasso-podcast/"
+
+      - name: Avisar que nao havia episodio para publicar
+        if: success() && steps.check.outputs.tem == 'nao'
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          python scripts/avisar.py feed pulou "Nenhum episodio esperando publicacao. HOJE O PROGRAMA NAO SAI: a falha foi antes, na escrita ou na gravacao de ontem."
+
+      - name: Avisar que a publicacao falhou
+        if: failure()
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          python scripts/avisar.py feed falhou "O episodio de ${{ steps.check.outputs.data }} NAO entrou no feed. O audio existe, so nao foi publicado. Log em ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

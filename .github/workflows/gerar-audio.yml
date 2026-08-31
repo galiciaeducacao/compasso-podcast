@@ -127,6 +127,30 @@ jobs:
           git commit -m "audio do episodio ${{ steps.alvo.outputs.numero }} pronto, aguardando as 7h"
           git push
 
+      - name: Avisar que a gravacao deu certo
+        if: steps.audio.outputs.gerou == 'sim'
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          python scripts/avisar.py audio ok "Episodio ${{ steps.alvo.outputs.numero }} de ${{ steps.alvo.outputs.data }} gravado e aprovado no QA. Duracao ${{ steps.audio.outputs.duracao }}. Entra no feed as 6h45."
+
+      - name: Avisar que nao havia o que gravar
+        if: steps.alvo.outputs.tem != 'sim'
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          python scripts/avisar.py audio pulou "Nenhum roteiro aprovado esperando gravacao. Se voce esperava episodio amanha, o passo das 15h30 nao entregou."
+
+      - name: Avisar que a gravacao falhou
+        if: failure() && steps.alvo.outputs.tem == 'sim'
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          python scripts/avisar.py audio falhou "O episodio ${{ steps.alvo.outputs.numero }} de ${{ steps.alvo.outputs.data }} NAO foi gravado. Nada entrou no feed, entao nao ha nada quebrado no ar. Log em ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
       # Dia sem episodio nunca pode acontecer em silencio: ninguem investiga o que nao
       # viu. Se a gravacao ou o QA falhou, abre issue e o GitHub avisa por e-mail.
       - name: Avisar que hoje nao tem episodio, e por que
