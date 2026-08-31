@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 31 Aug 2026 06:46:18 -0300</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2026 11:27:55 -0300</lastBuildDate>
+    <item>
+      <title>4. O que ficou de pé, e o que esta semana decide</title>
+      <description>Segunda tem formato próprio: primeiro o fechamento da semana passada, o embargo sem banco, a lista canadense com data, o zero da Nvidia na China e o retrato duplo brasileiro; depois a agenda, que começa hoje às duas e meia na mesa do tarifaço. compasso.capital</description>
+      <itunes:summary>Segunda tem formato próprio: primeiro o fechamento da semana passada, o embargo sem banco, a lista canadense com data, o zero da Nvidia na China e o retrato duplo brasileiro; depois a agenda, que começa hoje às duas e meia na mesa do tarifaço. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0004/compasso-capital-0004.mp3" length="20815665" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0004</guid>
+      <pubDate>Mon, 31 Aug 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:14:27</itunes:duration>
+      <itunes:episode>4</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://galiciaeducacao.github.io/compasso-podcast/</link>
+    </item>
     <item>
       <title>3. A semana em que a força anunciada encolheu</title>
       <description>O apanhado da semana: o embargo ao Irã que virou tiro de aviso, o Canadá que retaliou com data marcada, a Nvidia que dobrou a receita e apagou a China, o Brasil falando dois idiomas ao mesmo tempo e a pressão que chegou por Wyoming. compasso.capital</description>

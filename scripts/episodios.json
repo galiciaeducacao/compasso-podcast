@@ -1,6 +1,18 @@
 {
   "episodios": [
     {
+      "numero": 4,
+      "titulo": "4. O que ficou de pé, e o que esta semana decide",
+      "descricao": "Segunda tem formato próprio: primeiro o fechamento da semana passada, o embargo sem banco, a lista canadense com data, o zero da Nvidia na China e o retrato duplo brasileiro; depois a agenda, que começa hoje às duas e meia na mesa do tarifaço. compasso.capital",
+      "notas": "<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>",
+      "arquivo": "compasso-capital-0004.mp3",
+      "url": "https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0004/compasso-capital-0004.mp3",
+      "tamanho": 20815665,
+      "duracao": "00:14:27",
+      "data": "2026-08-31T07:00:00",
+      "guid": "compasso-capital-ep0004"
+    },
+    {
       "numero": 3,
       "titulo": "3. A semana em que a força anunciada encolheu",
       "descricao": "O apanhado da semana: o embargo ao Irã que virou tiro de aviso, o Canadá que retaliou com data marcada, a Nvidia que dobrou a receita e apagou a China, o Brasil falando dois idiomas ao mesmo tempo e a pressão que chegou por Wyoming. compasso.capital",
