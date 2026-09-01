@@ -62,19 +62,27 @@ def digitos_por_extenso(texto):
     limpo = re.sub(r"\bvirgula\b", " virg ", limpo)
     palavras = re.findall(r"[a-z\u00e0-\u00fa]+", limpo)
     saida, cadeia, grupo, viu = [], "", 0, False
+    aberto = False   # o grupo comecou, mesmo que valha zero
 
     def fechar_grupo():
         """dentro do grupo se SOMA (sessenta e cinco = 65); entre grupos se CONCATENA
-        (onze | dois = 112), que e como o site escreve o decimal"""
-        nonlocal cadeia, grupo
-        if grupo:
+        (onze | dois = 112), que e como o site escreve o decimal.
+
+        O grupo fecha pelo que foi DITO, nao pelo valor: "zero virgula quarenta e sete"
+        tem um grupo zero antes da virgula, e o site escreve "0,47". Testar `if grupo`
+        apagava esse zero e produzia "47", que nao casa com "047" nem por prefixo. O
+        defeito passava despercebido porque todo decimal de uma casa ("zero virgula
+        cinco") virava cadeia de um digito, curta demais para a regra 6 conferir.
+        """
+        nonlocal cadeia, grupo, aberto
+        if aberto:
             cadeia += str(grupo)
-            grupo = 0
+            grupo, aberto = 0, False
 
     for p_ in palavras:
-        if p_ in UNI: grupo += UNI[p_]; viu = True
-        elif p_ in DEZ: grupo += DEZ[p_]; viu = True
-        elif p_ in CEM: grupo += CEM[p_]; viu = True
+        if p_ in UNI: grupo += UNI[p_]; viu = aberto = True
+        elif p_ in DEZ: grupo += DEZ[p_]; viu = aberto = True
+        elif p_ in CEM: grupo += CEM[p_]; viu = aberto = True
         elif p_ in ESCALA:
             # a escala nao entra na cadeia: "noventa e seis bilhoes" casa com o
             # "96,2 bilhoes" do site pela cadeia "96"
