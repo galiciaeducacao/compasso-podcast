@@ -210,6 +210,9 @@ def main():
         blocos = []
 
     todas = [t for b in blocos for _, t in b["falas"]]
+    # quem diz cada fala, na mesma ordem de `todas`: a regra 4c precisa saber se a
+    # voz mudou, porque jogral e devolver a palavra do OUTRO, nao retomar a propria
+    quem = [q for b in blocos for q, _ in b["falas"]]
 
     # ---------- 1. o bloco cabe numa chamada so? ----------
     # Nao e um teto fixo. 2000 e o limite duro da API por chamada e 1900 e a margem
@@ -318,6 +321,52 @@ def main():
             f"{len(ecos)} falas de {len(todas)} ({len(ecos)/len(todas):.0%}) so devolvem "
             f"palavras da fala anterior, sem acrescentar (teto 3%, o episodio aprovado "
             f"tem 1%). Vira cacoete. Falas: {ecos[:8]}")
+
+    # ---------- 4c. JOGRAL: pegar a palavra da fala anterior e devolver ----------
+    # Regra do Paulo, 01/09, depois de ouvir o episodio 5: "proibido jogral, proibido
+    # comecar uma frase com a palavra dita na fala anterior".
+    #
+    # O QUE E. A fala seguinte agarra a ultima palavra da anterior e a devolve na
+    # abertura, encadeando as vozes pela ponta:
+    #   HELENA: a semana ja comecou QUENTE.      DAVI: QUENTE quanto?
+    #   HELENA: a mesa finalmente SENTOU.        DAVI: SENTOU ontem?
+    #   DAVI: Sentou ONTEM?                      HELENA: ONTEM, as duas e meia.
+    # Tres falas presas pela ponta uma na outra. E recitacao escolar, nao conversa.
+    #
+    # POR QUE A 4b NAO PEGAVA. Aquela so reprova fala que e SUBCONJUNTO da anterior.
+    # "Quente quanto?" acrescenta "quanto", entao escapava. Passaram 42 casos no
+    # episodio 5, contra ZERO no episodio 1, que o Paulo aprovou.
+    #
+    # POR QUE SO PALAVRA DE CONTEUDO. Comecar com "E", "Mas", "Entao", "Nao" e fala
+    # normal, e barrar isso mataria a conversa em vez de solta-la. O cacoete esta em
+    # devolver o SUBSTANTIVO, o verbo, o numero.
+    LIGACAO = {"mas", "entao", "porque", "pois", "quando", "como", "que", "quem",
+               "isso", "isto", "esse", "essa", "este", "esta", "aquele", "aquela",
+               "nao", "sim", "sempre", "ainda", "tambem", "agora", "ali", "aqui",
+               "por", "para", "pra", "com", "sem", "sobre", "entre", "desde", "ate",
+               "uma", "uns", "umas", "dos", "das", "nos", "nas", "num", "numa",
+               "ele", "ela", "eles", "elas", "voce", "gente", "davi", "helena"}
+    #
+    # SO ENTRE VOZES DIFERENTES. Jogral e alternancia: uma voz devolve a palavra da
+    # outra. A mesma voz retomando a propria palavra e enfase, e no episodio 1 aparece
+    # em falas que o Paulo aprovou. Medido: sem essa distincao a regra acusava 14 casos
+    # no episodio 1, quase todos continuacao do proprio locutor.
+    jogral = []
+    for i in range(1, len(todas)):
+        if quem[i] == quem[i - 1]:
+            continue
+        seq_b = sequencia(todas[i])
+        if not seq_b:
+            continue
+        primeira = seq_b[0]
+        if len(primeira) < 4 or primeira in LIGACAO:
+            continue
+        if primeira in set(sequencia(todas[i - 1])):
+            jogral.append((i + 1, primeira, todas[i][:52]))
+    for n, palavra, trecho in jogral:
+        problemas.append(
+            f"JOGRAL na fala {n}: comeca com '{palavra}', que acabou de ser dita na "
+            f"fala anterior: '{trecho}'. Reaja ao que foi dito, nao devolva a palavra")
 
     # ---------- 5. as tres marcas, uma por anuncio ----------
     anuncios = [b for b in blocos if b["tipo"] == "ANUNCIO"]
