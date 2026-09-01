@@ -7,7 +7,7 @@
 O feed e sempre reconstruido inteiro a partir de scripts/episodios.json, para nunca
 depender de edicao manual de XML.
 """
-import json, pathlib, re, sys
+import json, os, pathlib, re, sys
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 from xml.sax.saxutils import escape
@@ -52,7 +52,16 @@ def acrescentar(numero, titulo, descricao, duracao, tamanho, data_iso):
     ep = {"numero": numero, "titulo": titulo, "descricao": descricao,
           "notas": ("<p>Todas as análises completas, com fontes, em "
                     "<a href='https://compasso.capital'>compasso.capital</a>.</p>"),
-          "arquivo": arquivo, "url": f"{AUDIO}/{arquivo}",
+          # ENQUANTO O R2 NAO EXISTE, O RELEASE AINDA E MELHOR QUE NADA. O balde
+          # depende de um login na conta Cloudflare que tem o compasso.capital, e isso
+          # e acao humana. Apontar o feed para audio.compasso.capital antes de o
+          # endereco existir seria pior que o problema atual: hoje o episodio toca no
+          # Spotify e falha na Apple; apontando para o vazio, nao tocaria em lugar
+          # nenhum. A troca acontece sozinha quando o segredo R2_BUCKET aparecer no
+          # ambiente, sem ninguem precisar lembrar de mexer aqui.
+          "arquivo": arquivo,
+          "url": (f"{AUDIO}/{arquivo}" if os.environ.get("R2_BUCKET")
+                  else f"{RELEASES}/ep{numero:04d}/{arquivo}"),
           "tamanho": int(tamanho), "duracao": duracao, "data": data_iso,
           "guid": f"compasso-capital-ep{numero:04d}"}
     d["episodios"] = [e for e in d["episodios"] if e["numero"] != numero] + [ep]

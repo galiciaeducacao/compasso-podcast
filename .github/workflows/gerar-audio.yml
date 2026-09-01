@@ -122,8 +122,10 @@ jobs:
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
         run: |
           if [ -z "$R2_ACCOUNT_ID" ]; then
-            echo "::error::sem credencial do R2. O episodio NAO vai tocar na Apple."
-            exit 1
+            echo "::warning::sem credencial do R2: o episodio sai pelo release, toca no"
+            echo "::warning::Spotify e fica MUDO NA APPLE. Decisao do Paulo em 01/09, para"
+            echo "::warning::nao perder dia de programa enquanto o balde nao existe."
+            exit 0
           fi
           pip install --quiet boto3
           python scripts/subir_audio.py "${{ steps.audio.outputs.arquivo }}" \
