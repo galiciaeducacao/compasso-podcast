@@ -12,7 +12,7 @@
 # e o primeiro dia, de hoje em diante, com roteiro aprovado e sem episodio gravado ou
 # publicado. Assim disparo atrasado, repetido ou fora de hora acerta o mesmo alvo.
 #
-# O audio vira release, mas NAO entra no feed aqui. Quem publica e o workflow das 6h45,
+# O audio vira release, mas NAO entra no feed aqui. Quem publica e o workflow das 5h,
 # para o episodio so existir para o mundo na hora combinada.
 
 name: gerar audio (18h)
@@ -133,7 +133,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
         run: |
-          python scripts/avisar.py audio ok "Episodio ${{ steps.alvo.outputs.numero }} de ${{ steps.alvo.outputs.data }} gravado e aprovado no QA. Duracao ${{ steps.audio.outputs.duracao }}. Entra no feed as 6h45."
+          python scripts/avisar.py audio ok "Episodio ${{ steps.alvo.outputs.numero }} de ${{ steps.alvo.outputs.data }} gravado e aprovado no QA. Duracao ${{ steps.audio.outputs.duracao }}. Entra no feed as 5h e vai ao ar as 7h."
 
       - name: Avisar que nao havia o que gravar
         if: steps.alvo.outputs.tem != 'sim'

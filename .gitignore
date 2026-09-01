@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 _tmp/
 compasso-capital-*.mp3
+ops/arquivar.log

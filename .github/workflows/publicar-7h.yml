@@ -1,24 +1,32 @@
-# COMPASSO CAPITAL — publica o episodio no feed as 7h da manha.
+# COMPASSO CAPITAL — poe o episodio no feed as 5h da manha.
 #
 # O audio ja esta no ar desde as 18h da vespera, como release. O que este workflow faz
 # e acrescenta-lo ao FEED, e e isso que faz o episodio existir para o mundo: o Spotify,
 # a Apple e os demais so enxergam o que esta no feed.
 #
-# Agendado para 6h45 de proposito: o compromisso com o ouvinte e 7h, e o agendador do
-# GitHub atrasa. TRES HORARIOS, nao um: em 28/08 este workflow simplesmente NAO RODOU
-# no horario agendado, e no mesmo dia a gravacao saiu oito horas atrasada. Para um
-# programa diario, um unico disparo nao serve. Como o passo so age havendo pendente,
-# disparo repetido nao publica duas vezes.
+# POR QUE 5h E NAO 6h45. O compromisso com o ouvinte continua sendo 7h, e o pubDate
+# gravado no feed continua sendo 07:00. O que mudou e a hora de ENTRADA: entrar as 6h45
+# nao deixa margem para o agregador ler o feed e baixar o audio antes das 7h, porque
+# quem decide a hora da leitura e ele, nao nos. Duas horas de folga cobrem esse atraso
+# sem mexer no horario anunciado.
+#
+# TRES HORARIOS, nao um: em 28/08 este workflow simplesmente NAO RODOU no horario
+# agendado. Para um programa diario, um unico disparo nao serve. Como o passo so age
+# havendo pendente, disparo repetido nao publica duas vezes.
+#
+# Quem manda na hora de verdade e a rotina de nuvem, que faz push em ops/publicar-agora.txt
+# e dispara este workflow NA HORA. O cron abaixo e so a rede de baixo, porque o
+# agendador do GitHub entrega com horas de atraso. O nome do arquivo e historico.
 #
 # Se nao houver episodio pendente, sai sem fazer nada.
 
-name: publicar no feed (7h)
+name: publicar no feed (5h)
 
 on:
   schedule:
-    - cron: '45 9 * * *'      # 6h45 de Brasilia
-    - cron: '0 10 * * *'      # 7h00, se o primeiro nao rodar
-    - cron: '20 10 * * *'     # 7h20, ultima tentativa
+    - cron: '0 8 * * *'       # 5h00 de Brasilia
+    - cron: '20 8 * * *'      # 5h20, se o primeiro nao rodar
+    - cron: '40 8 * * *'      # 5h40, ultima tentativa
   push:
     paths: ['ops/publicar-agora.txt']   # gatilho pontual: o cron do GitHub atrasa horas
   workflow_dispatch:

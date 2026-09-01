@@ -31,7 +31,7 @@ PASSOS = {
     "roteiro": ("1 de 4", "Escrita do roteiro", "15h30"),
     "regua": ("2 de 4", "Regua do roteiro", "17h00"),
     "audio": ("3 de 4", "Gravacao e QA do audio", "18h00"),
-    "feed": ("4 de 4", "Publicacao no feed", "06h45"),
+    "feed": ("4 de 4", "Publicacao no feed", "05h00"),
 }
 
 
