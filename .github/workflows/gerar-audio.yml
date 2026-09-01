@@ -109,6 +109,26 @@ jobs:
             --title "Episodio ${{ steps.alvo.outputs.numero }}" \
             --notes "COMPASSO CAPITAL, ${{ steps.alvo.outputs.data }}. compasso.capital"
 
+      # O release acima e backup e historico. QUEM TOCA E O R2: o release responde
+      # Content-Type octet-stream com Content-Disposition attachment, e o player da
+      # Apple recusa ("este episodio nao pode ser reproduzido neste dispositivo",
+      # 01/09). Ver scripts/subir_audio.py para o diagnostico completo.
+      - name: Poe o audio no ar em audio.compasso.capital
+        if: steps.audio.outputs.gerou == 'sim'
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          if [ -z "$R2_ACCOUNT_ID" ]; then
+            echo "::error::sem credencial do R2. O episodio NAO vai tocar na Apple."
+            exit 1
+          fi
+          pip install --quiet boto3
+          python scripts/subir_audio.py "${{ steps.audio.outputs.arquivo }}" \
+            "$(printf 'compasso-capital-%04d.mp3' ${{ steps.alvo.outputs.numero }})"
+
       - name: Guardar os dados para a publicacao das 7h
         if: steps.audio.outputs.gerou == 'sim'
         run: |

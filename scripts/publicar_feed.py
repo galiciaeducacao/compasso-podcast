@@ -19,6 +19,17 @@ FEED = RAIZ / "feed.xml"
 SITE = "https://compasso.capital"
 PAGES = "https://galiciaeducacao.github.io/compasso-podcast"
 RELEASES = "https://github.com/galiciaeducacao/compasso-podcast/releases/download"
+
+# ONDE O AUDIO MORA PARA O OUVINTE. O release do GitHub continua sendo gerado, como
+# backup e historico, mas NAO serve para tocar: ele responde
+#   Content-Type: application/octet-stream
+#   Content-Disposition: attachment
+# ou seja, "baixe este arquivo", e nao "toque este audio". O player da Apple obedece e
+# recusa com "este episodio nao pode ser reproduzido neste dispositivo" (visto no
+# iPhone do Paulo em 01/09). O Spotify tocava porque baixa e re-hospeda por conta
+# propria; a Apple toca da origem, entao bate no problema. A URL assinada do release
+# ainda expira em cerca de uma hora, o que sozinho ja inviabilizaria.
+AUDIO = "https://audio.compasso.capital"
 TITULO, AUTOR = "COMPASSO CAPITAL", "COMPASSO"
 EMAIL = "contato@compasso.capital"
 CAPA = f"{PAGES}/capa.png"
@@ -41,7 +52,7 @@ def acrescentar(numero, titulo, descricao, duracao, tamanho, data_iso):
     ep = {"numero": numero, "titulo": titulo, "descricao": descricao,
           "notas": ("<p>Todas as análises completas, com fontes, em "
                     "<a href='https://compasso.capital'>compasso.capital</a>.</p>"),
-          "arquivo": arquivo, "url": f"{RELEASES}/ep{numero:04d}/{arquivo}",
+          "arquivo": arquivo, "url": f"{AUDIO}/{arquivo}",
           "tamanho": int(tamanho), "duracao": duracao, "data": data_iso,
           "guid": f"compasso-capital-ep{numero:04d}"}
     d["episodios"] = [e for e in d["episodios"] if e["numero"] != numero] + [ep]
@@ -67,7 +78,7 @@ def gerar():
       <itunes:episode>{e['numero']}</itunes:episode>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>false</itunes:explicit>
-      <link>{PAGES}/</link>
+      <link>{SITE}</link>
     </item>""")
 
     FEED.write_text(f"""<?xml version="1.0" encoding="UTF-8"?>
