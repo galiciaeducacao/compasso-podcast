@@ -16,6 +16,25 @@ vale buscar em outro lugar, não vale arredondar para soar melhor.
 
 O episódio sempre manda o ouvinte ao site para o detalhamento.
 
+### O balanço do mês NÃO entra no podcast
+
+Regra do paulo, 01/09/2026. **No dia 1º de cada mês a rotina do site publica as MENSAIS
+em vez das diárias**, cobrindo o mês que terminou. O podcast NÃO comenta essas.
+
+Aconteceu em 01/09: o roteiro do dia 2 nasceu abrindo com "o mês em que a ameaça virou
+tabela de preços", um fechamento de agosto, no dia em que o Brasil tinha saído o PIB, uma
+decisão do ministro Alexandre de Moraes e a liberação de recurso para Flávio Bolsonaro. O
+paulo vetou na leitura: **programa diário não abre com balanço do mês.** A régua tinha
+aprovado, porque o roteiro era fiel à fonte; o defeito estava na fonte do dia, não no
+texto.
+
+**O que fazer quando a pasta do dia só tiver mensais:** não escreva o episódio com elas.
+Avise no resumo final, com todas as letras, que a apuração do dia é mensal e que o
+episódio depende de uma rodada diária. Um dia sem episódio é problema conhecido; um
+matinal comentando o mês passado é problema que o ouvinte percebe.
+
+O podcast acompanha a análise **diária** e, no domingo, a **semanal**. Nunca a mensal.
+
 ## A regra temporal, que é onde todo mundo erra
 
 A análise é da **véspera** e o programa vai ao ar às 7h do dia seguinte. Então o texto
