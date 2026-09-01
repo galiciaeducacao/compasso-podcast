@@ -67,8 +67,18 @@ def transcrever(mp3, destino, key):
 
 
 def main():
-    if not DRIVE.is_dir():
-        sys.exit(f"o Drive nao esta acessivel em {DRIVE}")
+    # O Drive do Google monta DEPOIS do login, e a tarefa das 8h chegou antes dele em
+    # 01/09: saiu com "o Drive nao esta acessivel" e o episodio 5 nao foi arquivado.
+    # Esperar alguns minutos custa nada e resolve a corrida; desistir na primeira
+    # tentativa custa um dia de arquivo.
+    for tentativa in range(20):
+        if DRIVE.is_dir():
+            break
+        if tentativa == 0:
+            print(f"o Drive ainda nao montou em {DRIVE}; aguardando ate 10 minutos...")
+        time.sleep(30)
+    else:
+        sys.exit(f"o Drive nao apareceu em {DRIVE} depois de 10 minutos")
     episodios = json.loads((RAIZ / "scripts" / "episodios.json")
                            .read_text(encoding="utf-8"))["episodios"]
     key = chave_elevenlabs()

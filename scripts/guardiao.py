@@ -351,6 +351,23 @@ def main():
     # outra. A mesma voz retomando a propria palavra e enfase, e no episodio 1 aparece
     # em falas que o Paulo aprovou. Medido: sem essa distincao a regra acusava 14 casos
     # no episodio 1, quase todos continuacao do proprio locutor.
+    #
+    # COMPARA RAIZ, NAO A FORMA EXATA. O Paulo pegou "a mesa sentou" / "sentaram de
+    # verdade" numa versao que esta regra tinha aprovado: sao o mesmo verbo em pessoas
+    # diferentes, e comparar string com string nao ve isso. Vale para plural tambem
+    # ("lance"/"lances"). A raiz e aproximada de proposito: tirar a terminacao pega o
+    # cacoete sem precisar de dicionario.
+    def raiz(w):
+        for suf in ("assem", "essem", "issem", "aremos", "eremos", "iremos",
+                    "aram", "eram", "iram", "ando", "endo", "indo",
+                    "aria", "eria", "iria", "amos", "emos", "imos",
+                    "ados", "adas", "idos", "idas", "ava", "iam",
+                    "ado", "ada", "ido", "ida", "ou", "ei", "am",
+                    "ar", "er", "ir", "es", "as", "os", "a", "e", "o", "s"):
+            if w.endswith(suf) and len(w) - len(suf) >= 3:
+                return w[:len(w) - len(suf)]
+        return w
+
     jogral = []
     for i in range(1, len(todas)):
         if quem[i] == quem[i - 1]:
@@ -361,7 +378,7 @@ def main():
         primeira = seq_b[0]
         if len(primeira) < 4 or primeira in LIGACAO:
             continue
-        if primeira in set(sequencia(todas[i - 1])):
+        if raiz(primeira) in {raiz(w) for w in sequencia(todas[i - 1])}:
             jogral.append((i + 1, primeira, todas[i][:52]))
     for n, palavra, trecho in jogral:
         problemas.append(
