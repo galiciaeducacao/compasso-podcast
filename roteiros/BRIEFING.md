@@ -117,11 +117,51 @@ Direção energética é `[excited]`, `[very excited]`, `[amused]`, `[energetic]
 
 **Riso não é o que dá vida.** Medido: o episódio aprovado tem uma risada em 168 turnos,
 exatamente a mesma proporção do que soou monótono. A energia vem da **direção** e do
-**bate-bola**, não da risada.
+**contraste**, não da risada nem da troca de voz.
 
 O que torna um trecho vivo é a fala curta: reação, interrupção, complemento em três
-palavras. Fala longa vira leitura em voz alta, e duas seguidas viram aula. Se um raciocínio
-precisa de cinco linhas, quebre em três falas com o outro reagindo no meio.
+palavras. Fala longa vira leitura em voz alta. Se um raciocínio precisa de cinco linhas,
+quebre em várias falas **da mesma voz**, uma embaixo da outra.
+
+**Quebrar em falas não é alternar.** Esta frase, na versão anterior deste briefing,
+mandava quebrar "com o outro reagindo no meio", e foi ela que produziu o pior defeito que
+o programa já teve no ar.
+
+### Quem fala o quê
+
+**O Davi é o apresentador, não o co-narrador.** Ele chama o lance, provoca, e sai da
+frente. A Helena conta a notícia inteira, em três a cinco falas seguidas, sem ninguém
+interrompendo.
+
+O Davi entra por um destes três motivos, e por nenhum outro:
+
+1. **Chamar**: "Ormuz, Helena. Conta essa inteira."
+2. **Abrir análise**: uma pergunta que faz a Helena interpretar, não recitar. "Por que
+   emprego é pedágio de empresa de tecnologia?" abre. "E o quarto lance?" só empurra.
+3. **Chamar o VAR**, quando o assunto pede julgamento e não narração.
+
+Ele NÃO entra para confirmar o que ela acabou de dizer, nem para pedir o próximo número.
+
+Medido, no episódio 5 que foi ao ar contra a versão que o paulo aprovou em 01/09:
+
+| | foi ao ar | aprovado |
+|---|---|---|
+| falas no total | 311 | **230** |
+| fatia das falas que é do DAVI | 51% | **33%** |
+| alternância estrita de voz | 96% | **59%** |
+| maior sequência seguida da HELENA | 2 falas | **5 falas** |
+| média de palavras do DAVI | 5,6 | **9,4** |
+| falas do DAVI que são pergunta | 70% | **38%** |
+
+Os dois duram quinze minutos. A diferença não é tamanho, é quem segura a palavra.
+
+**Clareza vem antes de tudo.** Duas frases foram reprovadas na leitura do episódio 5, e
+nenhuma régua pega esse tipo de defeito:
+
+- *"hoje tem número nosso também"*: o ouvinte não tem como saber que "número" é o PIB,
+  que ainda nem foi mencionado. Virou "hoje sai o número da economia brasileira".
+- *"a mesa do tarifaço sentou"*: mesa não senta. Metonímia que não fecha soa como erro.
+  Virou "a negociação do tarifaço começou".
 
 Isso não tem a ver com o tamanho do episódio. Um episódio de dezessete minutos pode ser
 vivo, e um de dez pode ser monótono.
