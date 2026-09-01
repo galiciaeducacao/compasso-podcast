@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 31 Aug 2026 14:38:32 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 06:46:04 -0300</lastBuildDate>
+    <item>
+      <title>5. O fogo volta ao Golfo e o Brasil mede o próprio tamanho</title>
+      <description>Caças americanos destroem lançadores de minas em Ormuz e o Irã responde com mísseis na Jordânia, o barril volta aos noventa e três dólares, Xi abre a cúpula de Bishkek com a fábrica chinesa em contração, a maior estreia em bolsa da história declara medo de revolta popular, e hoje o Brasil mede o próprio crescimento depois da primeira mesa do tarifaço. compasso.capital</description>
+      <itunes:summary>Caças americanos destroem lançadores de minas em Ormuz e o Irã responde com mísseis na Jordânia, o barril volta aos noventa e três dólares, Xi abre a cúpula de Bishkek com a fábrica chinesa em contração, a maior estreia em bolsa da história declara medo de revolta popular, e hoje o Brasil mede o próprio crescimento depois da primeira mesa do tarifaço. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0005/compasso-capital-0005.mp3" length="21473951" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0005</guid>
+      <pubDate>Tue, 01 Sep 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:14:54</itunes:duration>
+      <itunes:episode>5</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://galiciaeducacao.github.io/compasso-podcast/</link>
+    </item>
     <item>
       <title>4. O que ficou de pé, e o que esta semana decide</title>
       <description>Segunda tem formato próprio: primeiro o fechamento da semana passada, o embargo sem banco, a lista canadense com data, o zero da Nvidia na China e o retrato duplo brasileiro; depois a agenda, que começa hoje às duas e meia na mesa do tarifaço. compasso.capital</description>

@@ -1,6 +1,18 @@
 {
   "episodios": [
     {
+      "numero": 5,
+      "titulo": "5. O fogo volta ao Golfo e o Brasil mede o próprio tamanho",
+      "descricao": "Caças americanos destroem lançadores de minas em Ormuz e o Irã responde com mísseis na Jordânia, o barril volta aos noventa e três dólares, Xi abre a cúpula de Bishkek com a fábrica chinesa em contração, a maior estreia em bolsa da história declara medo de revolta popular, e hoje o Brasil mede o próprio crescimento depois da primeira mesa do tarifaço. compasso.capital",
+      "notas": "<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>",
+      "arquivo": "compasso-capital-0005.mp3",
+      "url": "https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0005/compasso-capital-0005.mp3",
+      "tamanho": 21473951,
+      "duracao": "00:14:54",
+      "data": "2026-09-01T07:00:00",
+      "guid": "compasso-capital-ep0005"
+    },
+    {
       "numero": 4,
       "titulo": "4. O que ficou de pé, e o que esta semana decide",
       "descricao": "Segunda tem formato próprio: primeiro o fechamento da semana passada, o embargo sem banco, a lista canadense com data, o zero da Nvidia na China e o retrato duplo brasileiro; depois a agenda, que começa hoje às duas e meia na mesa do tarifaço. compasso.capital",
