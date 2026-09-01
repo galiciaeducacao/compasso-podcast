@@ -1,0 +1,80 @@
+# COMPASSO CAPITAL — mantem o audio dentro da faixa gratuita do R2.
+#
+# POR QUE ISTO EXISTE. A faixa gratuita do R2 e 10 GB-mes, e a saida de dados e
+# gratuita sempre. Um episodio pesa ~21 MB e sai um por dia: ~640 MB por mes. Sem
+# faxina o balde encosta nos 10 GB por volta do decimo sexto mes e o programa comeca a
+# pagar em algum momento de 2027. Com ela, estaciona em ~3,8 GB e nao passa nunca.
+#
+# O QUE ELE APAGA. So o que ja saiu da janela de 180 episodios (seis meses), e so
+# depois de confirmar por HTTP que o release do GitHub daquele episodio ainda responde.
+# O release e o arquivo frio: nao conta em cota nenhuma e guarda o programa inteiro.
+# Sem essa confirmacao, o episodio NAO e apagado.
+#
+# HORARIO: domingo de manha, longe das 5h (publicacao) e das 18h (gravacao), para nunca
+# disputar o mesmo push com elas.
+
+name: limpar o R2 (semanal)
+
+on:
+  schedule:
+    - cron: '0 13 * * 0'      # domingo, 10h de Brasilia
+  workflow_dispatch:
+    inputs:
+      conferir:
+        description: 'So mostrar o que faria, sem apagar (sim/nao)'
+        required: false
+        default: 'sim'
+
+permissions:
+  contents: write
+
+jobs:
+  limpar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Limpar o que saiu da janela
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          if [ -z "$R2_ACCOUNT_ID" ]; then
+            echo "::notice::Sem credencial do R2. Nada a limpar."
+            exit 0
+          fi
+          pip install --quiet boto3
+          if [ "${{ inputs.conferir }}" = "sim" ]; then
+            python scripts/limpar_r2.py --conferir
+          else
+            python scripts/limpar_r2.py
+          fi
+
+      - name: Registrar o que saiu do feed
+        if: inputs.conferir != 'sim'
+        run: |
+          if git diff --quiet feed.xml scripts/episodios.json; then
+            echo "::notice::Nada mudou: o balde ainda nao encheu."
+            exit 0
+          fi
+          git config user.name "COMPASSO"
+          git config user.email "contato@compasso.capital"
+          git add feed.xml scripts/episodios.json
+          git commit -qm "faxina do R2: episodios antigos saem do balde e do feed"
+          # a publicacao das 5h tambem faz push neste repo; rebase evita perder a corrida
+          git pull --rebase -q
+          git push -q
+
+      - name: Avisar se a faxina falhou
+        if: failure()
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          python scripts/avisar.py r2 falhou "A faxina semanal do R2 falhou. Nada foi apagado por engano: o script so apaga depois de confirmar o release. Se o balde encher, o R2 passa a cobrar. Log em ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

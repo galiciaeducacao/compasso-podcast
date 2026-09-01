@@ -76,19 +76,44 @@ jobs:
             echo "::notice::Nenhum episodio esperando publicacao."
           fi
 
+      # A URL CONFERIDA TEM QUE SER A MESMA QUE VAI PARA O FEED. Quem escolhe e
+      # publicar_feed.acrescentar(), pela presenca de R2_BUCKET no ambiente. Conferir
+      # aqui o release enquanto o feed publica o R2 seria conferir o arquivo errado --
+      # e passaria, porque o release responde 200 de qualquer jeito.
+      #
+      # E 200 NAO BASTA. O release respondia 200 o tempo todo e mesmo assim o episodio
+      # nao tocava na Apple, porque vinha como octet-stream com attachment. O que
+      # decide se toca e o Content-Type.
       - name: Conferir que o audio esta mesmo no ar
         if: steps.check.outputs.tem == 'sim'
+        env:
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
         run: |
-          NUM=$(python -c "import json;print(json.load(open('pendentes/${{ steps.check.outputs.data }}.json'))['numero'])")
-          TAG=$(printf "ep%04d" $NUM)
-          URL="https://github.com/${{ github.repository }}/releases/download/$TAG/$(printf 'compasso-capital-%04d.mp3' $NUM)"
+          URL=$(python -c "
+          import json, os
+          n = json.load(open('pendentes/${{ steps.check.outputs.data }}.json'))['numero']
+          arq = 'compasso-capital-%04d.mp3' % n
+          print('https://audio.compasso.capital/' + arq if os.environ.get('R2_BUCKET')
+                else 'https://github.com/${{ github.repository }}/releases/download/ep%04d/%s' % (n, arq))")
           CODE=$(curl -sIL -o /dev/null -w "%{http_code}" "$URL")
-          echo "audio em $URL responde $CODE"
+          TIPO=$(curl -sIL -o /dev/null -w "%{content_type}" "$URL")
+          echo "audio em $URL responde $CODE, Content-Type: $TIPO"
           # publicar no feed um audio que nao baixa quebraria o episodio em todos os tocadores
           [ "$CODE" = "200" ] || { echo "::error::Audio inacessivel. Publicacao abortada."; exit 1; }
+          case "$TIPO" in
+            audio/mpeg*) echo "::notice::Servido como audio: toca na Apple e no Spotify." ;;
+            *) echo "::warning::Content-Type $TIPO, esperado audio/mpeg. O episodio vai ao ar, mas a Apple provavelmente recusa. Conferir o R2." ;;
+          esac
 
+      # R2_BUCKET PRECISA ESTAR AQUI, e nao so no workflow das 18h. E este passo que
+      # chama acrescentar(), e e acrescentar() que decide se o enclosure aponta para
+      # audio.compasso.capital ou para o release. Sem esta variavel o audio subiria
+      # para o R2 toda noite e o feed continuaria mandando a Apple no release: o
+      # problema seguiria de pe, em silencio, com tudo aparentemente configurado.
       - name: Acrescentar ao feed e publicar
         if: steps.check.outputs.tem == 'sim'
+        env:
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
         run: |
           python - <<'FIM'
           import json, pathlib, subprocess, sys

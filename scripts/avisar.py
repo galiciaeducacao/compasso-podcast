@@ -32,6 +32,9 @@ PASSOS = {
     "regua": ("2 de 4", "Regua do roteiro", "17h00"),
     "audio": ("3 de 4", "Gravacao e QA do audio", "18h00"),
     "feed": ("4 de 4", "Publicacao no feed", "05h00"),
+    # fora da esteira diaria: roda uma vez por semana, so para o balde do audio nao
+    # crescer ate sair da faixa gratuita do R2
+    "r2": ("semanal", "Faxina do audio no R2", "domingo, 10h"),
 }
 
 

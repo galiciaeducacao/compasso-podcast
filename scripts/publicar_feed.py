@@ -71,7 +71,11 @@ def acrescentar(numero, titulo, descricao, duracao, tamanho, data_iso):
 
 
 def gerar():
-    eps = carregar()["episodios"]
+    # Episodio marcado como arquivado saiu do balde por scripts/limpar_r2.py e nao tem
+    # mais audio servido. Ele PRECISA sair do feed junto: enclosure apontando para
+    # arquivo que nao existe quebra o episodio em todos os tocadores. O registro
+    # continua em episodios.json, o que preserva a numeracao e o historico.
+    eps = [e for e in carregar()["episodios"] if not e.get("arquivado")]
     itens = []
     for e in eps:
         dt = datetime.fromisoformat(e["data"]).replace(tzinfo=FUSO)
