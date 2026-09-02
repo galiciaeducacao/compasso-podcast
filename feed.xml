@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 01 Sep 2026 11:18:16 -0300</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 05:06:25 -0300</lastBuildDate>
+    <item>
+      <title>6. O embargo virou bombardeio e o Brasil cresceu apanhando</title>
+      <description>Ao meio-dia de Washington o embargo ao Irã virou campanha militar, Teerã devolveu de míssil na Jordânia e o barril foi aos noventa e três dólares, Pequim passou o dia falando de multipolaridade sem citar o aliado bombardeado, um laboratório de fronteira parou o próprio treino e Bruxelas enquadrou o ChatGPT, e o Brasil cresceu meio por cento com a família consumindo menos. compasso.capital</description>
+      <itunes:summary>Ao meio-dia de Washington o embargo ao Irã virou campanha militar, Teerã devolveu de míssil na Jordânia e o barril foi aos noventa e três dólares, Pequim passou o dia falando de multipolaridade sem citar o aliado bombardeado, um laboratório de fronteira parou o próprio treino e Bruxelas enquadrou o ChatGPT, e o Brasil cresceu meio por cento com a família consumindo menos. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://github.com/galiciaeducacao/compasso-podcast/releases/download/ep0006/compasso-capital-0006.mp3" length="22052615" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0006</guid>
+      <pubDate>Wed, 02 Sep 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:15:18</itunes:duration>
+      <itunes:episode>6</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>5. O fogo volta ao Golfo e o Brasil mede o próprio tamanho</title>
       <description>Caças americanos destroem lançadores de minas em Ormuz e o Irã responde com mísseis na Jordânia, o barril volta aos noventa e três dólares, Xi abre a cúpula de Bishkek com a fábrica chinesa em contração, a maior estreia em bolsa da história declara medo de revolta popular, e hoje o Brasil mede o próprio crescimento depois da primeira mesa do tarifaço. compasso.capital</description>
@@ -31,7 +45,7 @@
       <itunes:episode>5</itunes:episode>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>false</itunes:explicit>
-      <link>https://galiciaeducacao.github.io/compasso-podcast/</link>
+      <link>https://compasso.capital</link>
     </item>
     <item>
       <title>4. O que ficou de pé, e o que esta semana decide</title>
@@ -45,7 +59,7 @@
       <itunes:episode>4</itunes:episode>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>false</itunes:explicit>
-      <link>https://galiciaeducacao.github.io/compasso-podcast/</link>
+      <link>https://compasso.capital</link>
     </item>
     <item>
       <title>3. A semana em que a força anunciada encolheu</title>
@@ -59,7 +73,7 @@
       <itunes:episode>3</itunes:episode>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>false</itunes:explicit>
-      <link>https://galiciaeducacao.github.io/compasso-podcast/</link>
+      <link>https://compasso.capital</link>
     </item>
     <item>
       <title>2. O estreito aberto por declaração e o juro que veio de Wyoming</title>
@@ -73,7 +87,7 @@
       <itunes:episode>2</itunes:episode>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>false</itunes:explicit>
-      <link>https://galiciaeducacao.github.io/compasso-podcast/</link>
+      <link>https://compasso.capital</link>
     </item>
     <item>
       <title>1. A China pede o estreito, a Nvidia zera a China e o Brasil bate recorde de emprego</title>
@@ -87,7 +101,7 @@
       <itunes:episode>1</itunes:episode>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>false</itunes:explicit>
-      <link>https://galiciaeducacao.github.io/compasso-podcast/</link>
+      <link>https://compasso.capital</link>
     </item>
   </channel>
 </rss>
