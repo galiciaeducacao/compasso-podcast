@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 02 Sep 2026 12:52:45 -0300</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 05:06:23 -0300</lastBuildDate>
+    <item>
+      <title>7. O chip que a América não vende e a bolsa que leu a urna</title>
+      <description>Xangai fez fila por um chip e transformou uma estreia em bolsa num referendo sobre o desacople, o Golfo teve a noite mais dura desde julho com o barril acima de noventa e cinco dólares, a OpenAI anunciou o primeiro modelo que cruzou o próprio limiar crítico de risco cibernético e vai vendê-lo assim mesmo, e no Brasil a indústria mal andou de manhã enquanto a bolsa disparava à tarde lendo uma pesquisa eleitoral. compasso.capital</description>
+      <itunes:summary>Xangai fez fila por um chip e transformou uma estreia em bolsa num referendo sobre o desacople, o Golfo teve a noite mais dura desde julho com o barril acima de noventa e cinco dólares, a OpenAI anunciou o primeiro modelo que cruzou o próprio limiar crítico de risco cibernético e vai vendê-lo assim mesmo, e no Brasil a indústria mal andou de manhã enquanto a bolsa disparava à tarde lendo uma pesquisa eleitoral. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://audio.compasso.capital/compasso-capital-0007.mp3" length="22924060" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0007</guid>
+      <pubDate>Thu, 03 Sep 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:15:55</itunes:duration>
+      <itunes:episode>7</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>6. O embargo virou bombardeio e o Brasil cresceu apanhando</title>
       <description>Ao meio-dia de Washington o embargo ao Irã virou campanha militar, Teerã devolveu de míssil na Jordânia e o barril foi aos noventa e três dólares, Pequim passou o dia falando de multipolaridade sem citar o aliado bombardeado, um laboratório de fronteira parou o próprio treino e Bruxelas enquadrou o ChatGPT, e o Brasil cresceu meio por cento com a família consumindo menos. compasso.capital</description>
