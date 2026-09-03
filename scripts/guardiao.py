@@ -436,7 +436,7 @@ def main():
             problemas.append(
                 f"BLOCO {b['n']}: o Davi fecha com {cauda} falas depois da Helena (maximo 1)")
         for i, (q, t) in enumerate(b["falas"]):
-            if q == "DAVI" and primeira_h < i < ultima_h and not re.search(r"var", norm(t)):
+            if q == "DAVI" and primeira_h < i < ultima_h and not re.search(r"\bvar\b", norm(t)):
                 problemas.append(
                     f"BLOCO {b['n']}: o Davi entra no meio da analise: '{t[:60]}'. "
                     f"A analise segue completa; ele chama o lance e sai")
