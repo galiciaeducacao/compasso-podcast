@@ -19,6 +19,8 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 LEXICO = {k: v for k, v in json.loads((RAIZ / "scripts" / "lexico_pronuncia.json")
           .read_text(encoding="utf-8")).items() if not k.startswith("_")}
 TETO_BLOCO = 1900   # margem de lote do gerador; o priming conta junto, ver regra 1
+HOST, ANALISTA = "HELENA", "DAVI"   # decisao do Paulo, 03/09/2026, ouvindo tres testes:
+                                    # a Helena apresenta e chama os lances, o Davi analisa
 TETO_RISO = 0.15
 QUARENTENA = 30          # episodios em que uma reacao nao pode se repetir
 CUSTO_ESTIMADO = 15000
@@ -418,32 +420,36 @@ def main():
     #
     # Blocos de analise sao os BLOCO de numero 2 em diante, menos o FECHO. O 0 e a
     # abertura e o 1 e a escalacao, que sao conversa por desenho.
+    #
+    # PAPEIS (03/09/2026, a noite): o Paulo ouviu tres testes da mesma reescrita e escolheu
+    # a Helena como ancora e o Davi como analista. Os comentarios acima falam do Davi
+    # apresentando porque foi assim ate o episodio 8; a regra le HOST e ANALISTA.
     for b in blocos:
         if b["tipo"] != "BLOCO" or b["n"] < 2 or "fecho" in norm(b.get("titulo", "")):
             continue
         quem_b = [q for q, _ in b["falas"]]
-        if "HELENA" not in quem_b:
-            problemas.append(f"BLOCO {b['n']}: bloco de analise sem nenhuma fala da Helena")
+        if ANALISTA not in quem_b:
+            problemas.append(f"BLOCO {b['n']}: bloco de analise sem nenhuma fala do analista ({ANALISTA})")
             continue
-        primeira_h = quem_b.index("HELENA")
-        ultima_h = len(quem_b) - 1 - quem_b[::-1].index("HELENA")
+        primeira_h = quem_b.index(ANALISTA)
+        ultima_h = len(quem_b) - 1 - quem_b[::-1].index(ANALISTA)
         if primeira_h > 2:
             problemas.append(
-                f"BLOCO {b['n']}: o Davi abre com {primeira_h} falas antes da Helena "
-                f"(maximo 2: ele chama o lance e sai)")
+                f"BLOCO {b['n']}: {HOST} abre com {primeira_h} falas antes de {ANALISTA} "
+                f"(maximo 2: quem apresenta chama o lance e sai)")
         cauda = len(quem_b) - 1 - ultima_h
         if cauda > 1:
             problemas.append(
-                f"BLOCO {b['n']}: o Davi fecha com {cauda} falas depois da Helena (maximo 1)")
+                f"BLOCO {b['n']}: {HOST} fecha com {cauda} falas depois de {ANALISTA} (maximo 1)")
         for i, (q, t) in enumerate(b["falas"]):
-            if q == "DAVI" and primeira_h < i < ultima_h and not re.search(r"\bvar\b", norm(t)):
+            if q == HOST and primeira_h < i < ultima_h and not re.search(r"\bvar\b", norm(t)):
                 problemas.append(
-                    f"BLOCO {b['n']}: o Davi entra no meio da analise: '{t[:60]}'. "
-                    f"A analise segue completa; ele chama o lance e sai")
-        helena = quem_b.count("HELENA")
-        if helena < 5:
+                    f"BLOCO {b['n']}: {HOST} entra no meio da analise: '{t[:60]}'. "
+                    f"A analise segue completa; quem apresenta chama o lance e sai")
+        n_analista = quem_b.count(ANALISTA)
+        if n_analista < 5:
             problemas.append(
-                f"BLOCO {b['n']}: so {helena} falas da Helena (minimo 5): bloco fatiado "
+                f"BLOCO {b['n']}: so {n_analista} falas de {ANALISTA} (minimo 5): bloco fatiado "
                 f"em pergunta e resposta")
 
     # ---------- 4e. A MESMA VOZ NAO REPETE O QUE ACABOU DE DIZER ----------

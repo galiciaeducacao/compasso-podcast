@@ -73,7 +73,7 @@ semana ("na quarta", "na sexta") em vez de "ontem", porque o material é de vár
 
 ## A forma
 
-Dois apresentadores: **DAVI**, âncora que chama os lances, e **HELENA**, analista, que conta cada notícia inteira.
+Dois apresentadores: **HELENA**, âncora que chama os lances e lê os oferecimentos, e **DAVI**, analista, que conta cada notícia inteira. (Decisão do paulo em 03/09/2026, depois de ouvir três versões de teste do mesmo roteiro: assim soou melhor.)
 
 Cada notícia abre em quatro tempos, nesta ordem: **o fato**, **o contexto** em que ele se
 encaixa, **o impacto** (quem ganha e quem perde) e os **desdobramentos**. Fecha com **onde
@@ -110,7 +110,7 @@ Legale Educacional, Iure Digital, Galícia Educação. Cada uma assina uma notí
     **HELENA:** [warmly] ...
 
     ## [ANUNCIO 1] LEGALE
-    **DAVI:** [warmly] ...
+    **HELENA:** [warmly] ...
 
 Toda fala começa com uma tag de direção entre colchetes. Fala sem direção é onde o modelo
 mais varia sozinho.
@@ -148,7 +148,9 @@ o programa já teve no ar.
 
 ### Quem fala o quê
 
-**O Davi apresenta. A Helena analisa, e a análise segue completa.**
+**A Helena apresenta. O Davi analisa, e a análise segue completa.**
+
+(Até o episódio 8 era o contrário. Em 03/09/2026 o paulo ouviu a mesma reescrita nas duas formas e escolheu a Helena como âncora. O primeiro roteiro assim é `roteiros/2026-09-04.md`. O histórico abaixo fala do Davi apresentando porque foi assim que o defeito aconteceu.)
 
 Regra do paulo, 03/09/2026, ouvindo o episódio 7: "o jogral não foi eliminado, segue
 acontecendo. Nem mesmo na pergunta quero que ele devolva. Quero que a análise siga
@@ -172,37 +174,37 @@ vezes em cada bloco de análise.
 
 A forma que vale a partir do episódio de 04/09:
 
-1. **O Davi chama o lance** em no máximo duas falas, antes da primeira fala da Helena.
-   A chamada pode ser uma pergunta que abre a análise ("Helena, por que uma fila em
-   Xangai interessa à mesa com Washington?"). Depois ele **sai**.
-2. **A Helena conta a notícia inteira**: fato, contexto, impacto, desdobramentos. Em
-   falas curtas dela mesma, uma embaixo da outra, cinco no mínimo por bloco. Ninguém
+1. **A Helena chama o lance** em no máximo duas falas, antes da primeira fala do Davi.
+   A chamada pode ser uma pergunta que abre a análise ("Davi, por que uma fila em
+   Xangai interessa à mesa com Washington?"). Depois ela **sai**.
+2. **O Davi conta a notícia inteira**: fato, contexto, impacto, desdobramentos. Em
+   falas curtas dele mesmo, uma embaixo da outra, cinco no mínimo por bloco. Ninguém
    entra no meio: nem pergunta, nem comentário, nem reação de uma palavra.
-3. **No fim do bloco** o Davi pode voltar com **uma** fala: a transição para o próximo
-   lance, ou a chamada do VAR. A chamada do VAR é a única fala dele que pode aparecer
+3. **No fim do bloco** a Helena pode voltar com **uma** fala: a transição para o próximo
+   lance, ou a chamada do VAR. A chamada do VAR é a única fala dela que pode aparecer
    no meio de um bloco.
 
 O mesmo trecho, na forma certa:
 
-    DAVI: Quarto lance! O Brasil, com dois retratos no mesmo dia. Helena, começa pela manhã.
-    HELENA: Às nove, o IBGE mostrou a produção industrial de julho.
-    HELENA: Cresceu zero vírgula dois por cento sobre junho, quando o mercado esperava zero vírgula cinco.
-    HELENA: Contra julho do ano passado, recuo de zero vírgula cinco.
-    HELENA: E julho tem um agravante de calendário: foi o primeiro mês inteiro sob a tarifa americana cheia.
-    HELENA: Vinte e cinco por cento pela lei comercial, mais a sobretaxa de doze vírgula cinco.
-    HELENA: Então o custo já apareceu no dado. E apareceu onde o PIB de terça não deixava ver.
-    HELENA: O agregado cresce pelo campo e pela mina. A transformação, que é onde a tarifa morde, anda de lado.
-    DAVI: E à tarde, o outro retrato.
+    HELENA: Quarto lance! O Brasil, com dois retratos no mesmo dia. Davi, começa pela manhã.
+    DAVI: Às nove, o IBGE mostrou a produção industrial de julho.
+    DAVI: Cresceu zero vírgula dois por cento sobre junho, quando o mercado esperava zero vírgula cinco.
+    DAVI: Contra julho do ano passado, recuo de zero vírgula cinco.
+    DAVI: E julho tem um agravante de calendário: foi o primeiro mês inteiro sob a tarifa americana cheia.
+    DAVI: Vinte e cinco por cento pela lei comercial, mais a sobretaxa de doze vírgula cinco.
+    DAVI: Então o custo já apareceu no dado. E apareceu onde o PIB de terça não deixava ver.
+    DAVI: O agregado cresce pelo campo e pela mina. A transformação, que é onde a tarifa morde, anda de lado.
+    HELENA: E à tarde, o outro retrato.
 
-A energia da Helena vem da direção e do contraste entre as falas dela, não de alguém
+A energia do Davi vem da direção e do contraste entre as falas dele, não de alguém
 cutucando no meio. Os blocos 0 (abertura) e 1 (escalação) continuam sendo conversa, e
-o fecho também. A régua (regra 4d) confere todos os blocos de análise: fala do Davi
-entre duas falas da Helena barra o rascunho, e bloco com menos de cinco falas dela
+o fecho também. A régua (regra 4d) confere todos os blocos de análise: fala da Helena
+entre duas falas do Davi barra o rascunho, e bloco com menos de cinco falas dele
 também, para que ninguém contorne a regra fatiando a notícia em blocos pequenos.
 
 **Não use os roteiros de 28/08 a 03/09 como modelo de quem fala.** Todos têm o defeito,
-inclusive a versão aprovada em 01/09, que ainda tinha o Davi perguntando no meio. O
-modelo é o exemplo acima.
+inclusive a versão aprovada em 01/09, que ainda tinha o âncora perguntando no meio. O
+modelo é o exemplo acima e o roteiro de 04/09, o primeiro com a Helena apresentando.
 
 **Clareza vem antes de tudo.** Duas frases foram reprovadas na leitura do episódio 5, e
 nenhuma régua pega esse tipo de defeito:
