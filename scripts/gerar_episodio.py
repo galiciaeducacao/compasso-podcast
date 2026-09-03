@@ -33,6 +33,8 @@ LEXICO = {k: v for k, v in json.loads((RAIZ / "scripts" / "lexico_pronuncia.json
 
 VOZ = {"DAVI": "2CECaLAGTS5NRGxgbcxr", "HELENA": "tZ2oxQJXfOrGrN7iKnta"}
 TEMPO, ALVO_NOTICIA, ALVO_ANUNCIO = 1.02, 10.5, 20.0
+CAMA_SOB_FALA = 1.0   # dB a menos na cama do programa enquanto alguem fala (Paulo, 03/09);
+                      # a pausa entre blocos e a musica das marcas ficam como estao
 ENTRADA_VOZ, LIMITE_API = 6.5, 1900
 CUSTO_ESTIMADO = 15000   # um episodio completo, ja com o priming
 MARCAS = {1: ("legale", "Legale"), 2: ("iure", "Iure Digital"), 3: ("galicia", "Galícia")}
@@ -338,7 +340,7 @@ def main():
             ff(["-stream_loop", "-1", "-i", str(m), "-t", "6", "-ar", "44100", "-ac", "1", str(ref_m)])
             trilha(c, dur(v), m, (db_voz - ALVO_ANUNCIO) - media_db(ref_m))
         else:
-            trilha(c, dur(v), AUDIO / "cama.mp3", g_not)
+            trilha(c, dur(v), AUDIO / "cama.mp3", g_not - CAMA_SOB_FALA)
         vozes.append(v); camas.append(c)
 
         # assinatura de SAIDA: fecha o oferecimento e devolve a noticia sem secura
