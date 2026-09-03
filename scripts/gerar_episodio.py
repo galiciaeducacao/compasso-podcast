@@ -194,7 +194,8 @@ def main():
         m = re.match(r"^## \[(BLOCO|ANUNCIO) (\d+)\]", l.strip())
         if m:
             if atual: segs.append(atual)
-            atual = {"tipo": m.group(1), "n": int(m.group(2)), "turnos": []}
+            atual = {"tipo": m.group(1), "n": int(m.group(2)), "turnos": [],
+                     "titulo": l.strip()[m.end():].strip()}
             continue
         if atual is None: continue
         f = re.match(r"^\*\*(DAVI|HELENA):\*\*\s*(.+)$", l.strip())
@@ -317,6 +318,17 @@ def main():
             ff(["-i", str(AUDIO / f"sting_{marca}.wav"), "-ar", "44100", "-ac", "1", str(st)])
             sil = TMP / f"sts{ordem}.wav"; trilha(sil, dur(st), None, 0)
             vozes.append(st); camas.append(sil); ordem += 1
+
+        # VAR: o apito do arbitro marca a virada para o bloco de explicacao. Pedido do
+        # Paulo em 03/09: chamar o VAR de verdade, com som, para o publico aprender o
+        # que cada parte do programa faz. Vale para todo BLOCO cujo titulo comeca com VAR.
+        if s["tipo"] == "BLOCO" and s.get("titulo", "").upper().startswith("VAR") \
+                and (AUDIO / "sting_var.wav").exists():
+            st = TMP / f"st{ordem}.wav"
+            ff(["-i", str(AUDIO / "sting_var.wav"), "-ar", "44100", "-ac", "1", str(st)])
+            sil = TMP / f"sts{ordem}.wav"; trilha(sil, dur(st), None, 0)
+            vozes.append(st); camas.append(sil); ordem += 1
+            print(f"  bloco {i}: apito do VAR")
 
         c = TMP / f"c{i}.wav"
         if marca and (AUDIO / f"musica_{marca}.mp3").exists():
