@@ -73,7 +73,7 @@ semana ("na quarta", "na sexta") em vez de "ontem", porque o material é de vár
 
 ## A forma
 
-Dois apresentadores: **DAVI**, âncora que conduz por perguntas, e **HELENA**, analista.
+Dois apresentadores: **DAVI**, âncora que chama os lances, e **HELENA**, analista, que conta cada notícia inteira.
 
 Cada notícia abre em quatro tempos, nesta ordem: **o fato**, **o contexto** em que ele se
 encaixa, **o impacto** (quem ganha e quem perde) e os **desdobramentos**. Fecha com **onde
@@ -138,8 +138,8 @@ Direção energética é `[excited]`, `[very excited]`, `[amused]`, `[energetic]
 exatamente a mesma proporção do que soou monótono. A energia vem da **direção** e do
 **contraste**, não da risada nem da troca de voz.
 
-O que torna um trecho vivo é a fala curta: reação, interrupção, complemento em três
-palavras. Fala longa vira leitura em voz alta. Se um raciocínio precisa de cinco linhas,
+O que torna um trecho vivo é a fala curta, uma embaixo da outra, com direção diferente
+em cada uma. Fala longa vira leitura em voz alta. Se um raciocínio precisa de cinco linhas,
 quebre em várias falas **da mesma voz**, uma embaixo da outra.
 
 **Quebrar em falas não é alternar.** Esta frase, na versão anterior deste briefing,
@@ -148,31 +148,61 @@ o programa já teve no ar.
 
 ### Quem fala o quê
 
-**O Davi é o apresentador, não o co-narrador.** Ele chama o lance, provoca, e sai da
-frente. A Helena conta a notícia inteira, em três a cinco falas seguidas, sem ninguém
-interrompendo.
+**O Davi apresenta. A Helena analisa, e a análise segue completa.**
 
-O Davi entra por um destes três motivos, e por nenhum outro:
+Regra do paulo, 03/09/2026, ouvindo o episódio 7: "o jogral não foi eliminado, segue
+acontecendo. Nem mesmo na pergunta quero que ele devolva. Quero que a análise siga
+completa."
 
-1. **Chamar**: "Ormuz, Helena. Conta essa inteira."
-2. **Abrir análise**: uma pergunta que faz a Helena interpretar, não recitar. "Por que
-   emprego é pedágio de empresa de tecnologia?" abre. "E o quarto lance?" só empurra.
-3. **Chamar o VAR**, quando o assunto pede julgamento e não narração.
+O que tinha acontecido: a régua do jogral (regra 4c) pegava a palavra devolvida na ponta,
+e o episódio 7 passou nela com zero casos. Mas o jogral tinha mudado de forma. A Helena
+dizia uma frase, o Davi fazia uma pergunta de três palavras, a Helena dizia a frase
+seguinte:
 
-Ele NÃO entra para confirmar o que ela acabou de dizer, nem para pedir o próximo número.
+    HELENA: Às nove, o IBGE mostrou a produção industrial de julho.
+    HELENA: Cresceu zero vírgula dois por cento sobre junho.
+    DAVI: E o mercado esperava quanto?
+    HELENA: Zero vírgula cinco. Veio abaixo.
+    DAVI: E contra o ano passado?
+    HELENA: Recuo de zero vírgula cinco por cento.
 
-Medido, no episódio 5 que foi ao ar contra a versão que o paulo aprovou em 01/09:
+A pergunta é deixa, não pergunta. É a notícia lida a dois, uma frase por vez. Medido no
+episódio 7: cinquenta e quatro perguntas-deixa do Davi, e ele entrando de seis a dez
+vezes em cada bloco de análise.
 
-| | foi ao ar | aprovado |
-|---|---|---|
-| falas no total | 311 | **230** |
-| fatia das falas que é do DAVI | 51% | **33%** |
-| alternância estrita de voz | 96% | **59%** |
-| maior sequência seguida da HELENA | 2 falas | **5 falas** |
-| média de palavras do DAVI | 5,6 | **9,4** |
-| falas do DAVI que são pergunta | 70% | **38%** |
+A forma que vale a partir do episódio de 04/09:
 
-Os dois duram quinze minutos. A diferença não é tamanho, é quem segura a palavra.
+1. **O Davi chama o lance** em no máximo duas falas, antes da primeira fala da Helena.
+   A chamada pode ser uma pergunta que abre a análise ("Helena, por que uma fila em
+   Xangai interessa à mesa com Washington?"). Depois ele **sai**.
+2. **A Helena conta a notícia inteira**: fato, contexto, impacto, desdobramentos. Em
+   falas curtas dela mesma, uma embaixo da outra, cinco no mínimo por bloco. Ninguém
+   entra no meio: nem pergunta, nem comentário, nem reação de uma palavra.
+3. **No fim do bloco** o Davi pode voltar com **uma** fala: a transição para o próximo
+   lance, ou a chamada do VAR. A chamada do VAR é a única fala dele que pode aparecer
+   no meio de um bloco.
+
+O mesmo trecho, na forma certa:
+
+    DAVI: Quarto lance! O Brasil, com dois retratos no mesmo dia. Helena, começa pela manhã.
+    HELENA: Às nove, o IBGE mostrou a produção industrial de julho.
+    HELENA: Cresceu zero vírgula dois por cento sobre junho, quando o mercado esperava zero vírgula cinco.
+    HELENA: Contra julho do ano passado, recuo de zero vírgula cinco.
+    HELENA: E julho tem um agravante de calendário: foi o primeiro mês inteiro sob a tarifa americana cheia.
+    HELENA: Vinte e cinco por cento pela lei comercial, mais a sobretaxa de doze vírgula cinco.
+    HELENA: Então o custo já apareceu no dado. E apareceu onde o PIB de terça não deixava ver.
+    HELENA: O agregado cresce pelo campo e pela mina. A transformação, que é onde a tarifa morde, anda de lado.
+    DAVI: E à tarde, o outro retrato.
+
+A energia da Helena vem da direção e do contraste entre as falas dela, não de alguém
+cutucando no meio. Os blocos 0 (abertura) e 1 (escalação) continuam sendo conversa, e
+o fecho também. A régua (regra 4d) confere todos os blocos de análise: fala do Davi
+entre duas falas da Helena barra o rascunho, e bloco com menos de cinco falas dela
+também, para que ninguém contorne a regra fatiando a notícia em blocos pequenos.
+
+**Não use os roteiros de 28/08 a 03/09 como modelo de quem fala.** Todos têm o defeito,
+inclusive a versão aprovada em 01/09, que ainda tinha o Davi perguntando no meio. O
+modelo é o exemplo acima.
 
 **Clareza vem antes de tudo.** Duas frases foram reprovadas na leitura do episódio 5, e
 nenhuma régua pega esse tipo de defeito:
@@ -232,7 +262,7 @@ automático veio com onze em 219, 5%, e vira cacoete mesmo quando cada um passar
 Teto de 3%.
 
 Quando a vontade for ecoar, acrescente em vez de devolver. No lugar de "Antes do almoço.",
-diga o que aquilo significa, ou faça a pergunta seguinte.
+diga o que aquilo significa.
 
 **Número sem lastro.** Ver acima.
 

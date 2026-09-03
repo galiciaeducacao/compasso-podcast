@@ -206,7 +206,8 @@ def main():
         m = re.match(r"^## \[(BLOCO|ANUNCIO) (\d+)\]", l.strip())
         if m:
             if atual: blocos.append(atual)
-            atual = {"tipo": m.group(1), "n": int(m.group(2)), "falas": []}
+            atual = {"tipo": m.group(1), "n": int(m.group(2)), "falas": [],
+                     "titulo": l.strip()[m.end():].strip()}
             continue
         if atual is None: continue
         f = re.match(r"^\*\*(DAVI|HELENA):\*\*\s*(.+)$", l.strip())
@@ -393,6 +394,58 @@ def main():
             f"JOGRAL na fala {n}: comeca com '{palavra}', que acabou de ser dita na "
             f"fala anterior: '{trecho}'. Reaja ao que foi dito, nao devolva a palavra")
 
+    # ---------- 4d. A ANALISE SEGUE COMPLETA: o Davi nao entra no meio ----------
+    # Regra do Paulo, 03/09, ouvindo o episodio 7: "o jogral nao foi eliminado, segue
+    # acontecendo. Nem mesmo na pergunta quero que ele devolva. Quero que a analise
+    # siga completa."
+    #
+    # A 4c pegava a palavra devolvida na ponta, e o episodio 7 passou nela com ZERO
+    # casos. O jogral tinha mudado de forma: a Helena diz uma frase, o Davi faz uma
+    # pergunta de tres palavras ("E o mercado esperava quanto?", "Mirando o que?",
+    # "Quais?"), a Helena diz a frase seguinte. A pergunta e deixa, nao pergunta: e a
+    # noticia lida a dois, uma frase por vez. Medido no episodio 7: 54 perguntas-deixa
+    # do Davi, contra 7 na versao que o Paulo aprovou em 01/09, e o Davi entrando 6 a
+    # 10 vezes em cada bloco de analise.
+    #
+    # A forma que ele quer: em bloco de analise, o Davi CHAMA o lance (no maximo duas
+    # falas, antes da primeira da Helena) e sai. A Helena conta a noticia INTEIRA: fato,
+    # contexto, impacto, desdobramentos. No fim do bloco o Davi pode voltar com UMA fala
+    # (transicao, ou chamar o VAR). Fala dele entre duas falas dela e jogral, com ou sem
+    # interrogacao. Unica excecao no meio: a chamada do VAR, assinatura da casa.
+    #
+    # E o minimo de cinco falas da Helena por bloco existe para que o escritor nao
+    # contorne a regra fatiando a noticia em blocos de pergunta e resposta.
+    #
+    # Blocos de analise sao os BLOCO de numero 2 em diante, menos o FECHO. O 0 e a
+    # abertura e o 1 e a escalacao, que sao conversa por desenho.
+    for b in blocos:
+        if b["tipo"] != "BLOCO" or b["n"] < 2 or "fecho" in norm(b.get("titulo", "")):
+            continue
+        quem_b = [q for q, _ in b["falas"]]
+        if "HELENA" not in quem_b:
+            problemas.append(f"BLOCO {b['n']}: bloco de analise sem nenhuma fala da Helena")
+            continue
+        primeira_h = quem_b.index("HELENA")
+        ultima_h = len(quem_b) - 1 - quem_b[::-1].index("HELENA")
+        if primeira_h > 2:
+            problemas.append(
+                f"BLOCO {b['n']}: o Davi abre com {primeira_h} falas antes da Helena "
+                f"(maximo 2: ele chama o lance e sai)")
+        cauda = len(quem_b) - 1 - ultima_h
+        if cauda > 1:
+            problemas.append(
+                f"BLOCO {b['n']}: o Davi fecha com {cauda} falas depois da Helena (maximo 1)")
+        for i, (q, t) in enumerate(b["falas"]):
+            if q == "DAVI" and primeira_h < i < ultima_h and not re.search(r"var", norm(t)):
+                problemas.append(
+                    f"BLOCO {b['n']}: o Davi entra no meio da analise: '{t[:60]}'. "
+                    f"A analise segue completa; ele chama o lance e sai")
+        helena = quem_b.count("HELENA")
+        if helena < 5:
+            problemas.append(
+                f"BLOCO {b['n']}: so {helena} falas da Helena (minimo 5): bloco fatiado "
+                f"em pergunta e resposta")
+
     # ---------- 5. as tres marcas, uma por anuncio ----------
     anuncios = [b for b in blocos if b["tipo"] == "ANUNCIO"]
     for n, termo in ((1, "legale"), (2, "iure"), (3, "gal")):
@@ -447,7 +500,7 @@ def main():
         if curtas / len(todas) < 0.52:
             problemas.append(
                 f"so {curtas/len(todas):.0%} das falas sao curtas o bastante para reagir "
-                f"(piso 52%, o aprovado tem 57%): falta bate-bola")
+                f"(piso 52%, o aprovado tem 57%): quebre a narracao em falas curtas DA MESMA VOZ")
         if media > 74:
             problemas.append(
                 f"fala com {media:.0f} caracteres em media (teto 74, o aprovado tem 68): "
