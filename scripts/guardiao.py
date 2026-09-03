@@ -446,6 +446,36 @@ def main():
                 f"BLOCO {b['n']}: so {helena} falas da Helena (minimo 5): bloco fatiado "
                 f"em pergunta e resposta")
 
+    # ---------- 4e. A MESMA VOZ NAO REPETE O QUE ACABOU DE DIZER ----------
+    # Paulo, 03/09, ouvindo a reescrita: o Davi fechou a escalacao com "Entao bora!
+    # Primeiro lance!" e abriu o bloco seguinte com "Primeiro lance. Helena, ...". Duas
+    # falas seguidas da mesma pessoa comecando (ou terminando e recomecando) com as
+    # mesmas palavras soam como texto lido, nao como gente falando. As regras 4b e 4c
+    # so olham voz DIFERENTE, entao isso passava.
+    #
+    # O que barra: fala cujas duas primeiras palavras aparecem em sequencia na fala
+    # anterior DA MESMA VOZ (valendo atraves da fronteira de bloco, que e onde acontece).
+    for i in range(1, len(todas)):
+        if quem[i] != quem[i - 1]:
+            continue
+        a, b = sequencia(todas[i - 1]), sequencia(todas[i])
+        if len(a) < 2 or len(b) < 2:
+            continue
+        # so a EMENDA: a fala anterior termina com as duas palavras com que a nova comeca.
+        # Palavra de ligacao nao conta ("o que", "a gente"), e retomar um termo para
+        # defini-lo ("...de dia zero." / "Dia zero e a falha que...") e explicacao, nao eco.
+        par = (b[0], b[1])
+        if par != (a[-2], a[-1]):
+            continue
+        if b[0] in LIGACAO or b[1] in LIGACAO:
+            continue
+        if len(b) > 2 and b[2] in ("e", "sao", "era", "significa", "quer"):
+            continue
+        if True:
+            problemas.append(
+                f"fala {i + 1}: {quem[i]} repete '{b[0]} {b[1]}', que acabou de dizer na fala "
+                f"anterior. A mesma voz nao repete a propria abertura")
+
     # ---------- 5. as tres marcas, uma por anuncio ----------
     anuncios = [b for b in blocos if b["tipo"] == "ANUNCIO"]
     for n, termo in ((1, "legale"), (2, "iure"), (3, "gal")):
