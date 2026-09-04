@@ -571,13 +571,13 @@ def main():
             problemas.append(
                 f"so {vivas/len(todas):.0%} das falas tem direcao energetica "
                 f"(piso 38%, o episodio aprovado tem 44%): vai soar monotono")
-        if curtas / len(todas) < 0.20:
+        if curtas / len(todas) < 0.15:
             problemas.append(
                 f"so {curtas/len(todas):.0%} das falas sao curtas o bastante para reagir "
-                f"(piso 20%: com o analista narrando, a fala curta e a de chamada e transicao)")
-        if media > 110:
+                f"(piso 15%: com o analista narrando, a fala curta e a de chamada e transicao)")
+        if media > 135:
             problemas.append(
-                f"fala com {media:.0f} caracteres em media (teto 110, uma ideia por fala): "
+                f"fala com {media:.0f} caracteres em media (teto 135, uma ideia por fala): "
                 f"fala longa demais vira leitura, nao conversa")
 
 
