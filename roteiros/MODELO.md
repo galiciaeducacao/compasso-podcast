@@ -3,7 +3,7 @@
 > RESUMO: Dezenove das vinte maiores economias assinaram contra as exportações baratas da China e Pequim respondeu em dois tons a três semanas do encontro dos presidentes. O Golfo teve a segunda madrugada de mísseis, com dois lados contando mortos diferentes e o petróleo acima de noventa e sete dólares. A Nvidia comprou a Hugging Face, o maior depósito de inteligência artificial aberta do mundo. A Europa fechou a porta para a carne brasileira no dia em que a bolsa bateu recorde e devolveu tudo. E o Datafolha da noite mostrou o segundo turno em quarenta e seis a quarenta e quatro, no mesmo dia em que os áudios do celular do Vorcaro entraram na campanha. compasso.capital
 
 **EXERCÍCIO DE REESCRITA · episódio de 04/09/2026 · versão 2, para leitura do paulo**
-**Escrito como se tivesse sido feito às 3h da madrugada de 04/09, com as notícias das análises de 03/09 conferidas contra o que saiu depois das 14h: o Datafolha das 19h, o pronunciamento de Milei das 21h e a resposta de Nikolas Ferreira. Regras novas: a Helena só chama os lances e lê os oferecimentos, e não fala no meio da análise (a única fala dela dentro de um lance é "Chama o VAR!", que aciona o apito); a escalação é uma pergunta só; a metodologia é retomada em poucos segundos antes do primeiro lance; sem metáfora nem analogia; cada lance em cinco passos, para leigo, sem tratar como idiota; o VAR em bloco próprio.**
+**Escrito como se tivesse sido feito às 3h da madrugada de 04/09, com as notícias das análises de 03/09 conferidas contra o que saiu depois das 14h: o Datafolha das 19h, o pronunciamento de Milei das 21h e a resposta de Nikolas Ferreira. Regras novas: a Helena só chama os lances e lê os oferecimentos, e não fala no meio da análise (a única fala dela dentro de um lance é "Chama o VAR!", que aciona o apito); a escalação é uma pergunta só; a metodologia é retomada em poucos segundos antes do primeiro lance; sem metáfora nem analogia; cada lance em cinco passos, para leigo, sem tratar como idiota; o VAR em bloco próprio; apito na abertura (marcador `> [APITO]`) e a cada VAR; vinheta musical de encerramento depois do último "Até".**
 
 HELENA (âncora) · DAVI (analista)
 
@@ -29,9 +29,11 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] E quando alguma coisa precisar ser explicada do zero, a gente para e chama o VAR.
 
-**HELENA:** [excited] Então me diz: quais são os cinco lances de hoje?
+> [APITO]
 
 ## [BLOCO 1] A ESCALAÇÃO DO DIA
+
+**HELENA:** [excited] Então me diz: quais são os cinco lances de hoje?
 
 **DAVI:** [energetic] O primeiro: dezenove das vinte maiores economias do mundo assinaram contra as exportações baratas da China. E a China respondeu ontem.
 
@@ -53,7 +55,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] Quem preside escreve a pauta. E o secretário do Tesouro americano saiu de lá com dezenove dos vinte países assinando um compromisso contra o que ele chamou de fluxo interminável de exportações baratas.
 
-**DAVI:** [serious] Sem dizer o nome, é a China. Ela ficou registrada numa nota de rodapé, discordando.
+**DAVI:** [serious] Sem dizer o nome, ficou claro que é a China. Ela ficou registrada numa nota de rodapé, discordando.
 
 **DAVI:** [very serious] O número que os americanos usam como acusação: no ano passado, a China vendeu ao mundo um vírgula dois trilhão de dólares a mais do que comprou. Isso se chama superávit comercial, e foi recorde.
 
@@ -63,7 +65,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] O tom técnico veio do presidente do banco central chinês: prometeu não desvalorizar o yuan, que é a moeda da China, para vender mais barato lá fora.
 
-**DAVI:** [very serious] Por que isso importa: os dois presidentes se encontram em Washington em vinte e quatro de setembro. Os americanos chegam com dezenove países ao lado. A China chega dizendo que não vai usar a moeda como arma, mas que não aceita a acusação.
+**DAVI:** [very serious] Por que isso importa: os dois presidentes se encontram em Washington em vinte e quatro de setembro. Os americanos chegam com dezenove países ao lado. A China chega dizendo que não vai usar a moeda como arma, ou seja, supostamente não utilizará a desvalorização da moeda nacional para ganhar vantagem no comércio Mas mesmo assim não aceita a acusação de comércio desleal.
 
 ## [BLOCO 3] POTÊNCIAS · QUEM GANHA, QUEM PERDE, E O BRASIL NISSO
 
@@ -77,7 +79,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] E pra quem ouve daqui: a China é o maior comprador da soja e do minério brasileiros. Se a briga comercial esfria, ela compra mais. Se esquenta, o preço do que o Brasil exporta oscila junto.
 
-**DAVI:** [serious] O que vem: o encontro em vinte e quatro de setembro, a reunião de Milwaukee em trinta, e a trégua comercial entre os dois, que vence em dez de novembro.
+**DAVI:** [serious]o que podemos pensar como hipótese para o futuro: o encontro em vinte e quatro de setembro, a reunião de Milwaukee em trinta, e a trégua comercial entre os dois, que vence em dez de novembro.
 
 ## [ANUNCIO 1] LEGALE EDUCACIONAL
 
@@ -107,9 +109,9 @@ HELENA (âncora) · DAVI (analista)
 
 ## [BLOCO 5] GLOBAL · ARGENTINA, UCRÂNIA E O CANADÁ
 
-**DAVI:** [energetic] Três outras coisas aconteceram ontem fora do Golfo.
+**DAVI:** [energetic] Três outras coisas aconteceram ontem fora do Golfo e que impactam a política global.
 
-**DAVI:** [serious] Argentina: às nove da noite, o presidente Milei falou em cadeia nacional sobre as Malvinas, as ilhas que a Argentina disputa com o Reino Unido.
+**DAVI:** [serious] Argentina: às nove da noite, o presidente Milei falou em cadeia nacional sobre as Malvinas, as ilhas que a Argentina disputa com o Reino Unido desde a guerra de mil novecentos e oitenta e dois.
 
 **DAVI:** [very serious] Ele anunciou que vai proibir de operar na Argentina empresas que participem de projetos de petróleo nas ilhas sem autorização argentina, e ordenou uma base naval na Terra do Fogo.
 
@@ -133,7 +135,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] A Hugging Face é o lugar onde os modelos abertos de inteligência artificial ficam guardados e são baixados. Mais de três milhões de modelos, dezoito milhões de programadores.
 
-**DAVI:** [serious] O negócio fecha no ano que vem, se os órgãos de concorrência deixarem. Quatro anos atrás, eles desmontaram outra compra da Nvidia, de quarenta bilhões.
+**DAVI:** [serious] O negócio fecha no ano que vem, se os órgãos de concorrência deixarem. Em dois mil e vinte e dois, eles desmontaram outra compra da Nvidia, de quarenta bilhões.
 
 **DAVI:** [very serious] Um dado que os comunicados tratam como rodapé: foi o fundador da Hugging Face que procurou a Nvidia, no meio do ano.
 
@@ -163,7 +165,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [very serious] Quem ganha: a Nvidia, que passa a ver quem usa o quê no mundo inteiro. Quem perde: quem dependia da neutralidade desse lugar, e isso inclui empresa e pesquisador brasileiro.
 
-**DAVI:** [serious] O que vem: a compra passa pelos órgãos de concorrência até o ano que vem. E a Hugging Face segue no ar, gratuita, até lá.
+**DAVI:** [serious] o que podemos esperar: a compra passa pelos órgãos de concorrência até o ano que vem. E a Hugging Face segue no ar, gratuita, até lá.
 
 ## [ANUNCIO 3] GALÍCIA EDUCAÇÃO
 
@@ -197,7 +199,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [very serious] Por quê: na quarta a bolsa tinha subido mais de três por cento por causa de uma pesquisa que mostrava a disputa apertada. Ontem, parte dos investidores vendeu para embolsar o ganho, e todo mundo esperou a pesquisa seguinte.
 
-**DAVI:** [energetic] E ela saiu ontem às sete da noite. O Datafolha ouviu eleitores do país inteiro entre terça e quinta, com margem de erro de dois pontos.
+**DAVI:** [energetic] E ela saiu ontem às sete da noite. O Datafolha ouviu duas mil e duas pessoas entre terça e quinta, com margem de erro de dois pontos.
 
 **DAVI:** [serious] No primeiro turno: Lula trinta e oito, Flávio Bolsonaro trinta e três, Augusto Cury oito, Ronaldo Caiado quatro, Renan Santos três.
 
@@ -223,7 +225,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] Ontem, o mesmo site publicou áudios do deputado Nikolas Ferreira com o banqueiro: chama de Dani, de lindão, e pede ajuda para um ex-assessor destravar um ativo de minério.
 
-**DAVI:** [serious] Nikolas respondeu ontem mesmo: admitiu voos pagos pelo banqueiro no segundo turno da eleição passada, e negou proximidade.
+**DAVI:** [serious] Nikolas respondeu ontem mesmo: admitiu voos pagos pelo banqueiro no segundo turno de dois mil e vinte e dois, e negou proximidade.
 
 **DAVI:** [very serious] E a terceira onda é a mais antiga: em maio, o site The Intercept publicou o áudio em que o senador Flávio Bolsonaro pede cento e trinta e quatro milhões de reais ao banqueiro para o filme sobre o pai. Flávio primeiro negou, depois admitiu, e disse que era patrocínio privado.
 
@@ -249,7 +251,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] E de Washington, nada. O Tesouro americano agiu dois dias seguidos, sobre Cuba e Rússia, sem citar o Brasil. A tarifa não se moveu. Nenhuma declaração sobre a eleição.
 
-**DAVI:** [serious] O que vem: o relatório final do relator na segunda ou na terça, o plenário do Supremo, televisionado, na semana que vem, e a delação, que ainda pode ser homologada ou não.
+**DAVI:** [serious] o que vem por aí: o relatório final do relator na segunda ou na terça, o plenário do Supremo, televisionado, na semana que vem, e a delação, que ainda pode ser homologada ou não.
 
 ## [BLOCO 12] O CALENDÁRIO E ONDE VOCÊ ESTÁ NESSE LANCE
 
@@ -310,4 +312,3 @@ As cinco análises publicadas em compasso.capital em 03/09/2026:
 - IAs: https://compasso.capital/analises/a-nvidia-compra-a-praca-publica-da-ia-aberta/
 - Brasil: https://compasso.capital/analises/o-embargo-europeu-a-carne-abre-a-segunda-frente-do-agro/
 - Placar: https://compasso.capital/analises/a-hipotese-brasil-a-ofac-age-duas-vezes-e-nao-olha-para-ca/
-

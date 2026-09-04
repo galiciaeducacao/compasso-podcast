@@ -107,7 +107,27 @@ dizendo que o ponto pede o VAR, a Helena diz "Chama o VAR!" como última fala de
 e o bloco seguinte tem título começando com `VAR ·` e é todo do Davi. No episódio 8 o
 apito só tocou uma vez porque a outra chamada estava no meio de um bloco comum.
 
-O modelo acabado nessa forma é `roteiros/MODELO.md`, a reescrita do episódio de 04/09.
+**O apito também toca na abertura.** Logo depois de o Davi dizer "a gente para e chama o
+VAR", o bloco 0 termina e a linha `> [APITO]` marca o apito; a pergunta da escalação abre
+o bloco 1. O gerador só consegue inserir som na fronteira entre blocos, então quem quer o
+apito no meio de uma conversa fecha o bloco ali e põe o marcador. E o apito toca a cada
+VAR, porque cada VAR é um bloco próprio.
+
+**A vinheta de encerramento** entra sozinha depois da última fala ("Até, Helena!"): o
+gerador emenda `audio/vinheta_fim.mp3` no fim da mixagem, e a cama termina nela. Não
+precisa marcar nada no roteiro.
+
+**Os cinco passos não são rótulos fixos.** O paulo, revisando o modelo, variou a fórmula:
+"o que vem" virou "o que podemos esperar", "o que vem por aí", "o que podemos pensar como
+hipótese para o futuro". Acrescentou nuance onde a afirmação era seca ("supostamente",
+"ficou claro que", "e que impactam a política global"). Os passos são a ordem do
+raciocínio, não cabeçalhos lidos em voz alta; a fala continua sendo de gente conversando.
+
+**Ano se escreve por extenso mesmo** ("em dois mil e vinte e dois", "duas mil e duas
+pessoas"): o conferidor de números aprendeu a ler isso em 04/09.
+
+O modelo acabado nessa forma é `roteiros/MODELO.md`, a reescrita do episódio de 04/09
+revisada pelo paulo.
 
 ## A linguagem
 

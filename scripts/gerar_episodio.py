@@ -200,6 +200,13 @@ def main():
                      "titulo": l.strip()[m.end():].strip()}
             continue
         if atual is None: continue
+        # '> [APITO]' numa linha propria: o apito do VAR toca logo DEPOIS deste bloco.
+        # Pedido do Paulo em 04/09 para a abertura ("a gente para e chama o VAR" -> apito).
+        # Bloco e uma chamada so de TTS, entao o som so cabe na fronteira: quem quer o
+        # apito no meio de uma conversa fecha o bloco ali e poe o marcador.
+        if re.match(r"^>\s*\[APITO\]", l.strip()):
+            atual["apito_depois"] = True
+            continue
         f = re.match(r"^\*\*(DAVI|HELENA):\*\*\s*(.+)$", l.strip())
         if f:
             bruto = f.group(2).strip()
@@ -350,6 +357,13 @@ def main():
             sil = TMP / f"sas{ordem}.wav"; trilha(sil, dur(sa), None, 0)
             vozes.append(sa); camas.append(sil); ordem += 1
 
+        if s.get("apito_depois") and (AUDIO / "sting_var.wav").exists():
+            st = TMP / f"st{ordem}.wav"
+            ff(["-i", str(AUDIO / "sting_var.wav"), "-ar", "44100", "-ac", "1", str(st)])
+            sil = TMP / f"sts{ordem}.wav"; trilha(sil, dur(st), None, 0)
+            vozes.append(st); camas.append(sil); ordem += 1
+            print(f"  bloco {i}: apito do VAR (marcador)")
+
         if i < len(segs) - 1:
             p = TMP / f"p{i}.wav"; ff(["-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono", "-t", "0.5", str(p)])
             pc = TMP / f"pc{i}.wav"; trilha(pc, 0.5, AUDIO / "cama.mp3", g_not)
@@ -369,8 +383,18 @@ def main():
         "[0:a][1:a]amix=inputs=2:normalize=0:duration=first[o]", "-map", "[o]", str(TMP / "mix.wav")])
     ff(["-i", str(AUDIO / "vinheta.mp3"), "-ar", "44100", "-ac", "1", str(TMP / "vin.wav")])
 
+    # Vinheta de encerramento (pedido do Paulo, 04/09): depois da ultima fala, a musica
+    # fecha o programa. Crossfade de 1,5 s entre o fim da mixagem e a vinheta.
+    corpo_final = TMP / "mix.wav"
+    if (AUDIO / "vinheta_fim.mp3").exists():
+        ff(["-i", str(AUDIO / "vinheta_fim.mp3"), "-ar", "44100", "-ac", "1", str(TMP / "fim.wav")])
+        ff(["-i", str(TMP / "mix.wav"), "-i", str(TMP / "fim.wav"), "-filter_complex",
+            "[0:a][1:a]acrossfade=d=1.5:c1=tri:c2=tri[o]", "-map", "[o]", str(TMP / "mix_fim.wav")])
+        corpo_final = TMP / "mix_fim.wav"
+        print("  vinheta de encerramento emendada")
+
     saida = RAIZ / f"compasso-capital-{numero:04d}.mp3"
-    ff(["-i", str(TMP / "vin.wav"), "-i", str(TMP / "mix.wav"), "-filter_complex",
+    ff(["-i", str(TMP / "vin.wav"), "-i", str(corpo_final), "-filter_complex",
         f"[1:a]adelay={int(ENTRADA_VOZ*1000)}|{int(ENTRADA_VOZ*1000)}[vd];"
         f"[vd]asplit=2[vm][ch];"
         f"[0:a][ch]sidechaincompress=threshold=0.08:ratio=6:attack=10:release=500[vdk];"

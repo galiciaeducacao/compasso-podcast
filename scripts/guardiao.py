@@ -81,7 +81,18 @@ def digitos_por_extenso(texto):
             cadeia += str(grupo)
             grupo, aberto = 0, False
 
-    for p_ in palavras:
+    for k_, p_ in enumerate(palavras):
+        # "mil" seguido de mais numero ("dois mil e vinte e dois", "mil novecentos e
+        # oitenta e dois", "duas mil e duas") e MULTIPLICADOR: vira 2022, 1982, 2002.
+        # O Paulo escreve ano por extenso e o texto manda; o parser se adapta.
+        # "mil" seguido de palavra comum ("cento e vinte e oito mil toneladas") continua
+        # fechando o grupo, porque o site escreve "128 mil" e a cadeia certa e "128".
+        if p_ == "mil":
+            prox = next((w for w in palavras[k_ + 1:] if w != "e"), None)
+            if prox in UNI or prox in DEZ or prox in CEM:
+                grupo = (grupo if aberto and grupo else 1) * 1000
+                viu = aberto = True
+                continue
         if p_ in UNI: grupo += UNI[p_]; viu = aberto = True
         elif p_ in DEZ: grupo += DEZ[p_]; viu = aberto = True
         elif p_ in CEM: grupo += CEM[p_]; viu = aberto = True
