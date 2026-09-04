@@ -21,13 +21,21 @@ HELENA (âncora) · DAVI (analista)
 
 **HELENA:** [excited] Quem vos fala é a Helena, e comigo, como todo dia, o Davi.
 
-**DAVI:** [very excited] Porque no jogo do excedente...Ninguém assiste de fora!
+**DAVI:** [very excited] Porque no jogo do excedente... Ninguém assiste de fora!
 
 **HELENA:** [very excited] E o Compasso Capital é um oferecimento da Legale Educacional, Iure Digital e Galícia Educação!
 
-**HELENA:** [warmly] Davi, do jeito de sempre: em cada lance, o que aconteceu, qual o contexto geral, por que está acontecendo, quem ganha e quem perde, e quais os possíveis próximos passos.
+**HELENA:** [curious] Davi, que jogo é esse, o jogo do excedente?
 
-**DAVI:** [energetic] E quando alguma coisa precisar ser explicada do zero, a gente para e chama o VAR.
+**DAVI:** [serious] Tudo que um país produz, descontado o que gastou para produzir, é o excedente. E ele não fica onde foi produzido: circula, é transferido, é drenado.
+
+**DAVI:** [energetic] Quem faz as regras do mundo fica com parte do que os outros produzem. E as regras que importam são quatro: quem protege, quem controla a produção e a tecnologia, quem emite a moeda em que o mundo se endivida, e quem define o que é conhecimento.
+
+**DAVI:** [very serious] Riqueza paga poder, poder garante riqueza, e quem para de crescer perde lugar. Por isso preço, juro e câmbio não são dados da natureza: são resultado de força, e mudam quando a força muda.
+
+**DAVI:** [serious] Cada lance aqui responde: quem produziu, por onde o excedente está sendo drenado, e que poder sustenta isso.
+
+**DAVI:** [energetic] E quando precisar explicar do zero, a gente para e chama o VAR.
 
 > [APITO]
 

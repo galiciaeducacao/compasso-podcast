@@ -90,7 +90,24 @@ primeira vez, em meia frase); **por que está acontecendo**; **quem ganha, quem 
 que muda para quem ouve**, em coisa concreta, preço, juro, emprego, conta; e **o que vem**,
 com data. A audiência é leiga e não é idiota: explicar não é infantilizar.
 
-**A abertura retoma a metodologia em dez segundos**, antes do primeiro lance: depois dos
+**A abertura explica o jogo do excedente, todo dia.** Duas versões, texto fixo, aprovadas
+pelo paulo em 04/09/2026 e guardadas em `roteiros/ABERTURA_LONGA.md` e
+`roteiros/ABERTURA_COMPACTA.md`. **A longa entra a cada quinze dias**, contando de 05/09/2026
+(05/09, 20/09, 05/10, 20/10...), em dois blocos, com saudação enxuta; **a compacta nos demais
+dias**, com a saudação completa e o dia da semana preenchido. Copiar como está. As duas
+terminam em "chama o VAR", seguido do marcador `> [APITO]`, e a escalação abre no bloco
+seguinte com a pergunta da Helena. A régua confere a versão certa para a data.
+
+A tese que a abertura resume, nas palavras do paulo: o excedente é o que um país produz
+descontado o que gastou para produzir, e não fica onde é produzido; os canais por onde
+ele é drenado são fixados pela estrutura de poder entre os países; quem faz as regras
+fica com parte do que os outros produzem; o poder que importa é o de definir as opções
+dos outros, em quatro dimensões (segurança, produção, dinheiro, conhecimento); riqueza e
+poder são o mesmo movimento e quem para de crescer perde lugar; preço, juro, câmbio,
+patente e norma são resultado de uma correlação de forças. **Nada de "sobra", nem de
+produtor contra patrão: as duas versões foram rejeitadas.**
+
+(Versão anterior, superada:) **A abertura retoma a metodologia em dez segundos**, antes do primeiro lance: depois dos
 fixos, a Helena diz em uma fala "do jeito de sempre: o que aconteceu, qual o contexto
 geral, por que está acontecendo, quem ganha e quem perde, e quais os possíveis próximos
 passos" (redação do paulo, 04/09), e o Davi completa em uma fala "e quando

@@ -531,6 +531,32 @@ def main():
                 f"fala {i + 1}: {quem[i]} repete '{b[0]} {b[1]}', que acabou de dizer na fala "
                 f"anterior. A mesma voz nao repete a propria abertura")
 
+    # ---------- 4f. A ABERTURA: explicacao do jogo do excedente e apito ----------
+    # Regra do Paulo, 04/09/2026: todo episodio abre explicando o jogo do excedente (a
+    # tese da casa, nas palavras dele: o excedente nao fica onde e produzido; quem faz as
+    # regras fica com parte do que os outros produzem; quatro regras: seguranca,
+    # producao, dinheiro, conhecimento; riqueza e poder sao o mesmo movimento).
+    # A cada QUINZE dias, contando de 05/09/2026, a versao LONGA (roteiros/ABERTURA_LONGA.md,
+    # dois blocos); nos demais, a COMPACTA (roteiros/ABERTURA_COMPACTA.md). Texto fixo,
+    # copiado como esta. Depois da fala "chama o VAR", o marcador "> [APITO]" toca o apito.
+    bruto_ab = rascunho.read_text(encoding="utf-8")
+    ab = norm(" ".join(t for b in blocos[:2] if b["tipo"] == "BLOCO" for _, t in b["falas"]))
+    if "[APITO]" not in bruto_ab.split("[BLOCO 2]")[0] and "[APITO]" not in bruto_ab.split("ESCALA")[0]:
+        problemas.append("abertura sem o marcador '> [APITO]' depois de 'chama o VAR': o apito nao toca")
+    if "jogo do excedente" not in ab or "chama o var" not in ab:
+        problemas.append("abertura sem a explicacao do jogo do excedente terminando em 'chama o VAR' "
+                         "(copiar roteiros/ABERTURA_LONGA.md ou ABERTURA_COMPACTA.md)")
+    dias = (dt.date.fromisoformat(data) - dt.date(2026, 9, 5)).days
+    longa_hoje = dias >= 0 and dias % 15 == 0
+    tem_longa = "montar o tabuleiro" in ab and "quatro coisas" in ab
+    if longa_hoje and not tem_longa:
+        problemas.append(f"{data} e dia de ABERTURA LONGA (a cada 15 dias desde 05/09): copiar "
+                         f"roteiros/ABERTURA_LONGA.md nos blocos 0 e 1")
+    if not longa_hoje and tem_longa:
+        problemas.append(f"{data} nao e dia de abertura longa: usar roteiros/ABERTURA_COMPACTA.md")
+    if "{dia}" in ab or "{uma boa}" in ab:
+        problemas.append("abertura com o dia da semana nao preenchido ({DIA}/{UMA BOA})")
+
     # ---------- 5. as tres marcas, uma por anuncio ----------
     anuncios = [b for b in blocos if b["tipo"] == "ANUNCIO"]
     for n, termo in ((1, "legale"), (2, "iure"), (3, "gal")):
