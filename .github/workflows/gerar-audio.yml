@@ -15,13 +15,13 @@
 # O audio vira release, mas NAO entra no feed aqui. Quem publica e o workflow das 5h,
 # para o episodio so existir para o mundo na hora combinada.
 
-name: gerar audio (18h)
+name: gerar audio (4h)
 
 on:
   schedule:
-    - cron: '0 21 * * *'      # 18h00 de Brasilia
-    - cron: '30 21 * * *'     # 18h30, se o primeiro nao rodar
-    - cron: '30 22 * * *'     # 19h30, ultima tentativa
+    - cron: '0 7 * * *'       # 4h00 de Brasilia (regra do Paulo, 04/09: roteiro as 3h, gravacao as 4h, feed as 5h)
+    - cron: '15 7 * * *'      # 4h15, se o primeiro nao rodar
+    - cron: '30 7 * * *'      # 4h30, ultima tentativa antes da publicacao das 5h
   push:
     paths: ['ops/gravar-agora.txt']   # gatilho pontual: o cron do GitHub atrasa horas
   workflow_dispatch:

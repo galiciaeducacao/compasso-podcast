@@ -73,14 +73,85 @@ semana ("na quarta", "na sexta") em vez de "ontem", porque o material é de vár
 
 ## A forma
 
-Dois apresentadores: **HELENA**, âncora que chama os lances e lê os oferecimentos, e **DAVI**, analista, que conta cada notícia inteira. (Decisão do paulo em 03/09/2026, depois de ouvir três versões de teste do mesmo roteiro: assim soou melhor.)
+Dois apresentadores: **HELENA**, âncora, e **DAVI**, analista. Decisão do paulo em
+03/09/2026, ouvindo três versões de teste do mesmo roteiro.
 
-Cada notícia abre em quatro tempos, nesta ordem: **o fato**, **o contexto** em que ele se
-encaixa, **o impacto** (quem ganha e quem perde) e os **desdobramentos**. Fecha com **onde
-você está nesse lance**, que é o que o ouvinte faz com aquilo.
+**A Helena só chama.** Ela abre o programa, pergunta os cinco lances, chama cada lance
+com uma ou duas falas, lê os três oferecimentos e fecha. **Ela nunca fala dentro de um
+lance**: nem pergunta, nem comentário, nem frase de fechamento. Regra do paulo em
+04/09/2026, ouvindo o episódio 8: "Helena não faz comentário nenhum no meio das análises
+do Davi. Ela apenas é a host para chamar as notícias. Deixa o Davi fazer direto." A única
+fala dela dentro de um lance é "Chama o VAR!", como última fala do bloco, quando o Davi
+disser que o ponto pede o VAR.
 
-A audiência não quer saber o que é economia política. Quer o fato, o contexto, os impactos
-e o que pode vir. Explicar não é infantilizar.
+**O Davi conta cada notícia inteira**, do começo ao fim, em cinco passos e nesta ordem:
+**o que aconteceu**; **o que é isso** (toda instituição, sigla, lugar e termo explicado na
+primeira vez, em meia frase); **por que está acontecendo**; **quem ganha, quem perde e o
+que muda para quem ouve**, em coisa concreta, preço, juro, emprego, conta; e **o que vem**,
+com data. A audiência é leiga e não é idiota: explicar não é infantilizar.
+
+**A abertura retoma a metodologia em dez segundos**, antes do primeiro lance: depois dos
+fixos, a Helena diz em uma fala "do jeito de sempre: o que aconteceu, o que é isso, por
+que, quem ganha e quem perde, e o que vem", e o Davi completa em uma fala "e quando
+precisar explicar do zero, a gente chama o VAR". Nada mais didático que isso: uma versão
+com cinco falas explicando o formato foi reprovada como "professoral".
+
+**A escalação é uma pergunta só.** A Helena pergunta "quais são os cinco lances de hoje?"
+e o Davi lista os cinco, em cinco falas. Ela não chama lance por lance na escalação.
+
+**O VAR é um bloco próprio.** Uma ou duas vezes por episódio, para explicar do zero algo
+importante (o que é uma delação, o que é um modelo aberto, o que é um superávit). A
+estrutura é obrigatória, porque é ela que faz o apito tocar: o Davi termina um bloco
+dizendo que o ponto pede o VAR, a Helena diz "Chama o VAR!" como última fala desse bloco,
+e o bloco seguinte tem título começando com `VAR ·` e é todo do Davi. No episódio 8 o
+apito só tocou uma vez porque a outra chamada estava no meio de um bloco comum.
+
+O modelo acabado nessa forma é `roteiros/MODELO.md`, a reescrita do episódio de 04/09.
+
+## A linguagem
+
+Regra do paulo, 04/09/2026, depois de sete episódios: "Existem muitas frases de efeito,
+muitas metáforas, analogias que não dialogam com uma população que não é escolada nisso.
+Não é tratar como idiota, é fazer como o The News faz."
+
+**Proibido metáfora, analogia e frase de efeito.** Diga a coisa pelo nome. Saíram, e não
+voltam: régua, cartório, guichê, porteiro, pedágio, vitrine, contracampo, moldura,
+cobrador, tabuleiro, ficha, praça, árbitro, retrato, idioma, "a mesa sentou", "o barril
+cobrou". Um bloco não fecha com sentença ("quem vive de frete não quer guerra grande"):
+fecha com o passo quatro ou cinco.
+
+**Vocabulário da casa reduzido a três termos**: escalação, lance e VAR.
+
+**Todo termo explicado na primeira menção**: G20, superávit, protecionismo, Guarda
+Revolucionária, Brent, antimicrobiano, delação, relator, modelo aberto. Meia frase basta.
+
+**Falas do Davi curtas**, até cento e vinte caracteres, uma ideia por fala, com direção
+diferente em cada uma. O modelo de voz aplica a emoção no ataque e a perde ao longo de
+fala longa.
+
+**Bordão em quarentena**: frase que já fechou um episódio não volta por trinta dias.
+
+## O horário: 3h da madrugada, com atualizações
+
+Regra do paulo, 04/09/2026. O episódio 8 disse "o Datafolha sai hoje à noite" quando o
+Datafolha tinha saído às 19h da véspera, uma hora depois de o roteiro ser escrito. Então
+**o roteiro é escrito às 3h da madrugada do próprio dia do ar**, não na tarde anterior.
+
+| hora (Brasília) | o quê |
+|---|---|
+| 3h00 | a rotina escreve o rascunho do dia e roda o guardião |
+| 3h30 | o guardião roda de novo (3h45 e 4h00 se precisar) |
+| 4h00 | gravação (4h15 e 4h30 se precisar) |
+| 5h00 | entra no feed |
+| 7h00 | hora prometida ao ouvinte |
+
+**A fonte continua sendo as cinco análises da véspera**, publicadas às 14h. Mas o mundo
+continuou depois das 14h. Para cada uma das cinco notícias, quem escreve procura na web o
+que mudou: pesquisa divulgada à noite, pronunciamento que estava marcado, resposta de quem
+foi citado, número revisado, fato novo. Se mudou, o roteiro conta a versão atualizada, e o
+fato novo entra numa seção `## ATUALIZAÇÕES` no fim do arquivo, antes de `## FONTES`, um
+item por fato, com data, hora e a URL da fonte. **A régua aceita como lastro os números das
+análises e os desta seção; item sem URL barra.**
 
 ### O vocabulário da casa
 
@@ -148,74 +219,9 @@ o programa já teve no ar.
 
 ### Quem fala o quê
 
-**A Helena apresenta. O Davi analisa, e a análise segue completa.**
-
-(Até o episódio 8 era o contrário. Em 03/09/2026 o paulo ouviu a mesma reescrita nas duas formas e escolheu a Helena como âncora. O primeiro roteiro assim é `roteiros/2026-09-04.md`. O histórico abaixo fala do Davi apresentando porque foi assim que o defeito aconteceu.)
-
-Regra do paulo, 03/09/2026, ouvindo o episódio 7: "o jogral não foi eliminado, segue
-acontecendo. Nem mesmo na pergunta quero que ele devolva. Quero que a análise siga
-completa."
-
-O que tinha acontecido: a régua do jogral (regra 4c) pegava a palavra devolvida na ponta,
-e o episódio 7 passou nela com zero casos. Mas o jogral tinha mudado de forma. A Helena
-dizia uma frase, o Davi fazia uma pergunta de três palavras, a Helena dizia a frase
-seguinte:
-
-    HELENA: Às nove, o IBGE mostrou a produção industrial de julho.
-    HELENA: Cresceu zero vírgula dois por cento sobre junho.
-    DAVI: E o mercado esperava quanto?
-    HELENA: Zero vírgula cinco. Veio abaixo.
-    DAVI: E contra o ano passado?
-    HELENA: Recuo de zero vírgula cinco por cento.
-
-A pergunta é deixa, não pergunta. É a notícia lida a dois, uma frase por vez. Medido no
-episódio 7: cinquenta e quatro perguntas-deixa do Davi, e ele entrando de seis a dez
-vezes em cada bloco de análise.
-
-A forma que vale a partir do episódio de 04/09:
-
-1. **A Helena chama o lance** em no máximo duas falas, antes da primeira fala do Davi.
-   A chamada pode ser uma pergunta que abre a análise ("Davi, por que uma fila em
-   Xangai interessa à mesa com Washington?"). Depois ela **sai**.
-2. **O Davi conta a notícia inteira**: fato, contexto, impacto, desdobramentos. Em
-   falas curtas dele mesmo, uma embaixo da outra, cinco no mínimo por bloco. Ninguém
-   entra no meio: nem pergunta, nem comentário, nem reação de uma palavra.
-3. **No fim do bloco** a Helena pode voltar com **uma** fala: a transição para o próximo
-   lance, ou a chamada do VAR. A chamada do VAR é a única fala dela que pode aparecer
-   no meio de um bloco.
-
-O mesmo trecho, na forma certa:
-
-    HELENA: Quarto lance! O Brasil, com dois retratos no mesmo dia. Davi, começa pela manhã.
-    DAVI: Às nove, o IBGE mostrou a produção industrial de julho.
-    DAVI: Cresceu zero vírgula dois por cento sobre junho, quando o mercado esperava zero vírgula cinco.
-    DAVI: Contra julho do ano passado, recuo de zero vírgula cinco.
-    DAVI: E julho tem um agravante de calendário: foi o primeiro mês inteiro sob a tarifa americana cheia.
-    DAVI: Vinte e cinco por cento pela lei comercial, mais a sobretaxa de doze vírgula cinco.
-    DAVI: Então o custo já apareceu no dado. E apareceu onde o PIB de terça não deixava ver.
-    DAVI: O agregado cresce pelo campo e pela mina. A transformação, que é onde a tarifa morde, anda de lado.
-    HELENA: E à tarde, o outro retrato.
-
-A energia do Davi vem da direção e do contraste entre as falas dele, não de alguém
-cutucando no meio. Os blocos 0 (abertura) e 1 (escalação) continuam sendo conversa, e
-o fecho também. A régua (regra 4d) confere todos os blocos de análise: fala da Helena
-entre duas falas do Davi barra o rascunho, e bloco com menos de cinco falas dele
-também, para que ninguém contorne a regra fatiando a notícia em blocos pequenos.
-
-**Não use os roteiros de 28/08 a 03/09 como modelo de quem fala.** Todos têm o defeito,
-inclusive a versão aprovada em 01/09, que ainda tinha o âncora perguntando no meio. O
-modelo é o exemplo acima e o roteiro de 04/09, o primeiro com a Helena apresentando.
-
-**Clareza vem antes de tudo.** Duas frases foram reprovadas na leitura do episódio 5, e
-nenhuma régua pega esse tipo de defeito:
-
-- *"hoje tem número nosso também"*: o ouvinte não tem como saber que "número" é o PIB,
-  que ainda nem foi mencionado. Virou "hoje sai o número da economia brasileira".
-- *"a mesa do tarifaço sentou"*: mesa não senta. Metonímia que não fecha soa como erro.
-  Virou "a negociação do tarifaço começou".
-
-Isso não tem a ver com o tamanho do episódio. Um episódio de dezessete minutos pode ser
-vivo, e um de dez pode ser monótono.
+Está em "A forma", acima. O histórico dos defeitos que levaram até lá (o jogral de
+pergunta-deixa do episódio 5, a Helena comentando no fim de cada bloco no episódio 8)
+fica no histórico do repositório e nos comentários das regras 4d e 4e do guardião.
 
 ### A duração e o tom
 
@@ -268,8 +274,16 @@ diga o que aquilo significa.
 
 **Número sem lastro.** Ver acima.
 
-**Falta de energia.** Ver a seção do ritmo: pisos de 38% de direções energéticas e 52%
-de falas curtas, e teto de 74 caracteres de média por fala.
+**Falta de energia.** Piso de 38% de direções energéticas. Com o Davi narrando, o piso de
+falas curtas caiu para 20% e o teto de média subiu para 110 caracteres.
+
+**Helena dentro do lance.** Qualquer fala dela depois da chamada barra, salvo "Chama o
+VAR!" como última fala antes de um bloco `VAR ·`.
+
+**VAR sem bloco.** "Pede o VAR" ou "Chama o VAR" sem bloco `VAR ·` logo depois barra:
+o apito não tocaria.
+
+**Atualização sem fonte.** Item de `## ATUALIZAÇÕES` sem URL barra.
 
 ## Pronúncia
 
@@ -283,5 +297,5 @@ insira vírgula para ajudar a soletrar, porque vírgula é pausa.
 ## Depois de escrever
 
 O rascunho fica em `roteiros/rascunhos/`. **Um arquivo nesta pasta não vai ao ar.** Quem
-promove é o guardião, às 17h, e só se tudo passar. Se ele barrar, abre uma issue dizendo
+promove é o guardião, às 3h30, e só se tudo passar. Se ele barrar, abre uma issue dizendo
 o motivo, e ninguém fica sabendo tarde demais.

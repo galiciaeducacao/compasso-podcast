@@ -432,25 +432,63 @@ def main():
             problemas.append(f"BLOCO {b['n']}: bloco de analise sem nenhuma fala do analista ({ANALISTA})")
             continue
         primeira_h = quem_b.index(ANALISTA)
-        ultima_h = len(quem_b) - 1 - quem_b[::-1].index(ANALISTA)
         if primeira_h > 2:
             problemas.append(
                 f"BLOCO {b['n']}: {HOST} abre com {primeira_h} falas antes de {ANALISTA} "
                 f"(maximo 2: quem apresenta chama o lance e sai)")
-        cauda = len(quem_b) - 1 - ultima_h
-        if cauda > 1:
-            problemas.append(
-                f"BLOCO {b['n']}: {HOST} fecha com {cauda} falas depois de {ANALISTA} (maximo 1)")
+        # REGRA DO PAULO, 04/09/2026, ouvindo o episodio 8: "helena nao faz comentario nenhum
+        # no meio das analises do Davi. Ela apenas e a host para chamar as noticias." Entao,
+        # a partir da primeira fala do analista, o host so pode aparecer UMA vez: como ultima
+        # fala do bloco, dizendo "Chama o VAR!", e so se o bloco seguinte for um bloco VAR.
+        # Isso tambem garante o apito: o gerador toca o apito na virada para bloco cujo
+        # titulo comeca com VAR; VAR chamado sem esse bloco fica mudo (aconteceu no ep8).
+        idx = blocos.index(b)
+        prox = blocos[idx + 1] if idx + 1 < len(blocos) else None
+        prox_var = prox is not None and prox["tipo"] == "BLOCO" and norm(prox.get("titulo", "")).startswith("var")
         for i, (q, t) in enumerate(b["falas"]):
-            if q == HOST and primeira_h < i < ultima_h and not re.search(r"\bvar\b", norm(t)):
+            if q != HOST or i <= primeira_h:
+                continue
+            chama = re.search(r"\bvar\b", norm(t)) is not None
+            ultima = i == len(b["falas"]) - 1
+            if chama and ultima and prox_var:
+                continue
+            if chama and not prox_var:
                 problemas.append(
-                    f"BLOCO {b['n']}: {HOST} entra no meio da analise: '{t[:60]}'. "
-                    f"A analise segue completa; quem apresenta chama o lance e sai")
+                    f"BLOCO {b['n']}: chama o VAR mas o bloco seguinte nao e um bloco 'VAR ·': "
+                    f"o apito nao toca. O VAR e sempre um bloco proprio, todo do analista")
+            elif chama and not ultima:
+                problemas.append(
+                    f"BLOCO {b['n']}: 'Chama o VAR!' tem de ser a ULTIMA fala do bloco")
+            else:
+                problemas.append(
+                    f"BLOCO {b['n']}: {HOST} fala dentro do lance: '{t[:60]}'. "
+                    f"Quem apresenta chama o lance e nao fala mais ate o proximo lance")
         n_analista = quem_b.count(ANALISTA)
         if n_analista < 5:
             problemas.append(
                 f"BLOCO {b['n']}: so {n_analista} falas de {ANALISTA} (minimo 5): bloco fatiado "
                 f"em pergunta e resposta")
+
+    # O analista tambem nao pode dizer "pede o VAR" e o VAR nao vir: e promessa no ar.
+    for idx, b in enumerate(blocos):
+        if b["tipo"] != "BLOCO":
+            continue
+        if any(re.search(r"pede o var", norm(t)) for _, t in b["falas"]):
+            prox = blocos[idx + 1] if idx + 1 < len(blocos) else None
+            if not (prox is not None and prox["tipo"] == "BLOCO" and norm(prox.get("titulo", "")).startswith("var")):
+                problemas.append(
+                    f"BLOCO {b['n']}: diz que o ponto pede o VAR, mas o bloco seguinte nao e 'VAR ·'")
+
+    # ESCALACAO (regra do Paulo, 04/09): a Helena faz UMA pergunta ("quais sao os cinco
+    # lances de hoje?") e o analista lista; ela nao chama lance por lance.
+    esc = next((b for b in blocos if b["tipo"] == "BLOCO" and b["n"] == 1), None)
+    if esc:
+        hs = [i for i, (q, _) in enumerate(esc["falas"]) if q == HOST]
+        if len(hs) > 1 or (hs and hs[0] != 0):
+            problemas.append(
+                f"BLOCO 1 (escalacao): {HOST} tem {len(hs)} falas. Ela faz uma pergunta so "
+                f"('quais sao os cinco lances de hoje?', que pode ficar no fim da abertura) e "
+                f"o analista lista os cinco; ela nao chama lance por lance")
 
     # ---------- 4e. A MESMA VOZ NAO REPETE O QUE ACABOU DE DIZER ----------
     # Paulo, 03/09, ouvindo a reescrita: o Davi fechou a escalacao com "Entao bora!
@@ -533,13 +571,13 @@ def main():
             problemas.append(
                 f"so {vivas/len(todas):.0%} das falas tem direcao energetica "
                 f"(piso 38%, o episodio aprovado tem 44%): vai soar monotono")
-        if curtas / len(todas) < 0.52:
+        if curtas / len(todas) < 0.20:
             problemas.append(
                 f"so {curtas/len(todas):.0%} das falas sao curtas o bastante para reagir "
-                f"(piso 52%, o aprovado tem 57%): quebre a narracao em falas curtas DA MESMA VOZ")
-        if media > 74:
+                f"(piso 20%: com o analista narrando, a fala curta e a de chamada e transicao)")
+        if media > 110:
             problemas.append(
-                f"fala com {media:.0f} caracteres em media (teto 74, o aprovado tem 68): "
+                f"fala com {media:.0f} caracteres em media (teto 110, uma ideia por fala): "
                 f"fala longa demais vira leitura, nao conversa")
 
 
@@ -578,6 +616,19 @@ def main():
         # apanhado da semana com dois ou tres dias de apuracao nao e apanhado da semana
         problemas.append(f"apanhado de domingo com apuracao de so {len(partes)} dos 7 dias")
     else:
+        # ATUALIZACOES (regra do Paulo, 04/09/2026): as analises sao das 14h da vespera e o
+        # roteiro e escrito as 3h do dia do ar. O que mudou no meio (pesquisa da noite,
+        # pronunciamento, resposta de quem foi citado) entra numa secao "## ATUALIZACOES"
+        # no fim do roteiro, um item por fato, COM URL. Item com URL vale como lastro;
+        # item sem URL barra, porque numero sem fonte e exatamente o que esta regra proibe.
+        bruto = rascunho.read_text(encoding="utf-8")
+        m_at = re.search(r"^## ATUALIZA[^\n]*\n(.*?)(?=^## |\Z)", bruto, re.S | re.M)
+        if m_at:
+            itens = [l.strip() for l in m_at.group(1).splitlines() if l.strip().startswith("-")]
+            for l in itens:
+                if "http" not in l:
+                    problemas.append(f"ATUALIZACOES: item sem URL nao vale como lastro: '{l[:70]}'")
+            corpo = corpo + "\n" + "\n".join(l for l in itens if "http" in l)
         do_site = set(digitos_do_texto(corpo)) | set(digitos_por_extenso(corpo))
         # A conferencia vale para NOTICIA. O texto dos anuncios e institucional e fixo,
         # e a abertura fala do proprio programa (365 dias, sete da manha): nada disso

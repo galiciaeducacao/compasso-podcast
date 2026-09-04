@@ -1,25 +1,27 @@
-# COMPASSO CAPITAL — o guardiao decide se o rascunho de amanha pode ir ao ar.
+# COMPASSO CAPITAL — o guardiao decide se o rascunho de HOJE pode ir ao ar.
 #
 # O Paulo dispensou a aprovacao manual. Isso significa que este workflow e a UNICA
 # coisa entre o modelo e o ar, num programa diario que fala em nome de tres marcas
 # pagantes. A regua e dura de proposito: na duvida, barra.
 #
-# Roda as 17h, uma hora antes da gravacao, para dar tempo de alguem olhar se barrar.
+# Roda as 3h30 da madrugada, meia hora antes da gravacao das 4h (regra do Paulo, 04/09/2026:
+# o roteiro e escrito as 3h do proprio dia, com as noticias conferidas contra o que saiu
+# depois das 14h da vespera; escrever na tarde anterior deixou o Datafolha das 19h de fora).
 # Se reprovar, ABRE UMA ISSUE explicando o motivo. O GitHub notifica por e-mail, e
 # assim um dia sem episodio nunca acontece em silencio: silencio e pior que erro
 # conhecido, porque ninguem investiga o que nao viu.
 
-name: guardiao (17h)
+name: guardiao (3h30)
 
 on:
   schedule:
-    - cron: '0 20 * * *'      # 17h00 de Brasilia
-    - cron: '30 20 * * *'     # 17h30, se o primeiro nao rodar
-    - cron: '30 21 * * *'     # 18h30, ultima tentativa antes da gravacao
+    - cron: '30 6 * * *'      # 3h30 de Brasilia
+    - cron: '45 6 * * *'      # 3h45, se o primeiro nao rodar
+    - cron: '0 7 * * *'       # 4h00, ultima tentativa, junto com a gravacao
   workflow_dispatch:
     inputs:
       data:
-        description: 'Data do rascunho a avaliar (AAAA-MM-DD). Vazio = amanha'
+        description: 'Data do rascunho a avaliar (AAAA-MM-DD). Vazio = hoje'
         required: false
 
 permissions:
@@ -40,7 +42,7 @@ jobs:
         id: alvo
         run: |
           DATA="${{ inputs.data }}"
-          [ -z "$DATA" ] && DATA=$(TZ=America/Sao_Paulo date -d "+1 day" +%F)
+          [ -z "$DATA" ] && DATA=$(TZ=America/Sao_Paulo date +%F)
           echo "data=$DATA" >> $GITHUB_OUTPUT
 
       - name: Passar a regua
@@ -88,14 +90,14 @@ jobs:
 
       # Dia sem roteiro nenhum e a falha mais provavel e a mais silenciosa da esteira:
       # nada quebra, nada estoura, so nao sai episodio. Aviso obrigatorio.
-      - name: Avisar que nao existe roteiro para amanha
+      - name: Avisar que nao existe roteiro para hoje
         if: steps.reguar.outputs.faltando == 'sim'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh issue create --title "SEM ROTEIRO para ${{ steps.alvo.outputs.data }}: nao havera episodio" --body "Nao existe **nem roteiro aprovado nem rascunho** para ${{ steps.alvo.outputs.data }}. Se nada for feito ate as 18h, **nao havera episodio nesse dia**.
+          gh issue create --title "SEM ROTEIRO para ${{ steps.alvo.outputs.data }}: nao havera episodio" --body "Nao existe **nem roteiro aprovado nem rascunho** para ${{ steps.alvo.outputs.data }}. Se nada for feito ate as 4h, **nao havera episodio nesse dia**.
 
-          A causa mais provavel e a rotina das 15h30 nao ter rodado, ou nao ter achado a
+          A causa mais provavel e a rotina das 3h nao ter rodado, ou nao ter achado a
           apuracao do dia em \`galicia/compasso/ops/diarias/\`.
 
           Para resolver, na ordem:
@@ -105,7 +107,7 @@ jobs:
           3. com o rascunho escrito: \`gh workflow run guardiao.yml -f data=${{ steps.alvo.outputs.data }}\`
           4. e depois: \`gh workflow run gerar-audio.yml -f data=${{ steps.alvo.outputs.data }}\`
 
-          A gravacao ainda roda as 18h, 18h30 e 19h30, entao ha tempo."
+          A gravacao roda as 4h, 4h15 e 4h30, e a publicacao as 5h."
 
       - name: Avisar que a regua aprovou
         if: steps.reguar.outputs.aprovado == 'sim'
@@ -113,7 +115,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
         run: |
-          python scripts/avisar.py regua ok "O roteiro de ${{ steps.alvo.outputs.data }} passou em todas as travas e seguiu para a gravacao das 18h."
+          python scripts/avisar.py regua ok "O roteiro de ${{ steps.alvo.outputs.data }} passou em todas as travas e seguiu para a gravacao das 4h."
 
       - name: Avisar que a regua barrou
         if: steps.reguar.outputs.aprovado == 'nao'
@@ -129,4 +131,4 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
         run: |
-          python scripts/avisar.py roteiro falhou "Nao existe roteiro NEM rascunho para ${{ steps.alvo.outputs.data }}. A escrita das 15h30 nao entregou. Sem acao, amanha o programa nao sai."
+          python scripts/avisar.py roteiro falhou "Nao existe roteiro NEM rascunho para ${{ steps.alvo.outputs.data }}. A escrita das 3h nao entregou. Sem acao, hoje o programa nao sai."
