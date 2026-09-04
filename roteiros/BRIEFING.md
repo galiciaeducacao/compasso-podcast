@@ -91,8 +91,9 @@ que muda para quem ouve**, em coisa concreta, preço, juro, emprego, conta; e **
 com data. A audiência é leiga e não é idiota: explicar não é infantilizar.
 
 **A abertura retoma a metodologia em dez segundos**, antes do primeiro lance: depois dos
-fixos, a Helena diz em uma fala "do jeito de sempre: o que aconteceu, o que é isso, por
-que, quem ganha e quem perde, e o que vem", e o Davi completa em uma fala "e quando
+fixos, a Helena diz em uma fala "do jeito de sempre: o que aconteceu, qual o contexto
+geral, por que está acontecendo, quem ganha e quem perde, e quais os possíveis próximos
+passos" (redação do paulo, 04/09), e o Davi completa em uma fala "e quando
 precisar explicar do zero, a gente chama o VAR". Nada mais didático que isso: uma versão
 com cinco falas explicando o formato foi reprovada como "professoral".
 

@@ -21,13 +21,11 @@ HELENA (âncora) · DAVI (analista)
 
 **HELENA:** [excited] Quem vos fala é a Helena, e comigo, como todo dia, o Davi.
 
-**DAVI:** [very excited] Porque no jogo do excedente...
-
-**HELENA:** [very very excited] Ninguém assiste de fora!
+**DAVI:** [very excited] Porque no jogo do excedente...Ninguém assiste de fora!
 
 **HELENA:** [very excited] E o Compasso Capital é um oferecimento da Legale Educacional, Iure Digital e Galícia Educação!
 
-**HELENA:** [warmly] Davi, do jeito de sempre: em cada lance, o que aconteceu, o que é isso, por que está acontecendo, quem ganha e quem perde, e o que vem.
+**HELENA:** [warmly] Davi, do jeito de sempre: em cada lance, o que aconteceu, qual o contexto geral, por que está acontecendo, quem ganha e quem perde, e quais os possíveis próximos passos.
 
 **DAVI:** [energetic] E quando alguma coisa precisar ser explicada do zero, a gente para e chama o VAR.
 
@@ -37,11 +35,11 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] O primeiro: dezenove das vinte maiores economias do mundo assinaram contra as exportações baratas da China. E a China respondeu ontem.
 
-**DAVI:** [serious] O segundo: o Golfo teve a segunda madrugada seguida de mísseis, cada lado conta um número de mortos, e o petróleo passou de noventa e sete dólares.
+**DAVI:** [serious] O segundo lance: o Golfo teve a segunda madrugada seguida de mísseis, cada lado conta um número de mortos, e o petróleo passou de noventa e sete dólares.
 
 **DAVI:** [energetic] O terceiro: a Nvidia comprou a Hugging Face, o maior depósito de inteligência artificial aberta do mundo, por quase treze bilhões de dólares.
 
-**DAVI:** [serious] O quarto: a Europa fechou a porta para a carne brasileira, e a bolsa bateu recorde de manhã e devolveu tudo à tarde.
+**DAVI:** [serious] O quarto lance: a Europa fechou a porta para a carne brasileira, e a bolsa bateu recorde de manhã e devolveu tudo à tarde.
 
 **DAVI:** [very serious] E o quinto é a corrida eleitoral: o Datafolha de ontem à noite deu quarenta e seis a quarenta e quatro no segundo turno, e os áudios do celular do Vorcaro entraram na campanha.
 
@@ -111,7 +109,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] Três outras coisas aconteceram ontem fora do Golfo.
 
-**DAVI:** [serious] Argentina: às nove da noite, o presidente Milei falou em cadeia nacional sobre as Malvinas, as ilhas que a Argentina disputa com o Reino Unido desde a guerra de mil novecentos e oitenta e dois.
+**DAVI:** [serious] Argentina: às nove da noite, o presidente Milei falou em cadeia nacional sobre as Malvinas, as ilhas que a Argentina disputa com o Reino Unido.
 
 **DAVI:** [very serious] Ele anunciou que vai proibir de operar na Argentina empresas que participem de projetos de petróleo nas ilhas sem autorização argentina, e ordenou uma base naval na Terra do Fogo.
 
@@ -135,7 +133,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] A Hugging Face é o lugar onde os modelos abertos de inteligência artificial ficam guardados e são baixados. Mais de três milhões de modelos, dezoito milhões de programadores.
 
-**DAVI:** [serious] O negócio fecha no ano que vem, se os órgãos de concorrência deixarem. Em dois mil e vinte e dois, eles desmontaram outra compra da Nvidia, de quarenta bilhões.
+**DAVI:** [serious] O negócio fecha no ano que vem, se os órgãos de concorrência deixarem. Quatro anos atrás, eles desmontaram outra compra da Nvidia, de quarenta bilhões.
 
 **DAVI:** [very serious] Um dado que os comunicados tratam como rodapé: foi o fundador da Hugging Face que procurou a Nvidia, no meio do ano.
 
@@ -199,7 +197,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [very serious] Por quê: na quarta a bolsa tinha subido mais de três por cento por causa de uma pesquisa que mostrava a disputa apertada. Ontem, parte dos investidores vendeu para embolsar o ganho, e todo mundo esperou a pesquisa seguinte.
 
-**DAVI:** [energetic] E ela saiu ontem às sete da noite. O Datafolha ouviu duas mil e duas pessoas entre terça e quinta, com margem de erro de dois pontos.
+**DAVI:** [energetic] E ela saiu ontem às sete da noite. O Datafolha ouviu eleitores do país inteiro entre terça e quinta, com margem de erro de dois pontos.
 
 **DAVI:** [serious] No primeiro turno: Lula trinta e oito, Flávio Bolsonaro trinta e três, Augusto Cury oito, Ronaldo Caiado quatro, Renan Santos três.
 
@@ -225,7 +223,7 @@ HELENA (âncora) · DAVI (analista)
 
 **DAVI:** [energetic] Ontem, o mesmo site publicou áudios do deputado Nikolas Ferreira com o banqueiro: chama de Dani, de lindão, e pede ajuda para um ex-assessor destravar um ativo de minério.
 
-**DAVI:** [serious] Nikolas respondeu ontem mesmo: admitiu voos pagos pelo banqueiro no segundo turno de dois mil e vinte e dois, e negou proximidade.
+**DAVI:** [serious] Nikolas respondeu ontem mesmo: admitiu voos pagos pelo banqueiro no segundo turno da eleição passada, e negou proximidade.
 
 **DAVI:** [very serious] E a terceira onda é a mais antiga: em maio, o site The Intercept publicou o áudio em que o senador Flávio Bolsonaro pede cento e trinta e quatro milhões de reais ao banqueiro para o filme sobre o pai. Flávio primeiro negou, depois admitiu, e disse que era patrocínio privado.
 
@@ -301,6 +299,8 @@ Fatos que mudaram depois das análises das 14h de 03/09 e foram conferidos na ma
 - Datafolha, divulgado às 19h de 03/09: primeiro turno Lula 38%, Flávio Bolsonaro 33%, Augusto Cury 8%, Ronaldo Caiado 4%, Renan Santos 3%; segundo turno Lula 46% x Flávio 44%, empate técnico; 2.002 entrevistados de 1 a 3/9, margem de 2 pontos; na rodada anterior (agosto) a diferença no segundo turno era de 4 pontos. Fontes: https://www.cnnbrasil.com.br/eleicoes/datafolha-no-1o-turno-lula-tem-38-flavio-33-e-cury-8/ e https://www.dgabc.com.br/Noticia/4345021/datafolha-traz-1-turno-com-lula-38-e-flavio-bolsonaro-com-33-
 - Milei, cadeia nacional às 21h de 03/09: proibição de operar na Argentina para empresas envolvidas em projetos de petróleo nas Malvinas sem autorização argentina, projeto de lei ao Congresso, decreto para base naval na Terra do Fogo. Fontes: https://www.infobae.com/politica/2026/09/04/milei-enviara-al-congreso-un-paquete-de-proyectos-para-resguardar-la-soberania-de-la-argentina-en-las-islas-malvinas/ e https://www.lanacion.com.ar/politica/javier-milei-sobre-las-islas-malvinas-uno-por-uno-los-anuncios-del-presidente-en-la-cadena-nacional-nid03092026/
 - Nikolas Ferreira, resposta de 03/09: admite voos pagos por Vorcaro em 2022, nega proximidade. Fonte: https://www.otempo.com.br/politica/2026/9/3/nikolas-ferreira-admite-voos-bancados-por-vorcaro-mas-nega-relacao-pessoal-em-resposta-a-vazamento
+- Vorcaro e Mendonça, ICL em 01/09 (publicado 02/09): mensagens e áudios do celular de Daniel Vorcaro mostram encontro de cerca de 2 horas com o ministro André Mendonça em 14 de março de 2025, em São Paulo; Mendonça admitiu o encontro e disse ter decidido contra o banqueiro. Fontes: https://iclnoticias.com.br/vaza-mendonca-mensagens-e-audios-ineditos/ e https://www.radiopampa.com.br/audios-vazados-relatam-encontros-entre-o-ministro-do-supremo-andre-mendonca-e-o-ex-dono-do-banco-master-daniel-vorcaro/
+- Suspeita de vazamento pela defesa, Oeste em 03/09: entorno de Mendonça suspeita que a defesa de Vorcaro vazou o áudio de Flávio Bolsonaro (pedido de R$ 134 milhões para o filme, publicado pelo The Intercept em maio) para pressionar a delação, ainda não homologada. Fontes: https://revistaoeste.com/no-ponto/mendonca-suspeita-que-defesa-de-vorcaro-vazou-audios-com-flavio/ e https://apublica.org/nota/flavio-bolsonaro-audio-vazado-com-vorcaro-cobra-r-134-milhoes/
 
 ## FONTES
 
@@ -311,8 +311,3 @@ As cinco análises publicadas em compasso.capital em 03/09/2026:
 - Brasil: https://compasso.capital/analises/o-embargo-europeu-a-carne-abre-a-segunda-frente-do-agro/
 - Placar: https://compasso.capital/analises/a-hipotese-brasil-a-ofac-age-duas-vezes-e-nao-olha-para-ca/
 
-Quinto lance (a corrida), apurado fora das análises do dia:
-- ICL Notícias, Vaza Mendonça: https://iclnoticias.com.br/vaza-mendonca-mensagens-e-audios-ineditos/
-- Rádio Pampa, áudios do encontro Mendonça e Vorcaro: https://www.radiopampa.com.br/audios-vazados-relatam-encontros-entre-o-ministro-do-supremo-andre-mendonca-e-o-ex-dono-do-banco-master-daniel-vorcaro/
-- Oeste, Mendonça suspeita da defesa de Vorcaro: https://revistaoeste.com/no-ponto/mendonca-suspeita-que-defesa-de-vorcaro-vazou-audios-com-flavio/
-- Agência Pública, o áudio de Flávio: https://apublica.org/nota/flavio-bolsonaro-audio-vazado-com-vorcaro-cobra-r-134-milhoes/
