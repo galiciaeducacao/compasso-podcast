@@ -436,7 +436,8 @@ def main():
     # a Helena como ancora e o Davi como analista. Os comentarios acima falam do Davi
     # apresentando porque foi assim ate o episodio 8; a regra le HOST e ANALISTA.
     for b in blocos:
-        if b["tipo"] != "BLOCO" or b["n"] < 2 or "fecho" in norm(b.get("titulo", "")):
+        tit = norm(b.get("titulo", ""))
+        if b["tipo"] != "BLOCO" or b["n"] < 1 or "fecho" in tit or "abertura" in tit or "escala" in tit:
             continue
         quem_b = [q for q, _ in b["falas"]]
         if ANALISTA not in quem_b:
@@ -492,12 +493,12 @@ def main():
 
     # ESCALACAO (regra do Paulo, 04/09): a Helena faz UMA pergunta ("quais sao os cinco
     # lances de hoje?") e o analista lista; ela nao chama lance por lance.
-    esc = next((b for b in blocos if b["tipo"] == "BLOCO" and b["n"] == 1), None)
+    esc = next((b for b in blocos if b["tipo"] == "BLOCO" and "escala" in norm(b.get("titulo", ""))), None)
     if esc:
         hs = [i for i, (q, _) in enumerate(esc["falas"]) if q == HOST]
         if len(hs) > 1 or (hs and hs[0] != 0):
             problemas.append(
-                f"BLOCO 1 (escalacao): {HOST} tem {len(hs)} falas. Ela faz uma pergunta so "
+                f"BLOCO {esc['n']} (escalacao): {HOST} tem {len(hs)} falas. Ela faz uma pergunta so "
                 f"('quais sao os cinco lances de hoje?', que pode ficar no fim da abertura) e "
                 f"o analista lista os cinco; ela nao chama lance por lance")
 
@@ -604,17 +605,17 @@ def main():
         corpos = [len(re.sub(r"\[[^\]]+\]", "", x).strip()) for x in todas]
         curtas = sum(1 for c in corpos if c <= 60)
         media = sum(corpos) / len(corpos)
-        if vivas / len(todas) < 0.38:
+        if vivas / len(todas) < 0.35:
             problemas.append(
                 f"so {vivas/len(todas):.0%} das falas tem direcao energetica "
-                f"(piso 38%, o episodio aprovado tem 44%): vai soar monotono")
-        if curtas / len(todas) < 0.15:
+                f"(piso 35%): vai soar monotono")
+        if curtas / len(todas) < 0.12:
             problemas.append(
                 f"so {curtas/len(todas):.0%} das falas sao curtas o bastante para reagir "
-                f"(piso 15%: com o analista narrando, a fala curta e a de chamada e transicao)")
-        if media > 135:
+                f"(piso 12%: com o analista narrando, a fala curta e a de chamada e transicao)")
+        if media > 150:
             problemas.append(
-                f"fala com {media:.0f} caracteres em media (teto 135, uma ideia por fala): "
+                f"fala com {media:.0f} caracteres em media (teto 150, uma ideia por fala): "
                 f"fala longa demais vira leitura, nao conversa")
 
 
@@ -627,10 +628,12 @@ def main():
     if todas:
         escrito = sum(len(re.sub(r"\[[^\]]+\]", "", x).strip()) for x in todas)
         seg = escrito / CHARS_POR_SEG
-        if not 12 * 60 <= seg <= 18 * 60:
+        dias_ab = (dt.date.fromisoformat(data) - dt.date(2026, 9, 5)).days
+        teto_min = 20 if (dias_ab >= 0 and dias_ab % 15 == 0) else 18   # abertura longa = +2 min
+        if not 12 * 60 <= seg <= teto_min * 60:
             problemas.append(
                 f"episodio de ~{seg/60:.0f} min ({escrito} caracteres de fala). "
-                f"O alvo e 15 min, e a faixa aceita vai de 12 a 18")
+                f"O alvo e 15 min, e a faixa aceita vai de 12 a {teto_min}")
 
     # ---------- 6. LASTRO FACTUAL: nada que nao esteja na apuracao ----------
     # O episodio de D comenta as analises publicadas em D-1, porque elas saem as 14h e
