@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 06 Sep 2026 05:05:34 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 06 Sep 2026 08:59:44 -0300</lastBuildDate>
+    <item>
+      <title>10. A semana em cinco lances: dezenove contra um, as Malvinas, a compra da Nvidia e o empate técnico</title>
+      <description>Apanhado da semana. O embargo ao Irã virou campanha militar sem data para acabar, a China respondeu por três canais e ficou isolada por dezenove a um no G20. Uma frase dita em Washington sobre as Malvinas acordou o Atlântico Sul, e Londres pôs as Forças Armadas em alerta. Na inteligência artificial, o acesso virou o produto: a Nvidia comprou a Hugging Face e a OpenAI pôs à venda o primeiro modelo que ela mesma classificou como de risco crítico. No Brasil, superávit recorde e indústria parada ao mesmo tempo, com a bolsa negociando pesquisa eleitoral. E a corrida chegou ao domingo em empate técnico por três institutos. compasso.capital</description>
+      <itunes:summary>Apanhado da semana. O embargo ao Irã virou campanha militar sem data para acabar, a China respondeu por três canais e ficou isolada por dezenove a um no G20. Uma frase dita em Washington sobre as Malvinas acordou o Atlântico Sul, e Londres pôs as Forças Armadas em alerta. Na inteligência artificial, o acesso virou o produto: a Nvidia comprou a Hugging Face e a OpenAI pôs à venda o primeiro modelo que ela mesma classificou como de risco crítico. No Brasil, superávit recorde e indústria parada ao mesmo tempo, com a bolsa negociando pesquisa eleitoral. E a corrida chegou ao domingo em empate técnico por três institutos. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://audio.compasso.capital/compasso-capital-0010.mp3" length="22461379" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0010</guid>
+      <pubDate>Sun, 06 Sep 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:15:35</itunes:duration>
+      <itunes:episode>10</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>9. O aviso que não diz o nome da China, as Malvinas de volta e a balança de agosto</title>
       <description>O secretário de Estado americano avisou que quem ajudar o Irã a driblar sanções pode ser sancionado também, e o único comprador com tamanho para o barril iraniano é chinês. Na Argentina, Milei anunciou sanções a petroleiras nas Malvinas e uma base naval na Terra do Fogo, e Londres respondeu que nada muda. A OpenAI lançou o Astra dizendo que o mundo entrou na era da inteligência artificial geral, e deixou o assinante comum na fila. O emprego americano veio quase no triplo do esperado, apertou o câmbio aqui, e a balança comercial de agosto fechou com superávit de sete vírgula quatro bilhões de dólares. E a corrida: dois institutos, duas pontas, um empate técnico. compasso.capital</description>
