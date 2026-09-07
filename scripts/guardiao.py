@@ -643,11 +643,28 @@ def main():
     # DOMINGO E DIFERENTE: e apanhado da semana, entao os numeros vem de qualquer dia
     # dos sete anteriores. Conferir so contra a vespera reprovaria tudo que veio de
     # segunda a quinta, ou seja, barraria o formato inteiro.
+    #
+    # E O DOMINGO NAO PUBLICA. O site publica diaria de terca a sexta, a leitura semanal
+    # no sabado e a pauta da semana na segunda; no domingo nao sai nada. Entao a vespera
+    # da SEGUNDA e sempre uma pasta que nao existe, e conferir so contra D-1 reprovava
+    # todo dia de segunda por falta de apuracao, sem que houvesse nada errado com o
+    # roteiro. A janela recua ate achar o ultimo dia PUBLICADO, no maximo tres dias, e
+    # para no primeiro que tem material: continua sendo UM dia de apuracao, o mais
+    # recente que existe, com o mesmo rigor. (achado em 07/09/2026, a primeira segunda
+    # com a regua de lastro no ar)
     alvo_dia = dt.date.fromisoformat(data)
     domingo = alvo_dia.weekday() == 6
     dias = [(alvo_dia - dt.timedelta(days=n)).isoformat()
-            for n in (range(1, 8) if domingo else range(1, 2))]
-    partes = [c for c in (analises_do_dia(d) for d in dias) if c]
+            for n in (range(1, 8) if domingo else range(1, 4))]
+    if domingo:
+        partes = [c for c in (analises_do_dia(d) for d in dias) if c]
+    else:
+        partes = []
+        for d in dias:
+            c = analises_do_dia(d)
+            if c:
+                partes, dias = [c], [d]
+                break
     corpo = "\n".join(partes) if partes else None
     if corpo is None:
         janela = f"os sete dias ate {dias[0]}" if domingo else dias[0]
