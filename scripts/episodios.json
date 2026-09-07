@@ -1,6 +1,18 @@
 {
   "episodios": [
     {
+      "numero": 11,
+      "titulo": "11. O cerco ao Irã, o empate técnico e a semana que decide o tarifaço",
+      "descricao": "Segunda-feira, sete de setembro. A semana passada transformou o embargo ao Irã em campanha militar sem data para acabar, com cerca de cem alvos, e deixou a China isolada por dezenove a um na reunião das vinte maiores economias. No Golfo, os dois lados terminaram sem contar a mesma guerra, e ontem Teerã divulgou vídeo de mais um ataque no estreito de Ormuz. Na inteligência artificial, o acesso virou o produto: a Nvidia comprou a Hugging Face e a OpenAI pôs à venda o primeiro modelo que ela mesma classificou como de risco crítico. No Brasil, o país cresceu pelo campo, esfriou no consumo e viu a Europa fechar a porta da carne. E a corrida chega ao feriado com três institutos e um empate técnico, a um mês do primeiro turno. compasso.capital",
+      "notas": "<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>",
+      "arquivo": "compasso-capital-0011.mp3",
+      "url": "https://audio.compasso.capital/compasso-capital-0011.mp3",
+      "tamanho": 22425017,
+      "duracao": "00:15:34",
+      "data": "2026-09-07T07:00:00",
+      "guid": "compasso-capital-ep0011"
+    },
+    {
       "numero": 10,
       "titulo": "10. A semana em cinco lances: dezenove contra um, as Malvinas, a compra da Nvidia e o empate técnico",
       "descricao": "Apanhado da semana. O embargo ao Irã virou campanha militar sem data para acabar, a China respondeu por três canais e ficou isolada por dezenove a um no G20. Uma frase dita em Washington sobre as Malvinas acordou o Atlântico Sul, e Londres pôs as Forças Armadas em alerta. Na inteligência artificial, o acesso virou o produto: a Nvidia comprou a Hugging Face e a OpenAI pôs à venda o primeiro modelo que ela mesma classificou como de risco crítico. No Brasil, superávit recorde e indústria parada ao mesmo tempo, com a bolsa negociando pesquisa eleitoral. E a corrida chegou ao domingo em empate técnico por três institutos. compasso.capital",

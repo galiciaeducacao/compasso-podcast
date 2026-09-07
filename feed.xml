@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 06 Sep 2026 08:59:44 -0300</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 05:06:57 -0300</lastBuildDate>
+    <item>
+      <title>11. O cerco ao Irã, o empate técnico e a semana que decide o tarifaço</title>
+      <description>Segunda-feira, sete de setembro. A semana passada transformou o embargo ao Irã em campanha militar sem data para acabar, com cerca de cem alvos, e deixou a China isolada por dezenove a um na reunião das vinte maiores economias. No Golfo, os dois lados terminaram sem contar a mesma guerra, e ontem Teerã divulgou vídeo de mais um ataque no estreito de Ormuz. Na inteligência artificial, o acesso virou o produto: a Nvidia comprou a Hugging Face e a OpenAI pôs à venda o primeiro modelo que ela mesma classificou como de risco crítico. No Brasil, o país cresceu pelo campo, esfriou no consumo e viu a Europa fechar a porta da carne. E a corrida chega ao feriado com três institutos e um empate técnico, a um mês do primeiro turno. compasso.capital</description>
+      <itunes:summary>Segunda-feira, sete de setembro. A semana passada transformou o embargo ao Irã em campanha militar sem data para acabar, com cerca de cem alvos, e deixou a China isolada por dezenove a um na reunião das vinte maiores economias. No Golfo, os dois lados terminaram sem contar a mesma guerra, e ontem Teerã divulgou vídeo de mais um ataque no estreito de Ormuz. Na inteligência artificial, o acesso virou o produto: a Nvidia comprou a Hugging Face e a OpenAI pôs à venda o primeiro modelo que ela mesma classificou como de risco crítico. No Brasil, o país cresceu pelo campo, esfriou no consumo e viu a Europa fechar a porta da carne. E a corrida chega ao feriado com três institutos e um empate técnico, a um mês do primeiro turno. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://audio.compasso.capital/compasso-capital-0011.mp3" length="22425017" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0011</guid>
+      <pubDate>Mon, 07 Sep 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:15:34</itunes:duration>
+      <itunes:episode>11</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>10. A semana em cinco lances: dezenove contra um, as Malvinas, a compra da Nvidia e o empate técnico</title>
       <description>Apanhado da semana. O embargo ao Irã virou campanha militar sem data para acabar, a China respondeu por três canais e ficou isolada por dezenove a um no G20. Uma frase dita em Washington sobre as Malvinas acordou o Atlântico Sul, e Londres pôs as Forças Armadas em alerta. Na inteligência artificial, o acesso virou o produto: a Nvidia comprou a Hugging Face e a OpenAI pôs à venda o primeiro modelo que ela mesma classificou como de risco crítico. No Brasil, superávit recorde e indústria parada ao mesmo tempo, com a bolsa negociando pesquisa eleitoral. E a corrida chegou ao domingo em empate técnico por três institutos. compasso.capital</description>
