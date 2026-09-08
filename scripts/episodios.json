@@ -1,6 +1,18 @@
 {
   "episodios": [
     {
+      "numero": 12,
+      "titulo": "12. O barril passa de noventa e oito, o Canadá revida e o Sete de Setembro em duas avenidas",
+      "descricao": "A guerra do Golfo virou caça a petroleiro e o estreito de Ormuz passou um domingo inteiro sem nenhum navio comercial; o barril passou de noventa e oito dólares nesta madrugada. Entram em vigor hoje as tarifas do Canadá contra os Estados Unidos, a maior retaliação ao tarifaço até agora. O modelo Astra passou o fim de semana em demonstração pública enquanto a Nvidia prometeu perto de um trilhão de dólares em infraestrutura. E o Sete de Setembro se dividiu em duas avenidas: setenta mil contados pelo governo em Brasília, vinte e oito mil e quinhentas pessoas medidas na avenida Paulista, e a pesquisa da noite deu empate em quarenta e um a quarenta e um. compasso.capital",
+      "notas": "<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>",
+      "arquivo": "compasso-capital-0012.mp3",
+      "url": "https://audio.compasso.capital/compasso-capital-0012.mp3",
+      "tamanho": 19417591,
+      "duracao": "00:13:29",
+      "data": "2026-09-08T07:00:00",
+      "guid": "compasso-capital-ep0012"
+    },
+    {
       "numero": 11,
       "titulo": "11. O cerco ao Irã, o empate técnico e a semana que decide o tarifaço",
       "descricao": "Segunda-feira, sete de setembro. A semana passada transformou o embargo ao Irã em campanha militar sem data para acabar, com cerca de cem alvos, e deixou a China isolada por dezenove a um na reunião das vinte maiores economias. No Golfo, os dois lados terminaram sem contar a mesma guerra, e ontem Teerã divulgou vídeo de mais um ataque no estreito de Ormuz. Na inteligência artificial, o acesso virou o produto: a Nvidia comprou a Hugging Face e a OpenAI pôs à venda o primeiro modelo que ela mesma classificou como de risco crítico. No Brasil, o país cresceu pelo campo, esfriou no consumo e viu a Europa fechar a porta da carne. E a corrida chega ao feriado com três institutos e um empate técnico, a um mês do primeiro turno. compasso.capital",
