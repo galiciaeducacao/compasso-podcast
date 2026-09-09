@@ -93,6 +93,16 @@ jobs:
       # compara com o roteiro, unico jeito de saber que o que foi escrito foi dito.
       # Se reprovar, o job para AQUI e nao existe release: melhor dia sem episodio do
       # que episodio quebrado no ar.
+      # Guarda o mp3 ANTES do QA: se o QA reprovar por engano (09/09/2026: repeticao
+      # legitima da formula do VAR), o audio de 18 mil creditos nao se perde.
+      - name: Guardar o mp3 como artefato (antes do QA)
+        if: steps.audio.outputs.gerou == 'sim'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.audio.outputs.arquivo }}
+          path: ${{ steps.audio.outputs.arquivo }}
+          retention-days: 14
+
       - name: QA do audio antes de publicar
         if: steps.audio.outputs.gerou == 'sim'
         env:

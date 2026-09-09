@@ -23,6 +23,7 @@ VOLUME_FOLGA = 2.0
 PICO_MAX = -0.5          # acima disso e risco de clipping no tocador
 COBERTURA_MIN = 0.92     # fracao das falas que precisa aparecer na transcricao
 REPETICAO_MAX = 12       # palavras seguidas repetidas no audio inteiro
+REPETICAO_DIST = 120     # ... e so conta se a 2a vez vier a menos de tantas palavras da 1a
 
 
 def norm(s):
@@ -134,10 +135,15 @@ def main():
                 avisos.append(f"fala {i} nao localizada na transcricao: '{t}'")
 
         # 4b. repeticao no AUDIO: e assim que um priming mal cortado aparece
+        # Um priming mal cortado repete a frase LOGO EM SEGUIDA, dentro do mesmo bloco
+        # (dezenas de palavras de distancia). Repeticao distante e formula do programa:
+        # 'esse ponto pede o VAR / Chama o VAR! / [apito] / Vamos' e dita a cada VAR,
+        # e em 09/09/2026 isso reprovou um episodio bom (posicoes 720 e 1945) e queimou
+        # 18 mil creditos. Por isso so conta repeticao a menos de REPETICAO_DIST palavras.
         vistos, repetidos = {}, []
         for j in range(len(dito) - REPETICAO_MAX + 1):
             seq = " ".join(dito[j:j + REPETICAO_MAX])
-            if seq in vistos:
+            if seq in vistos and j - vistos[seq] <= REPETICAO_DIST:
                 repetidos.append((seq, vistos[seq], j))
             else:
                 vistos[seq] = j
