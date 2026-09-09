@@ -35,6 +35,19 @@ matinal comentando o mês passado é problema que o ouvinte percebe.
 
 O podcast acompanha a análise **diária** e, no domingo, a **semanal**. Nunca a mensal.
 
+**A grade do site mudou em 09/09/2026.** Os pilares Potências, IAs e Brasil saíram; o site
+publica por dia útil "O lance do dia" (um fato, por uma das quatro dimensões do poder
+estrutural: segurança, produção, finanças, conhecimento), a "Leitura cruzada" (seis
+regiões, com o quadro "as versões") e, quando há movimento, a série "Eleição 2026", que
+substituiu a Hipótese Brasil e acompanha a disputa, os interesses internos, a pressão
+externa e as instituições. No sábado saem quatro semanais, uma por dimensão, mais a
+eleição da semana. Os cinco lances do podcast vêm daí: o lance do dia é sempre o primeiro;
+a corrida eleitoral é sempre o quinto (da série, ou apurada na web com URL nas
+ATUALIZAÇÕES); os outros três são as regiões da Leitura cruzada que mais mexeram, ou a
+segunda ou terceira leitura do lance do dia quando ele render mais de um lance. Os
+arquivos ficam em `galicia/compasso/ops/diarias/<data>/`: `01-lance.json`,
+`02-leitura-cruzada.json`, `03-eleicao.json`.
+
 ## A regra temporal, que é onde todo mundo erra
 
 A análise é da **véspera** e o programa vai ao ar às 7h do dia seguinte. Então o texto
@@ -89,6 +102,24 @@ disser que o ponto pede o VAR.
 primeira vez, em meia frase); **por que está acontecendo**; **quem ganha, quem perde e o
 que muda para quem ouve**, em coisa concreta, preço, juro, emprego, conta; e **o que vem**,
 com data. A audiência é leiga e não é idiota: explicar não é infantilizar.
+
+**Quem ganha e quem perde não é gente, é fator de produção (regra do paulo, 09/09/2026).**
+"Ganha o dono da empresa", "ganha Washington, perde a China" é manchete, não análise; o
+episódio de 09/09 saiu assim no lance de IA e foi reprovado. O passo quatro responde, nesta
+ordem e sem rotular: qual fator de produção captura mais renda com o fato e em que forma
+(terra e recursos naturais: renda de escassez, royalty, rota; trabalho: salário, emprego,
+poder de barganha; capital: lucro, juro, infraestrutura de que os outros dependem;
+conhecimento e tecnologia: modelo, patente, dados, padrão, licença; o Estado é a quinta
+linha, arrecada ou perde capacidade de regular); se o ganho é apropriação privada, e de
+quantos, ou amplia os graus de liberdade da sociedade (mais opções, acesso, capacidade de
+decidir); quem perde poder de barganha, de uma vez ou aos poucos; e se é concentração ou
+difusão, em que prazo. Exemplo aprovado, para uma tarifa: "a tarifa tira renda de quem
+compra e de quem importa e entrega ao Tesouro e ao produtor protegido, que ganha margem sem
+ganhar produtividade; o trabalho protegido ganha emprego agora e perde poder de barganha
+depois; o capital com escala dos dois lados da fronteira ganha em qualquer cenário; e a
+sociedade perde um grau de liberdade quando o comércio passa a depender de uma decisão, não
+de uma regra". O site segue a mesma regra, e a grade de ganhos e perdas completa está na
+proposta aprovada em 09/09 (memória do Claude, `feedback-ganhos-e-perdas-economia-politica`).
 
 **A abertura explica o jogo do excedente, todo dia.** Duas versões, texto fixo, aprovadas
 pelo paulo em 04/09/2026 e guardadas em `roteiros/ABERTURA_LONGA.md` e
