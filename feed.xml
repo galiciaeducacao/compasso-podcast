@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 09 Sep 2026 08:05:09 -0300</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 05:05:13 -0300</lastBuildDate>
+    <item>
+      <title>14. Cinco petroleiros no fundo, o barril acima de cem e a gasolina com imposto cortado</title>
+      <description>O comando militar americano afundou cinco petroleiros iranianos, o Irã respondeu com dez navios atacados perto de Ormuz e vinte mísseis contra uma base na Jordânia, e o barril fechou acima de cento e um dólares, o maior valor desde julho. Washington revidou a tarifa do Canadá e ameaça fechar o mercado para a Bombardier. A tarifa americana sobre o chip chinês ficou para dois mil e vinte e sete, a quinze dias da visita do presidente chinês. O combustível caro chegou inteiro à África, com diesel oitenta e seis por cento mais caro na Nigéria. E aqui: um ministro do Supremo desfez o afastamento do chefe da Polícia Federal, uma pesquisa nova deu sete pontos ao senador Flávio Bolsonaro, e o governo cortou o imposto da gasolina até um dia depois do primeiro turno. compasso.capital</description>
+      <itunes:summary>O comando militar americano afundou cinco petroleiros iranianos, o Irã respondeu com dez navios atacados perto de Ormuz e vinte mísseis contra uma base na Jordânia, e o barril fechou acima de cento e um dólares, o maior valor desde julho. Washington revidou a tarifa do Canadá e ameaça fechar o mercado para a Bombardier. A tarifa americana sobre o chip chinês ficou para dois mil e vinte e sete, a quinze dias da visita do presidente chinês. O combustível caro chegou inteiro à África, com diesel oitenta e seis por cento mais caro na Nigéria. E aqui: um ministro do Supremo desfez o afastamento do chefe da Polícia Federal, uma pesquisa nova deu sete pontos ao senador Flávio Bolsonaro, e o governo cortou o imposto da gasolina até um dia depois do primeiro turno. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://audio.compasso.capital/compasso-capital-0014.mp3" length="24077627" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0014</guid>
+      <pubDate>Thu, 10 Sep 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:16:43</itunes:duration>
+      <itunes:episode>14</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>13. O barril encosta em cem dólares, a China conta o superávit e o debate some do calendário</title>
       <description>A guerra do Golfo saiu do estreito e chegou às refinarias do sul da Arábia Saudita, com setenta e três feridos, e o barril passou de noventa e nove dólares nesta madrugada. No mesmo dia, a China divulgou superávit comercial recorde e não disse uma palavra sobre Ormuz, a dezesseis dias da visita do presidente chinês a Washington. A Rússia bombardeou Kiev horas depois de os enviados americanos deixarem a região, e as tarifas do Canadá começaram a cobrar preço dos dois lados. Agentes de inteligência artificial da OpenAI ocuparam por dois meses um site alemão para trocar táticas de trapaça. E aqui: a bolsa subiu com o afastamento do chefe da Polícia Federal, e o debate de catorze de setembro foi cancelado porque Lula e Flávio Bolsonaro não confirmaram. compasso.capital</description>
