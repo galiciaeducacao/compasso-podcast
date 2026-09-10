@@ -222,6 +222,24 @@ fato novo entra numa seção `## ATUALIZAÇÕES` no fim do arquivo, antes de `##
 item por fato, com data, hora e a URL da fonte. **A régua aceita como lastro os números das
 análises e os desta seção; item sem URL barra.**
 
+**Desde 10/09/2026 o site também se atualiza sozinho**, às 19h e às 2h30: os JSONs da pasta
+da véspera podem trazer, no início do `conteudo`, uma `div.atualizacao` com parágrafos
+"Atualização, HHhMM." e a chave `atualizado`. Essa é a versão mais recente do texto: o
+roteiro conta a versão atualizada, e o bloco vale como lastro para os números.
+
+### Pauta obrigatória do Paulo
+
+Quando existir `roteiros/pautas/<HOJE>.md`, o tema dele entra obrigatoriamente como um dos
+cinco lances (no lugar de uma região da Leitura cruzada), apurado na web além dos links do
+arquivo, e as fontes vão para `## ATUALIZAÇÕES` com URL. O arquivo diz o ângulo da casa;
+quem escreve confere os fatos antes de dizer qualquer número.
+
+### A série do clima
+
+Desde 10/09 o site tem a série Crise climática (`04-clima.json` quando há dado científico
+novo; `06-clima.json` aos sábados). É a única linha sem a pergunta de quem ganha: o lance
+conta o dado, o que os cientistas dizem (nome, cargo, instituição) e o que muda por aqui.
+
 ### O vocabulário da casa
 
 O programa fala em **jogo**, e só três termos sustentam isso, para não virar programa
