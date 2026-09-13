@@ -1,6 +1,18 @@
 {
   "episodios": [
     {
+      "numero": 17,
+      "titulo": "17. A semana em que as duas saídas do petróleo passaram a depender de decisão militar",
+      "descricao": "O apanhado da semana do COMPASSO CAPITAL. Em segurança, oito petroleiros iranianos destruídos em quatro dias, os houthis no controle de Bab el-Mandeb, o oleoduto saudita parado e o barril fechando a semana acima de cem dólares. Em produção, o Canadá mediu com números quanto custa revidar o tarifaço americano, e a China respondeu vendendo mais, com superávit recorde puxado por chips. Em finanças, o banco central europeu subiu o juro por causa da guerra, a inflação americana acelerou e o Brasil teve a maior deflação em quatro anos, com duas travas de prazo curto dentro. Em conhecimento, o alerta de extinção saiu do laboratório e chegou ao Senado americano, e no sábado o próprio dono da corrida pediu freio. E na corrida eleitoral, seis pesquisas e uma crise dentro do Supremo não moveram o empate. Com o VAR do El Niño que já está medido. compasso.capital",
+      "notas": "<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>",
+      "arquivo": "compasso-capital-0017.mp3",
+      "url": "https://audio.compasso.capital/compasso-capital-0017.mp3",
+      "tamanho": 21327874,
+      "duracao": "00:14:48",
+      "data": "2026-09-13T07:00:00",
+      "guid": "compasso-capital-ep0017"
+    },
+    {
       "numero": 16,
       "titulo": "16. A deflação daqui, a inflação de lá e a segunda porta do petróleo",
       "descricao": "Brasil e Estados Unidos mediram a inflação de agosto no mesmo dia e em sentidos opostos: aqui o índice caiu zero vírgula trinta e dois por cento, lá subiu zero vírgula quatro, com a gasolina da guerra pagando mais de um terço da alta. Na quarta-feira o Copom deve cortar a Selic e o banco central americano deve subir o juro. Os aliados do Irã no Iêmen tomaram a ilha de Perim e passaram a controlar Bab el-Mandeb, a segunda saída marítima do petróleo do Golfo, no dia em que a Arábia Saudita desligou o oleoduto que ligava o Golfo ao mar Vermelho. Começa hoje em Nova Délhi a cúpula do Brics, com Putin, Xi Jinping e o presidente do Irã, e o Brasil representado só pelo chanceler. A Rússia bombardeou postos de combustível dentro de Kiev em plena luz do dia. E o Datafolha de ontem manteve quarenta e seis a quarenta e quatro no eventual segundo turno. compasso.capital",

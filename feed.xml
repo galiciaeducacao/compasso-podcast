@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sat, 12 Sep 2026 09:00:15 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 05:05:10 -0300</lastBuildDate>
+    <item>
+      <title>17. A semana em que as duas saídas do petróleo passaram a depender de decisão militar</title>
+      <description>O apanhado da semana do COMPASSO CAPITAL. Em segurança, oito petroleiros iranianos destruídos em quatro dias, os houthis no controle de Bab el-Mandeb, o oleoduto saudita parado e o barril fechando a semana acima de cem dólares. Em produção, o Canadá mediu com números quanto custa revidar o tarifaço americano, e a China respondeu vendendo mais, com superávit recorde puxado por chips. Em finanças, o banco central europeu subiu o juro por causa da guerra, a inflação americana acelerou e o Brasil teve a maior deflação em quatro anos, com duas travas de prazo curto dentro. Em conhecimento, o alerta de extinção saiu do laboratório e chegou ao Senado americano, e no sábado o próprio dono da corrida pediu freio. E na corrida eleitoral, seis pesquisas e uma crise dentro do Supremo não moveram o empate. Com o VAR do El Niño que já está medido. compasso.capital</description>
+      <itunes:summary>O apanhado da semana do COMPASSO CAPITAL. Em segurança, oito petroleiros iranianos destruídos em quatro dias, os houthis no controle de Bab el-Mandeb, o oleoduto saudita parado e o barril fechando a semana acima de cem dólares. Em produção, o Canadá mediu com números quanto custa revidar o tarifaço americano, e a China respondeu vendendo mais, com superávit recorde puxado por chips. Em finanças, o banco central europeu subiu o juro por causa da guerra, a inflação americana acelerou e o Brasil teve a maior deflação em quatro anos, com duas travas de prazo curto dentro. Em conhecimento, o alerta de extinção saiu do laboratório e chegou ao Senado americano, e no sábado o próprio dono da corrida pediu freio. E na corrida eleitoral, seis pesquisas e uma crise dentro do Supremo não moveram o empate. Com o VAR do El Niño que já está medido. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://audio.compasso.capital/compasso-capital-0017.mp3" length="21327874" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0017</guid>
+      <pubDate>Sun, 13 Sep 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:14:48</itunes:duration>
+      <itunes:episode>17</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>16. A deflação daqui, a inflação de lá e a segunda porta do petróleo</title>
       <description>Brasil e Estados Unidos mediram a inflação de agosto no mesmo dia e em sentidos opostos: aqui o índice caiu zero vírgula trinta e dois por cento, lá subiu zero vírgula quatro, com a gasolina da guerra pagando mais de um terço da alta. Na quarta-feira o Copom deve cortar a Selic e o banco central americano deve subir o juro. Os aliados do Irã no Iêmen tomaram a ilha de Perim e passaram a controlar Bab el-Mandeb, a segunda saída marítima do petróleo do Golfo, no dia em que a Arábia Saudita desligou o oleoduto que ligava o Golfo ao mar Vermelho. Começa hoje em Nova Délhi a cúpula do Brics, com Putin, Xi Jinping e o presidente do Irã, e o Brasil representado só pelo chanceler. A Rússia bombardeou postos de combustível dentro de Kiev em plena luz do dia. E o Datafolha de ontem manteve quarenta e seis a quarenta e quatro no eventual segundo turno. compasso.capital</description>
