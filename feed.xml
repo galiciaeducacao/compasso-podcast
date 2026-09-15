@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 14 Sep 2026 11:48:19 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 05:05:57 -0300</lastBuildDate>
+    <item>
+      <title>19. O desvio do petróleo quebrado, a China de agosto e duas pesquisas opostas</title>
+      <description>O oleoduto que a Arábia Saudita usava para tirar petróleo do Golfo sem passar por Ormuz foi danificado e deve levar de três a cinco semanas para voltar: o Brent tocou cento e dez dólares, fechou perto de cento e seis e voltou a subir na madrugada. A China mediu agosto com a fábrica acelerando e o consumo quase parado. Entra em vigor hoje a lista ampliada de tarifas americanas de cinquenta por cento sobre o Canadá. O Pacífico chegou a dois graus acima da média, o degrau que define El Niño muito forte. E a corrida teve duas pesquisas em sentidos opostos, as duas dentro da margem, no dia em que o plenário do Supremo decide quem comanda a Polícia Federal. compasso.capital</description>
+      <itunes:summary>O oleoduto que a Arábia Saudita usava para tirar petróleo do Golfo sem passar por Ormuz foi danificado e deve levar de três a cinco semanas para voltar: o Brent tocou cento e dez dólares, fechou perto de cento e seis e voltou a subir na madrugada. A China mediu agosto com a fábrica acelerando e o consumo quase parado. Entra em vigor hoje a lista ampliada de tarifas americanas de cinquenta por cento sobre o Canadá. O Pacífico chegou a dois graus acima da média, o degrau que define El Niño muito forte. E a corrida teve duas pesquisas em sentidos opostos, as duas dentro da margem, no dia em que o plenário do Supremo decide quem comanda a Polícia Federal. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://audio.compasso.capital/compasso-capital-0019.mp3" length="22266401" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0019</guid>
+      <pubDate>Tue, 15 Sep 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:15:27</itunes:duration>
+      <itunes:episode>19</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>18. A reunião de Ormuz adiada, o petróleo de volta e a semana que decide o juro</title>
       <description>A reunião que ia tratar da navegação no estreito de Ormuz nesta segunda foi adiada na noite de domingo, sem data nova, e o barril voltou a subir: o Brent abriu a semana na casa dos cento e oito dólares e rodava a cento e seis vírgula noventa na madrugada. Na quarta-feira, o Brasil e os Estados Unidos decidem juro no mesmo dia, em direções opostas. O presidente americano descartou desacelerar a inteligência artificial, três dias depois de o pedido de freio sair de dentro das duas maiores empresas do setor. O El Niño segue medido acima de tudo o que já foi registrado para a data. E a corrida chega à semana do plenário do Supremo com duas pesquisas novas saindo hoje. compasso.capital</description>
