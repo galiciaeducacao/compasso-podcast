@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 15 Sep 2026 10:13:58 -0300</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 05:05:19 -0300</lastBuildDate>
+    <item>
+      <title>20. A super quarta dos juros, o freio da inteligência artificial e o Supremo que não decidiu</title>
+      <description>Os donos da inteligência artificial pediram para desacelerar, o presidente americano chamou de farsa e a Casa Branca marcou reunião com as empresas. Hoje o Copom e o Federal Reserve decidem juros no mesmo dia, com o barril acima de cento e oito dólares. O estreito de Ormuz chegou ao dia cento e noventa e nove fechado, com quatrocentos e doze navios parados. A Conab fechou a safra recorde e projetou a primeira já desenhada sob El Niño. E a terceira pesquisa depois da crise deu quarenta e três a quarenta e dois, no dia em que o Supremo passou a sessão inteira sem decidir. compasso.capital</description>
+      <itunes:summary>Os donos da inteligência artificial pediram para desacelerar, o presidente americano chamou de farsa e a Casa Branca marcou reunião com as empresas. Hoje o Copom e o Federal Reserve decidem juros no mesmo dia, com o barril acima de cento e oito dólares. O estreito de Ormuz chegou ao dia cento e noventa e nove fechado, com quatrocentos e doze navios parados. A Conab fechou a safra recorde e projetou a primeira já desenhada sob El Niño. E a terceira pesquisa depois da crise deu quarenta e três a quarenta e dois, no dia em que o Supremo passou a sessão inteira sem decidir. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://audio.compasso.capital/compasso-capital-0020.mp3" length="24434982" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0020</guid>
+      <pubDate>Wed, 16 Sep 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:16:58</itunes:duration>
+      <itunes:episode>20</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>19. O desvio do petróleo quebrado, a China de agosto e duas pesquisas opostas</title>
       <description>O oleoduto que a Arábia Saudita usava para tirar petróleo do Golfo sem passar por Ormuz foi danificado e deve levar de três a cinco semanas para voltar: o Brent tocou cento e dez dólares, fechou perto de cento e seis e voltou a subir na madrugada. A China mediu agosto com a fábrica acelerando e o consumo quase parado. Entra em vigor hoje a lista ampliada de tarifas americanas de cinquenta por cento sobre o Canadá. O Pacífico chegou a dois graus acima da média, o degrau que define El Niño muito forte. E a corrida teve duas pesquisas em sentidos opostos, as duas dentro da margem, no dia em que o plenário do Supremo decide quem comanda a Polícia Federal. compasso.capital</description>
