@@ -23,6 +23,14 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 DESTINO = "paulo@galiciaeducacao.edu.br"
+
+# PAUSA DOS AVISOS (pedido do Paulo, 21/09/2026: "pode parar de me enviar e-mails sobre o
+# processo do compasso por enquanto"). Estados listados aqui NAO geram e-mail: o passo
+# imprime o resultado no log do Actions e segue. A esteira nao muda em nada.
+# Para religar tudo: PAUSADOS = set(). Para voltar a receber so as falhas: tire "falhou".
+# As issues que os workflows abrem quando algo quebra NAO passam por aqui e continuam.
+PAUSADOS = {"ok", "pulou", "falhou"}
+
 CORES = {"ok": ("#1f6f3f", "FUNCIONOU"),
          "falhou": ("#BA3520", "FALHOU"),
          "pulou": ("#6b6357", "NAO SE APLICA")}
@@ -46,6 +54,10 @@ def main():
     ordem, titulo, hora = PASSOS.get(passo, ("", passo, ""))
     cor, rotulo = CORES.get(estado, CORES["ok"])
     agora = datetime.now(timezone(timedelta(hours=-3)))
+
+    if estado in PAUSADOS:
+        print(f"[{rotulo}] {titulo}: {detalhe} (avisos por e-mail pausados, nao enviei)")
+        return 0
 
     usuario, senha = os.environ.get("SMTP_USER"), os.environ.get("SMTP_PASS")
     if not usuario or not senha:
