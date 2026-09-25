@@ -740,6 +740,17 @@ def main():
 
     subprocess.run(["git", "mv", str(rascunho.relative_to(RAIZ)),
                     str(aprovado.relative_to(RAIZ))], cwd=RAIZ, check=True)
+    # O `git mv` renomeia o que esta no INDICE, e o indice guarda o conteudo do
+    # primeiro `git add`. Quem escreve o rascunho, roda a regua, corrige o que ela
+    # apontou e roda de novo (que e o procedimento) fica com duas versoes: a corrigida
+    # no disco e a REPROVADA no indice. Sem este `git add`, o commit seguinte leva a
+    # reprovada, e vai ao ar o texto que a regua barrou, calado. Aconteceu em
+    # 25/09/2026: o commit promoveu o rascunho de 19 minutos que tinha sido barrado
+    # por duracao e por numero sem lastro, e a unica pista foi o arquivo aparecer
+    # modificado depois de um commit que deveria ter deixado a arvore limpa.
+    # Um caminho so, sempre o promovido: nunca `git add -A`, que varre a _tmp do gerador.
+    subprocess.run(["git", "add", "--", str(aprovado.relative_to(RAIZ))],
+                   cwd=RAIZ, check=True)
     print(f"APROVADO: {data} promovido para roteiros/, {len(blocos)} blocos, {len(todas)} falas")
     saida = os.environ.get("GITHUB_OUTPUT")
     if saida:
