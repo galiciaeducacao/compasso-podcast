@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 30 Sep 2026 11:41:58 -0300</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 05:05:40 -0300</lastBuildDate>
+    <item>
+      <title>25. A cota da carne estourou, o oceano fora de ritmo e a cadeira vazia</title>
+      <description>A China esgotou a cota anual de um milhão e cem mil toneladas e, desde a virada para esta quinta, cada tonelada de carne bovina brasileira acima dela paga sessenta e sete por cento para entrar no país que compra quase metade do que o Brasil exporta. A Rússia confirmou o maior orçamento militar da guerra e, um dia depois, lançou uma das noites mais longas de mísseis e drones sobre a Ucrânia. A resposta americana sobre o estreito de Ormuz chegou a Teerã pelas mãos do Catar, que somou proposta própria, com o barril perto de cento e três dólares. O balanço anual do oceano mostra que o ritmo de aquecimento dobrou em vinte anos. E na corrida, Lula deixou a cadeira vazia no último debate, que é hoje à noite, enquanto o empate no segundo turno chega a vinte e quatro medições. compasso.capital</description>
+      <itunes:summary>A China esgotou a cota anual de um milhão e cem mil toneladas e, desde a virada para esta quinta, cada tonelada de carne bovina brasileira acima dela paga sessenta e sete por cento para entrar no país que compra quase metade do que o Brasil exporta. A Rússia confirmou o maior orçamento militar da guerra e, um dia depois, lançou uma das noites mais longas de mísseis e drones sobre a Ucrânia. A resposta americana sobre o estreito de Ormuz chegou a Teerã pelas mãos do Catar, que somou proposta própria, com o barril perto de cento e três dólares. O balanço anual do oceano mostra que o ritmo de aquecimento dobrou em vinte anos. E na corrida, Lula deixou a cadeira vazia no último debate, que é hoje à noite, enquanto o empate no segundo turno chega a vinte e quatro medições. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://audio.compasso.capital/compasso-capital-0025.mp3" length="23919639" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0025</guid>
+      <pubDate>Thu, 01 Oct 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:16:36</itunes:duration>
+      <itunes:episode>25</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>24. O acordo de uma página, o Iraque sem tropa e o Pacífico fora da escala</title>
       <description>Trump almoçou com os chefes da inteligência artificial americana e o encontro terminou num acordo voluntário de uma página, com quatro camadas de verificação e nenhuma força de lei, no mesmo dia em que a OpenAI confirmou ter segurado o próximo modelo do ChatGPT por usar ferramentas sem autorização. O governo iraquiano declarou encerrada hoje de manhã a missão da coalizão americana, depois de vinte e três anos, e marcou quatro dias de feriado. O Pacífico equatorial bateu o recorde de temperatura absoluta da água e os cientistas dizem que a escala oficial do El Niño já não serve. A Argentina deu duas semanas ao Reino Unido para parar o petróleo das Malvinas e Londres respondeu que fica ao lado das empresas. E na corrida, duas pesquisas novas mantêm o empate a quatro dias do voto, com o debate da Globo amanhã. compasso.capital</description>
