@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 05 Oct 2026 05:05:31 -0300</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 13:53:09 -0300</lastBuildDate>
+    <item>
+      <title>28. O resultado invertido, a guerra em Riade e a carne a sessenta e sete por cento</title>
+      <description>O primeiro turno terminou ontem com a classificação invertida: Flávio Bolsonaro ficou com quarenta e sete por cento dos votos válidos e Lula com quarenta e cinco, ninguém passou da metade mais um, e o segundo turno é em vinte e cinco de outubro. Nenhuma pesquisa final tinha visto isso, e o VAR explica por que as duas erraram na mesma direção. A guerra do Golfo chegou à capital da Arábia Saudita, com ataque a uma instalação da Aramco e petroleiro atingido em Ormuz, e o barril reabriu acima de cento e três dólares. A carne bovina brasileira esgotou a cota chinesa e passou a pagar sessenta e sete por cento para entrar no maior mercado comprador. E o emprego americano travou em vinte e nove mil vagas, o que derrubou a aposta de juro mais alto nos Estados Unidos e deu folga ao Brasil. compasso.capital</description>
+      <itunes:summary>O primeiro turno terminou ontem com a classificação invertida: Flávio Bolsonaro ficou com quarenta e sete por cento dos votos válidos e Lula com quarenta e cinco, ninguém passou da metade mais um, e o segundo turno é em vinte e cinco de outubro. Nenhuma pesquisa final tinha visto isso, e o VAR explica por que as duas erraram na mesma direção. A guerra do Golfo chegou à capital da Arábia Saudita, com ataque a uma instalação da Aramco e petroleiro atingido em Ormuz, e o barril reabriu acima de cento e três dólares. A carne bovina brasileira esgotou a cota chinesa e passou a pagar sessenta e sete por cento para entrar no maior mercado comprador. E o emprego americano travou em vinte e nove mil vagas, o que derrubou a aposta de juro mais alto nos Estados Unidos e deu folga ao Brasil. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://audio.compasso.capital/compasso-capital-0028.mp3" length="20976788" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0028</guid>
+      <pubDate>Mon, 05 Oct 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:14:34</itunes:duration>
+      <itunes:episode>28</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>27. A semana que terminou na urna</title>
       <description>O apanhado da semana no domingo do primeiro turno. Em Segurança, a contraproposta americana chegou a Teerã pelo Catar, aceita quase todos os passos do plano iraniano e inverte a ordem; a resposta do Irã não veio. Em Produção, a China esgotou a cota e passou a cobrar sessenta e sete por cento da carne brasileira que entra acima dela. Em Finanças, o emprego americano travou e derrubou a aposta de alta do juro. Em Conhecimento, as seis maiores empresas de inteligência artificial assinaram na Casa Branca a própria regra, numa página sem sanção. E a corrida chega à urna empatada, com as duas pesquisas finais divergindo dentro da margem. Com o VAR no El Niño recorde e no que é voto válido. compasso.capital</description>
