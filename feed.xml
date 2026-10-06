@@ -18,7 +18,21 @@
     <itunes:owner><itunes:name>COMPASSO</itunes:name><itunes:email>contato@compasso.capital</itunes:email></itunes:owner>
     <itunes:category text="News"><itunes:category text="Daily News"/></itunes:category>
     <atom:link href="https://galiciaeducacao.github.io/compasso-podcast/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 05 Oct 2026 13:53:09 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 05:05:35 -0300</lastBuildDate>
+    <item>
+      <title>29. O dia em que o preço do Brasil mudou, e a guerra entrou no céu saudita</title>
+      <description>O primeiro pregão depois do primeiro turno levou o dólar abaixo de cinco reais, a bolsa acima de duzentos mil pontos e os juros futuros quase um ponto para baixo, sem nenhuma produtividade nova por trás. A coalizão saudita abriu ofensiva no Iêmen e os houthis responderam contra o aeroporto de Riade e uma refinaria da Aramco. A Rússia lançou cento e trinta e sete drones contra a Ucrânia numa noite e atingiu mais uma ponte. O Pacífico bateu o quarto recorde semanal seguido e as queimadas caíram treze vírgula seis por cento no Brasil. E a conta do segundo turno foi refeita a partir da urna, com os primeiros apoios dos eliminados. compasso.capital</description>
+      <itunes:summary>O primeiro pregão depois do primeiro turno levou o dólar abaixo de cinco reais, a bolsa acima de duzentos mil pontos e os juros futuros quase um ponto para baixo, sem nenhuma produtividade nova por trás. A coalizão saudita abriu ofensiva no Iêmen e os houthis responderam contra o aeroporto de Riade e uma refinaria da Aramco. A Rússia lançou cento e trinta e sete drones contra a Ucrânia numa noite e atingiu mais uma ponte. O Pacífico bateu o quarto recorde semanal seguido e as queimadas caíram treze vírgula seis por cento no Brasil. E a conta do segundo turno foi refeita a partir da urna, com os primeiros apoios dos eliminados. compasso.capital</itunes:summary>
+      <content:encoded><![CDATA[<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>]]></content:encoded>
+      <enclosure url="https://audio.compasso.capital/compasso-capital-0029.mp3" length="21803093" type="audio/mpeg"/>
+      <guid isPermaLink="false">compasso-capital-ep0029</guid>
+      <pubDate>Tue, 06 Oct 2026 07:00:00 -0300</pubDate>
+      <itunes:duration>00:15:08</itunes:duration>
+      <itunes:episode>29</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <link>https://compasso.capital</link>
+    </item>
     <item>
       <title>28. O resultado invertido, a guerra em Riade e a carne a sessenta e sete por cento</title>
       <description>O primeiro turno terminou ontem com a classificação invertida: Flávio Bolsonaro ficou com quarenta e sete por cento dos votos válidos e Lula com quarenta e cinco, ninguém passou da metade mais um, e o segundo turno é em vinte e cinco de outubro. Nenhuma pesquisa final tinha visto isso, e o VAR explica por que as duas erraram na mesma direção. A guerra do Golfo chegou à capital da Arábia Saudita, com ataque a uma instalação da Aramco e petroleiro atingido em Ormuz, e o barril reabriu acima de cento e três dólares. A carne bovina brasileira esgotou a cota chinesa e passou a pagar sessenta e sete por cento para entrar no maior mercado comprador. E o emprego americano travou em vinte e nove mil vagas, o que derrubou a aposta de juro mais alto nos Estados Unidos e deu folga ao Brasil. compasso.capital</description>
