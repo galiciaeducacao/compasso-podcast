@@ -1,6 +1,18 @@
 {
   "episodios": [
     {
+      "numero": 31,
+      "titulo": "31. O juro mais caro em 24 anos e o bloco do centro fechado",
+      "descricao": "O juro de 30 anos dos Estados Unidos renovou a máxima de 24 anos e recuou depois da ata do Federal Reserve, que aponta mais uma alta até o fim do ano. A Rússia atacou a Ucrânia inteira e matou 28 pessoas, 20 delas num prédio de Prýluky. O 7 de Outubro completou três anos e virou disputa em Israel sobre quem avisou Netanyahu. A União Africana inaugurou a primeira agência de classificação de risco do continente. E o Republicanos fechou o bloco do centro em torno de Flávio Bolsonaro, sem fechamento de questão. compasso.capital",
+      "notas": "<p>Todas as análises completas, com fontes, em <a href='https://compasso.capital'>compasso.capital</a>.</p>",
+      "arquivo": "compasso-capital-0031.mp3",
+      "url": "https://audio.compasso.capital/compasso-capital-0031.mp3",
+      "tamanho": 22883936,
+      "duracao": "00:15:53",
+      "data": "2026-10-08T07:00:00",
+      "guid": "compasso-capital-ep0031"
+    },
+    {
       "numero": 30,
       "titulo": "30. As bets saem do ar e o centro fecha com o senador",
       "descricao": "O primeiro dia sem apostas no Brasil, mísseis sobre Riade e o pacto de Meca em operação, Mekelle retomada no Tigré, as pontes de Kiev e o centro inteiro migrando para o segundo turno.",
